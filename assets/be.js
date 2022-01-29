@@ -1,17 +1,41 @@
 $(window).on('load', function () {
 	$('.loader-holder').fadeOut("slow");
-	applyBannerSlider(".banner-holder");
-	applyProductsSlider(".products-holder");
-	applySolutionsSlider(".solutions-slider");
-	applyProductSolutionsSlider(".products-solutions-slider");
-	applyNewLaunchesSlider(".new-launches-holder");
-	applyBlogsSlider(".blogs-holder");
-	applyCategoriesSlider(".categories-holder");
-	applyProductsImageSlider(".products-image-holder");
-	applyCertificatesSlider(".certificates-slider-holder");
-	applyRecentSlider(".recent-products-slider");
-	applyCategoriesProductSlider(".categories-products-holder");
-	applyBrandingSlider(".branding-slider");
+	if ($('.banner-holder').length) {
+	  applyBannerSlider(".banner-holder");
+	}
+	if ($('.products-holder').length) {
+	  applyProductsSlider(".products-holder");
+	}
+	if ($('.solutions-slider').length) {
+	  applySolutionsSlider(".solutions-slider");
+	}
+	if ($('.products-solutions-slider').length) {
+	  applyProductSolutionsSlider(".products-solutions-slider");
+	}
+	if ($('.new-launches-holder').length) {
+	  applyNewLaunchesSlider(".new-launches-holder");
+	}
+	if ($('.blogs-holder').length) {
+	  applyBlogsSlider(".blogs-holder");
+	}
+	if ($('.categories-holder').length) {
+	  applyCategoriesSlider(".categories-holder");
+	}
+	if ($('.products-image-holder').length) {
+	  applyProductsImageSlider(".products-image-holder");
+	}
+	if ($('.certificates-slider-holder').length) {
+	  applyCertificatesSlider(".certificates-slider-holder");
+	}
+	if ($('.recent-products-slider').length) {
+	  applyRecentSlider(".recent-products-slider");
+	}
+	if ($('.categories-products-holder').length) {
+	  applyCategoriesProductSlider(".categories-products-holder");
+	}
+	if ($('.branding-slider').length) {
+	  applyBrandingSlider(".branding-slider");
+	}
   });
   
   $(document).ready(function () {
@@ -245,7 +269,22 @@ $(window).on('load', function () {
 	  arrows: false,
 	  autoplay: true,
 	  speed: 2000,
+	  responsive: [
+		{
+		  breakpoint: 9999,
+		  settings: "unslick"
+		},
+		{
+		  breakpoint: 767,
+		  settings: {
+			slidesToScroll: 1,
+			slidesToShow: 1,
+			infinite: true,
+			dots: false,
+			dots: true,
+		  }
+		}
+	  ]
 	});
   }
-
-  console.log("Test1");
+  
