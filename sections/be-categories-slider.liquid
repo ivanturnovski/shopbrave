@@ -1,0 +1,51 @@
+<div class="categories-slider mobile-only">
+	<ul class="categories-holder">
+	  <li class="categories-list-holder">
+		<div class="categories-list">
+		  <img src="{{ 'beard-category.png' | asset_url }}">
+		  <h6 class="categories-header">Beard Care</h6>
+		</div>
+	  </li>
+	  <li class="categories-list-holder">
+		<div class="categories-list">
+		  <img src="{{ 'haircare.png' | asset_url }}">		  
+		  <h6 class="categories-header">Hair Care</h6>
+		</div>
+	  </li>
+	  <li class="categories-list-holder">
+		<div class="categories-list">
+		  <img src="{{ 'facecare.png' | asset_url }}">
+		  <h6 class="categories-header">Face Care</h6>
+		</div>
+	  </li>
+	  <li class="categories-list-holder">
+		<div class="categories-list">
+		  <img src="{{ 'shave.png ' | asset_url }}">
+		  <h6 class="categories-header">Shave</h6>
+		</div>
+	  </li>
+	  <li class="categories-list-holder">
+		<div class="categories-list">
+		  <img src="{{ 'haircare.png ' | asset_url }}">
+		  <h6 class="categories-header">Fragrance</h6>
+		</div>
+	  </li>
+	</ul>
+  </div>
+
+
+  {% schema %}
+
+{
+    "name": "Categories Slider",    
+    "tag": "section",
+    "settings": [],
+    "presets": [
+        {
+            "category": "BE",
+            "name": "Categories Slider"
+        }
+    ]
+}
+
+{% endschema %}
