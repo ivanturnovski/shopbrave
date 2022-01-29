@@ -1,0 +1,39 @@
+<div class="everyday-section">
+	<div class="container">
+	  <div class="branding-slider">
+		<div class="branding">
+		  <img class="desktop-only" src="{{ 'everyday.png' | asset_url }}">
+		  <img class="mobile-only" src="{{ 'banner-mobile.png' | asset_url }} ">
+		  <div class="content-holder">
+			<h6 class="content-header">
+			  EveryDay
+			</h6>
+			<div class="content-details">
+			  Essentials
+			</div>
+		  </div>
+		</div>
+		<div class="branding">
+		  <img src="{{ 'branding-1.jpg' | asset_url }}">
+		</div>
+	  </div>
+	</div>
+  </div>
+
+
+  {% schema %}
+
+  {
+	  "name": "Everyday",
+	  "class": "be-everyday",    
+	  "tag": "section",
+	  "settings": [],
+	  "presets": [
+		  {
+			  "category": "BE",
+			  "name": "Everyday"
+		  }
+	  ]
+  }
+  
+  {% endschema %}
