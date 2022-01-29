@@ -603,7 +603,7 @@ img {
 }
 .brave-essentials .section-heading::before {
 	content: '';
-	background-image: url('../images/homepage/before-heading.png');
+	background-image: url("{{ 'before-heading.png' | asset_url }}");
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -639,7 +639,7 @@ img {
 }
 .brave-essentials .section-heading::after {
 	content: '';
-	background-image: url('../images/homepage/before-heading.png');
+	background-image: url("{{ 'before-heading.png' | asset_url }}");
 	position: absolute;
 	right: 0;
 	top: 0;
