@@ -30,6 +30,12 @@
     {% render 'meta-tags' %}
 
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+
+    {% comment %} Brave In Assets {% endcomment %}
+    {{ 'jquery-3.6.0.min.js' | asset_url | script_tag }}
+    {{ 'be.js' | asset_url | script_tag }}
+    {% comment %} Brave In Assets {% endcomment %}
+
     {{ content_for_header }}
 
     {%- liquid
@@ -44,6 +50,40 @@
       {{ body_font_italic | font_face: font_display: 'swap' }}
       {{ body_font_bold_italic | font_face: font_display: 'swap' }}
       {{ settings.type_header_font | font_face: font_display: 'swap' }}
+
+     
+      @font-face {
+        font-family: "Robinson";
+        src: url("{{ 'Robinson Regular.otf' | asset_url }}") format('opentype');
+      }
+      
+      @font-face {
+        font-family: 'Myriad Pro';
+        src: url("{{ 'MyriadPro-Regular.woff2' | asset_url }}") format('woff2')
+          url("{{ 'MyriadPro-Regular.woff2' | asset_url }}") format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      
+      @font-face {
+        font-family: "Codec Warm Trial";
+        src: url("{{ 'CodecWarmTrial-Regular.woff2' | asset_url }}") format('woff2')
+          url("{{ 'CodecWarmTrial-Regular.woff' | asset_url }}") format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      
+      @font-face {
+        font-family: "Agency FB";
+        src: url("{{ 'AgencyFB-Reg.woff2' | asset_url }}") format('woff2')
+          url("{{ 'AgencyFB-Reg.woff' | asset_url }}") format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
 
       :root {
         --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
@@ -190,6 +230,8 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    
+    {{ 'style.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
