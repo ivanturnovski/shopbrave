@@ -90,6 +90,51 @@
       html {
         padding-bottom: 0!important;
       }
+
+      .brave-essentials .section-heading::before {
+        content: ''!important;
+        background-image: url("{{ 'before-heading.png' | asset_url }}")!important;
+        position: absolute!important;
+        left: 0!important;
+        top: 0!important;
+        width: 100%!important;
+        height: 100%!important;
+        background-size: cover!important;
+        max-width: 19%!important;
+      }
+
+      .brave-essentials .section-heading::after {
+        content: ''!important;
+        background-image: url("{{ 'before-heading.png' | asset_url }}")!important;
+        position: absolute!important;
+        right: 0!important;
+        top: 0!important;
+        width: 100%!important;
+        height: 100%!important;
+        background-size: cover!important;
+        max-width: 19%!important;
+      }
+      .brave-essentials
+        .footer-upper-section
+        .social-icons-holder
+        .social-icons:before {
+        position: absolute!important;
+        content: ''!important;
+        background-image: url("{{ 'divider.png' | asset_url }}")!important;
+        background-size: cover!important;
+        top: 0!important;
+        display: flex!important;
+        justify-content: center!important;
+        align-items: center!important;
+        left: 0!important;
+        width: 100%!important;
+        height: 100%!important;
+        max-height: 3px!important;
+        right: 0!important;
+        max-width: 272px!important;
+        margin: 0 auto!important;
+      }
+
       :root {
         --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
         --font-body-style: {{ settings.type_body_font.style }};
