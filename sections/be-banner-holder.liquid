@@ -1,5 +1,12 @@
 <div class="banner-holder">
-	<div class="banner-image">
+	{% for block in section.blocks %}
+	{%- assign item = block.settings -%}
+		<div class="banner-image">
+			<img src="{{ item.img | image_url }}">
+		</div>
+	{% endfor %}
+
+	<!-- <div class="banner-image">
 	  <img src="{{ 'banner.png' | asset_url }}">
 	</div>
 	<div class="banner-image">
@@ -7,23 +14,36 @@
 	</div>
 	<div class="banner-image">
 	  <img src="{{ 'banner.png' | asset_url }}">
-	</div>
+	</div> -->
   </div>
 
 
 {% schema %}
 
-  {
-	  "name": "Banner Holder",
-	  "class": "be-banner-holder",    
-	  "tag": "section",
-	  "settings": [],
-	  "presets": [
-		  {
-			  "category": "BE",
-			  "name": "Banner Holder"
-		  }
-	  ]
-  }
-  
-  {% endschema %}
+{
+    "name": "Banner Holder",
+    "class": "be-banner-holder",
+    "tag": "section",
+    "settings": [],
+    "blocks": [
+        {
+            "name": "Banner",
+            "type": "banner",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "img",
+                    "label": "Slide Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "BE",
+            "name": "Banner Holder"
+        }
+    ]
+}
+
+{% endschema %}

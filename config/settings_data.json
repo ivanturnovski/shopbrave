@@ -19,7 +19,12 @@
       "header": {
         "type": "header",
         "settings": {
-          "logo_width": 90
+          "announcement_text": "!25% off sitewide",
+          "announcement_button_text": "!Available Now",
+          "announcement_button_url": "\/test",
+          "color_scheme": "background-1",
+          "logo": "shopify:\/\/shop_images\/logo.png",
+          "menu": "main-menu"
         }
       },
       "footer": {
@@ -27,18 +32,23 @@
         "blocks": {
           "footer-0": {
             "type": "link_list",
-            "settings": {}
+            "settings": {
+              "heading": "Quick links",
+              "menu": "footer"
+            }
           },
           "footer-1": {
             "type": "link_list",
             "settings": {
-              "heading": "Info"
+              "heading": "Info",
+              "menu": "footer"
             }
           },
           "footer-2": {
             "type": "text",
             "settings": {
-              "heading": "Our mission"
+              "heading": "Our mission",
+              "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
             }
           }
         },
@@ -48,10 +58,16 @@
           "footer-2"
         ],
         "settings": {
+          "color_scheme": "background-1",
+          "newsletter_enable": true,
+          "newsletter_heading": "Subscribe to our emails",
           "show_social": true,
           "enable_country_selector": false,
           "enable_language_selector": false,
-          "margin_top": 48
+          "payment_enable": true,
+          "margin_top": 48,
+          "padding_top": 36,
+          "padding_bottom": 36
         }
       },
       "main-password-header": {
@@ -62,7 +78,8 @@
         "type": "main-password-footer",
         "settings": {}
       }
-    }
+    },
+    "content_for_index": []
   },
   "presets": {
     "Default": {

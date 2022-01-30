@@ -6,6 +6,31 @@
     },
     "164345847515201647": {
       "type": "be-banner-holder",
+      "blocks": {
+        "2d288809-c76f-41a8-81c6-76707c99198e": {
+          "type": "banner",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/banner.png"
+          }
+        },
+        "ee0ed2ca-b5d2-49e8-baee-e3e14d4755a4": {
+          "type": "banner",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/banner-2.png"
+          }
+        },
+        "5f9bbc61-cac2-46dc-9ea0-51137de734a0": {
+          "type": "banner",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/banner.png"
+          }
+        }
+      },
+      "block_order": [
+        "2d288809-c76f-41a8-81c6-76707c99198e",
+        "ee0ed2ca-b5d2-49e8-baee-e3e14d4755a4",
+        "5f9bbc61-cac2-46dc-9ea0-51137de734a0"
+      ],
       "settings": {}
     },
     "164345976677309293": {
