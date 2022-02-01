@@ -1,31 +1,26 @@
+{% assign product_price = product.selected_or_first_available_variant %}
 <div class="product-page-details-holder">
 	<div class="container">
 	  <div class="product-page-details">
 		<div class="products-image-rating desktop-only">
 		  <ul class="products-image-holder">
+			{%- for image in product.images -%}
 			<li class="products-image">
-			  <div class="image-holder">
-				<img class="product" src="{{ 'product-detail.png' | asset_url }}">
-			  </div>
-			</li>
-			<li class="products-image">
-			  <div class="image-holder">
-				<img class="product" src="{{ 'product-detail.png' | asset_url }}">
-			  </div>
-			</li>
-			<li class="products-image">
-			  <div class="image-holder">
-				<img class="product" src="{{ 'product-detail.png' | asset_url }}">
-			  </div>
-			</li>
+				<div class="image-holder">
+				  <img class="product" src="{{ image.src | img_url: '240x' }}" alt="{{ image.alt }}">
+				</div>
+			  </li>
+			{%- endfor -%}
 		  </ul>
 		</div>
+		{% form 'product', product, id: 'product-form', novalidate: 'novalidate' %}
+		<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 		<div class="product-content-details">
 		  <h3 class="product-name">
-			2+1 Shampoo Conditioner
+			{{ product.title }}
 		  </h3>
 		  <div class="product-details">
-			Controls Dandruff, Hair Fall & Frizz
+			{{ product.vendor }}
 		  </div>
 		  <div class="products-image-rating mobile-only">
 			<ul class="products-image-holder">
@@ -46,11 +41,29 @@
 			  </li>
 			</ul>
 		  </div>
-		  <div class="products-size">
-			<h6 class="size-heading">Size</h6>
+		  <div class="products-size">			
 			<div id="sizes">
-			  <a class="size-quantity active">200 ml</a>
-			  <a class="size-quantity">400 ml</a>
+				<variant-radios data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
+					{%- for option in product.options_with_values -%}						
+						  
+						  <h6 class="size-heading">{{ option.name }}</h6>
+						  {%- for value in option.values -%}
+							<input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+								  name="{{ option.name }}"
+								  value="{{ value | escape }}"
+								  form="{{ product_form_id }}"
+								  {% if option.selected_value == value %}checked{% endif %}
+							>
+							<label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+							  {{ value }}
+							</label>
+						  {%- endfor -%}
+						
+					{%- endfor -%}
+					<script type="application/json">
+					  {{ product.variants | json }}
+					</script>
+				  </variant-radios>
 			  <div class="rating-holder mobile-only">
 				<div class="rating-number">
 				  4
@@ -67,9 +80,9 @@
 		  </div>
 		  <div class="product-price-holder">
 			<div class="product-price">
-			  <span class="currency">&#8377</span> 375
+			  <span class="currency">&#8377</span> {{ product_price.price  | money_without_currency | remove: '.00' }}
 			</div>
-			<div class="strike"><span class="currency">&#8377</span> <span class="strike-through">499</span></div>
+			<div class="strike"><span class="currency">&#8377</span> <span class="strike-through">{{ product_price.compare_at_price  | money_without_currency | remove: '.00' }}</span></div>
 			<div class="rating-holder desktop-only">
 			  <div class="rating-number">
 				4
@@ -83,20 +96,21 @@
 			  </div>
 			</div>
 			<div class="product-quantity mobile-only">
-			  <span class="minus"><a>-</a></span>
-			  <span class="quantity">1</span>
-			  <span class="plus"><a>+</a></span>
-			</div>
+                <span class="minus"><a>-</a></span>
+               <!-- <input type="number" name="quantity" id="Quantity"> -->
+                <span class="plus"><a>+</a></span>
+              </div>
 		  </div>
 		  <div class="product-quantity-holder">
 			<div class="product-quantity desktop-only">
 			  <span class="minus"><a>-</a></span>
-			  <span class="quantity">1</span>
+			  <!-- <span class="quantity">1</span> -->
+			  <input  class="quantity" name="quantity" id="Quantity" min="1" value="1">
 			  <span class="plus"><a>+</a></span>
 			</div>
 			<ul class="add-to-cart-btn">
 			  <li class="cart-button">
-				<a href="#">Add to Cart</a>
+				<button type="submit" name="add">Add</button>
 			  </li>
 			</ul>
 		  </div>
@@ -271,9 +285,136 @@
 			</div>
 		  </div>
 		</div>
+		{% endform %}
 	  </div>
 	</div>
   </div>
+
+  <!-- <script>
+  class VariantSelector extends HTMLElement {
+	  constructor() {
+		  super();
+		  this.addEventListener("change", this.onVariantChange);
+	  }
+	  onVariantChange() {
+		  console.log("I have changed the variant selector");
+		  this.getSelectedOptions();
+		  this.getSelectedVariant();
+		  if(this.currentVariant) {
+			  this.updateURL();
+			  this.updateFormID();
+			  this.updatePrice();
+		  }
+	  }
+	  getSelectedOptions() {
+		  this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
+		  console.log(this.options);
+	  }
+	  getVariantJSON() {
+		  this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
+		  return this.variantData;
+	  }
+	  getSelectedVariant() {
+		  this.currentVariant = this.getVariantJSON().find(
+			  (variant) => {
+				  const findings = !variant.options.map(
+					  (option, index) => {
+						  return this.options[index] === option;
+					  }
+				  ).includes(false);
+				  if (findings) return variant;
+
+			  }
+		  );
+		  console.log(this.currentVariant);
+	  }
+	  updateURL() {
+		  if(!this.currentVariant) return;
+		  window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
+	  }
+
+	  updateFormID() {
+		  const form_input = document.querySelector("#product-form").querySelector('input[name="id"]');
+		  form_input.value = this.currentVariant.id;
+	  }
+
+	  updatePrice() {
+		  fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
+		  .then((response) => response.text())
+		  .then((responseText) => {
+			  const id = `price-${this.dataset.section}`;
+			  const html = new DOMParser().parseFromString(responseText, 'text/html');
+			  const oldPrice = document.getElementById(id);
+			  const newPrice = html.getElementById(id);
+
+			  if (oldPrice && newPrice) oldPrice.innerHTML = newPrice.innerHTML;
+		  });
+	  }
+
+
+  }
+  customElements.define("variant-selector", VariantSelector);
+</script> -->
+
+<script>
+// 	$('input[type="radio"]').on('change', function(e) {
+//     console.log("test");
+// });
+
+class RadioChange extends HTMLElement {
+	constructor() {
+            super();
+            this.addEventListener("change", this.onRadioChange);
+        }
+		onRadioChange() {
+			console.log("changed!");
+			this.getSelectedOptions();
+			this.getSelectedVariant();
+			if(this.currentVariant) {
+				this.updateURL();
+                this.updateFormID();                
+            }
+		}
+
+		getSelectedOptions() {
+            this.options = Array.from(this.querySelectorAll('input[type="radio"]'), (radio) => radio.value);
+            // console.log(this.options);
+        }
+
+		getVariantJSON() {
+            this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
+            return this.variantData;
+        }
+
+		getSelectedVariant() {
+            this.currentVariant = this.getVariantJSON().find(
+                (variant) => {
+                    const findings = !variant.options.map(
+                        (option, index) => {
+                            return this.options[index] === option;
+                        }
+                    ).includes(false);
+                    if (findings) return variant;
+					
+
+                }
+            );
+            console.log(this.currentVariant);
+        }
+
+		updateURL() {
+            if(!this.currentVariant) return;
+            window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
+        }
+
+		updateFormID() {
+            const form_input = document.querySelector("#product-form").querySelector('input[name="id"]');
+            form_input.value = this.currentVariant.id;
+        }
+}
+
+customElements.define("variant-radios", RadioChange);
+</script>
 
 
 {% schema %}

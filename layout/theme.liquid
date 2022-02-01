@@ -29,7 +29,7 @@
 
     {% render 'meta-tags' %}
 
-    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <!-- <script src="{{ 'global.js' | asset_url }}" defer="defer"></script> -->
 
     {% comment %} Brave In Assets {% endcomment %}
     {{ 'jquery-3.6.0.min.js' | asset_url | script_tag }}
@@ -133,6 +133,15 @@
         right: 0!important;
         max-width: 272px!important;
         margin: 0 auto!important;
+      }
+
+      .brave-essentials .product-quantity {
+        align-items: stretch!important;
+      }
+
+      .brave-essentials .product-quantity .quantity {
+        text-align: center;
+        width: 20px;
       }
 
       :root {
