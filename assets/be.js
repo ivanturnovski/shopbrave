@@ -170,12 +170,15 @@ $(window).on('load', function () {
 	}
   
 	// increment number
-	var clicks = 0; $(".plus").click(function () {
+	var clicks = 1; $(".plus").click(function () {
 	 clicks++; 
-	 debugger;
-	 $('.quantity').html(clicks);
+	 $(".quantity").val(clicks);
 	})
-	var clicks = 0; $(".minus").click(function () { clicks--; $('.quantity').html(clicks); });
+	var clicks = 1; 
+	$(".minus").click(function () { 
+		clicks--; 
+		$(".quantity").val(clicks);
+	});
   });
   
   //stars rating
