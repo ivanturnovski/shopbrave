@@ -120,16 +120,34 @@
               <img src="{{ section.settings.logo | image_url }}" alt="{{ section.settings.logo.alt }}">
             </a>
           </div>
-          <div class="search-container desktop-search">
-            <form action="/action_page.php">
-              <input class="search-bar" type="text" placeholder="Search for your favourite products" name="search">
-            </form>
-          </div>
+          <ul class="navbar-list-holder desktop-only">
+            <li class="navbar-list">
+              <a href="#">Home</a>
+            </li>
+            <li class="navbar-list">
+              <a href="#">Bestsellers</a>
+            </li>
+            <li class="navbar-list">
+              <a href="#">SkinCare</a>
+            </li>
+            <li class="navbar-list">
+              <a href="#">Face Care</a>
+            </li>
+            <li class="navbar-list">
+              <a href="#">Gifts</a>
+            </li>
+            <li class="navbar-list">
+              <a href="#">HairCare</a>
+            </li>
+            <li class="navbar-list">
+              <a href="#">Offers</a>
+            </li>
+          </ul>
           <div class="side-icons-holder">
             <a class="search-icon">
               <i class="fas fa-search"></i>
             </a>
-            <a href="{{ routes.cart_url }}" class="cart-button">
+            <a class="cart-button">
               <i class="fas fa-shopping-cart"></i>
             </a>
             <a href="{{ routes.account_login_url }}" class="account-button">
@@ -137,36 +155,13 @@
             </a>
           </div>
         </div>
-        <div class="search-container mobile-search">
+        <div class="search-container">
           <form action="/action_page.php">
             <input class="search-bar" type="text" placeholder="Search for your favourite products" name="search">
           </form>
         </div>
-        <ul class="navbar-list-holder desktop-only">
-          <li class="navbar-list">
-            <a href="#">Home</a>
-          </li>
-          <li class="navbar-list">
-            <a href="#">Bestsellers</a>
-          </li>
-          <li class="navbar-list">
-            <a href="#">SkinCare</a>
-          </li>
-          <li class="navbar-list">
-            <a href="#">Face Care</a>
-          </li>
-          <li class="navbar-list">
-            <a href="#">Gifts</a>
-          </li>
-          <li class="navbar-list">
-            <a href="#">HairCare</a>
-          </li>
-          <li class="navbar-list">
-            <a href="#">Offers</a>
-          </li>
-        </ul>
       </div>
-    </div>
+    </div>   
     <!-- navbar ends here -->
   </header>
 
