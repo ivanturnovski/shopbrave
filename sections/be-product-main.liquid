@@ -83,7 +83,12 @@
 			<div class="product-price">
 			  <span class="currency">&#8377</span> {{ product_price.price  | money_without_currency | remove: '.00' }}
 			</div>
-			<div class="strike"><span class="currency">&#8377</span> <span class="strike-through">{{ product_price.compare_at_price  | money_without_currency | remove: '.00' }}</span></div>
+			<div class="strike">
+				{% if product_price.compare_at_price != blank %}
+					<span class="currency">&#8377</span> 
+					<span class="strike-through">{{ product_price.compare_at_price  | money_without_currency | remove: '.00' }}</span>
+				{% endif %}				
+			</div>
 			<div class="rating-holder desktop-only">
 			  <div class="rating-number">
 				4
@@ -261,7 +266,7 @@
 			<h6 class="offer-heading">Offers</h6>
 			<div class="offer-content-holder">
 			  <div class="offer-content">
-				<span class="offer-icon"><img src="{{ 'offer.png' | asset_url }}">
+				<span class="offer-icon"><img src="{{ 'offer.png' | asset_url }}"></span>
 					{{ product.metafields.offers.val }}
 				</span>
 			  </div>

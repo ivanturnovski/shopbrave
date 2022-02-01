@@ -9,15 +9,14 @@
 			<li class="steps-list-holder">
 			  <div class="steps-list">
 				<div class="step-image">
-				  <img class="desktop-only" src="{{ 'step-1.png' | asset_url }}">
-				  <img class="mobile-only" src="{{ 'step-1-mobile.png' | asset_url }}">
+				  <img class="desktop-only" src="{{ product.metafields.how_to_use.image1 | img_url }}">
+				  <img class="mobile-only" src="{{ product.metafields.how_to_use.image1mobile | img_url }}">
 				</div>
 				<div class="step-heading">
 				  Step 1
 				</div>
 				<div class="step-details">
-				  Wet the hair and apply a<br class="mobile-only"> small<br class="desktop-only"> amount of shampoo on
-				  the scalp.
+					{{ product.metafields.how_to_use.description1 }}
 				</div>
 			  </div>
 			</li>
@@ -25,15 +24,14 @@
 			<li class="steps-list-holder">
 			  <div class="steps-list">
 				<div class="step-image">
-				  <img class="desktop-only" src="{{ 'step-2.png' | asset_url }}">
-				  <img class="mobile-only" src="{{ 'step-2-mobile.png' | asset_url }}">
+				  <img class="desktop-only" src="{{ product.metafields.how_to_use.image2 | img_url }}">
+				  <img class="mobile-only" src="{{ product.metafields.how_to_use.image2mobile | img_url }}">
 				</div>
 				<div class="step-heading">
 				  Step 2
 				</div>
 				<div class="step-details">
-				  Massage well along the inner and outer<br class="desktop-only"> hair strands and leave it for 2-3
-				  minutes!
+					{{ product.metafields.how_to_use.description2 }}
 				</div>
 			  </div>
 			</li>
@@ -41,14 +39,14 @@
 			<li class="steps-list-holder">
 			  <div class="steps-list">
 				<div class="step-image">
-				  <img class="desktop-only" src="{{ 'step-3.png' | asset_url }}">
-				  <img class="mobile-only" src="{{ 'step-3-mobile.png' | asset_url }}">
+				  <img class="desktop-only" src="{{ product.metafields.how_to_use.image3 | img_url }}">
+				  <img class="mobile-only" src="{{ product.metafields.how_to_use.image3mobile | img_url }}">
 				</div>
 				<div class="step-heading">
 				  Step 3
 				</div>
 				<div class="step-details">
-				  Rinse it thoroughly.
+					{{ product.metafields.how_to_use.description3 }}
 				</div>
 			  </div>
 			</li>
