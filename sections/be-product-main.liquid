@@ -116,7 +116,7 @@
 			</div>
 			<ul class="add-to-cart-btn">
 			  <li class="cart-button">
-				<button type="submit" name="add">Add to cart</button>
+				<button type="button" name="add" id="AddToCart">Add to cart</button>
 			  </li>
 			</ul>
 		  </div>
@@ -281,6 +281,36 @@
 
 
 <script>
+
+var addToCart = document.getElementById('AddToCart');
+
+if (addToCart != null) {
+	addToCart.addEventListener('click', AddToCart);
+}
+
+function AddToCart() {
+	console.log('button click test');
+
+	let addToCartForm = document.getElementById('product-form');
+	let formData = new FormData(addToCartForm);
+
+	fetch('/cart/add.js', {
+		method: 'POST',
+		body: formData,
+	})
+		.then((response) => {
+			return response.json();
+		})
+		.then((data) => {
+			console.log(data);
+			// update_cart();
+			// AddToCartMessage(data);
+		})
+		.catch((error) => {
+			console.error('Error:', error);
+		});
+}
+
 class RadioChange extends HTMLElement {
 	constructor() {
             super();
