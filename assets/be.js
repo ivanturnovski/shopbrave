@@ -176,8 +176,8 @@ $(window).on('load', function () {
 	})
 	var clicks = 1; 
 	$(".minus").click(function () { 
-		clicks--; 
-		$(".quantity").val(clicks);
+	  clicks--; 
+	  $(".quantity").val(clicks);
 	});
   });
   
