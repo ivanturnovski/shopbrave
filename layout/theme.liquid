@@ -259,7 +259,7 @@
     {% endstyle %}  
 
     {{ 'base.css' | asset_url | stylesheet_tag }}    
-    {{ 'style.css' | asset_url | stylesheet_tag }}
+    {{ 'style.css' | asset_url | stylesheet_tag }}    
 
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
@@ -277,7 +277,8 @@
       document.documentElement.classList.add('shopify-design-mode');
     }
     </script>
-  </head>
+    {% render 'judgeme_core' %}
+</head>
   <body class="gradient">
     <div class="brave-essentials">
     <div class="loader-holder">

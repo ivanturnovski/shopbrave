@@ -67,7 +67,7 @@
 				  </variant-radios>
 			  <div class="rating-holder mobile-only">
 				<div class="rating-number">
-				  4
+					4
 				</div>
 				<div class="rating-stars-product rating" data-default-value="4">
 				  <span><span data-value="1" class="fa fa-star checked"></span></span>
@@ -91,7 +91,12 @@
 			</div>
 			<div class="rating-holder desktop-only">
 			  <div class="rating-number">
-				4
+				{%- for block in section.blocks -%}
+						{%- case block.type -%}
+							{%- when '@app' -%}
+								{% render block %}
+						{% endcase %}
+				{%- endfor -%}
 			  </div>
 			  <div class="rating-stars rating" data-default-value="4">
 				<span><span data-value="1" class="fa fa-star checked"></span></span>
@@ -367,7 +372,13 @@ customElements.define("variant-radios", RadioChange);
 	  "name": "Product Main",
 	  "class": "be-product-main",    
 	  "tag": "section",
-	  "settings": []
+	  "settings": [],
+	  "blocks": [
+	  {
+		  
+		  "type": "@app"
+	  }
+	  ]
   }
   
   {% endschema %}
