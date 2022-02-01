@@ -175,9 +175,11 @@ $(window).on('load', function () {
 	 $(".quantity").val(clicks);
 	})
 	var clicks = 1; 
-	$(".minus").click(function () { 
+	$(".minus").click(function () {
+	if(clicks > 0){ 
 	  clicks--; 
 	  $(".quantity").val(clicks);
+	}
 	});
   });
   

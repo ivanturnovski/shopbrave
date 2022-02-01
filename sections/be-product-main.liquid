@@ -121,7 +121,7 @@
 				Best Suited for
 			  </div>
 			  <div class="type-content">
-				Dry Scalp Type
+				{{ product.metafields.suited.best_suited }}
 			  </div>
 			</div>
 			<div class="type-content-holder">
@@ -129,7 +129,7 @@
 				NOT Advised For
 			  </div>
 			  <div class="type-content">
-				OIly Scalp Type
+				{{ product.metafields.suited.not_advised }}
 			  </div>
 			</div>
 		  </div>
@@ -261,8 +261,9 @@
 			<h6 class="offer-heading">Offers</h6>
 			<div class="offer-content-holder">
 			  <div class="offer-content">
-				<span class="offer-icon"><img src="{{ 'offer.png' | asset_url }}"></span>Lorem ipsum dolor sit amet,
-				consectetur adipiscing elit, sed do.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+				<span class="offer-icon"><img src="{{ 'offer.png' | asset_url }}">
+					{{ product.metafields.offers.val }}
+				</span>
 			  </div>
 			</div>
 		  </div>
