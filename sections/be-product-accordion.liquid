@@ -9,8 +9,8 @@
 			<li class="steps-list-holder">
 			  <div class="steps-list">
 				<div class="step-image">
-				  <img class="desktop-only" src="{{ product.metafields.how_to_use.image1 | img_url }}">
-				  <img class="mobile-only" src="{{ product.metafields.how_to_use.image1mobile | img_url }}">
+				  <img class="desktop-only" src="{{ product.metafields.how_to_use.image1 | img_url: '120x' }}">
+				  <img class="mobile-only" src="{{ product.metafields.how_to_use.image1mobile | img_url: '80x' }}">
 				</div>
 				<div class="step-heading">
 				  Step 1
@@ -24,8 +24,8 @@
 			<li class="steps-list-holder">
 			  <div class="steps-list">
 				<div class="step-image">
-				  <img class="desktop-only" src="{{ product.metafields.how_to_use.image2 | img_url }}">
-				  <img class="mobile-only" src="{{ product.metafields.how_to_use.image2mobile | img_url }}">
+				  <img class="desktop-only" src="{{ product.metafields.how_to_use.image2 | img_url: '120x' }}">
+				  <img class="mobile-only" src="{{ product.metafields.how_to_use.image2mobile | img_url: '80x' }}">
 				</div>
 				<div class="step-heading">
 				  Step 2
@@ -39,8 +39,8 @@
 			<li class="steps-list-holder">
 			  <div class="steps-list">
 				<div class="step-image">
-				  <img class="desktop-only" src="{{ product.metafields.how_to_use.image3 | img_url }}">
-				  <img class="mobile-only" src="{{ product.metafields.how_to_use.image3mobile | img_url }}">
+				  <img class="desktop-only" src="{{ product.metafields.how_to_use.image3 | img_url: '120x' }}">
+				  <img class="mobile-only" src="{{ product.metafields.how_to_use.image3mobile | img_url: '80x' }}">
 				</div>
 				<div class="step-heading">
 				  Step 3
@@ -67,41 +67,39 @@
 			<li class="put-in-list-holder">
 			  <div class="put-in-list">
 				<div class="put-in-image">
-				  <img src="{{ 'bhringraj.png' | asset_url }}">
+				  <img src="{{ product.metafields.put_in.image1 | img_url: '300x' }}">
 				</div>
 				<div class="put-in-heading">
-				  BHringraj
+					{{ product.metafields.put_in.title1 }}
 				</div>
 				<div class="put-in-details">
-				  Balances & heals the body<br class="desktop-only"> through nutrition, bhringraj is<br
-					class="desktop-only"> said to promote hair growth,<br class="desktop-only">strengthening hair &
-				  prevents<br class="desktop-only"> graying and dandruff.
+					{{ product.metafields.put_in.description1 }}
 				</div>
 			  </div>
 			</li>
 			<li class="put-in-list-holder">
 			  <div class="put-in-list">
 				<div class="put-in-image">
-				  <img src="{{ 'tea-tree.png' | asset_url }}">
+				  <img src="{{ product.metafields.put_in.image2 | img_url: '300x' }}">
 				</div>
 				<div class="put-in-heading">
-				  TEa Tree
+					{{ product.metafields.put_in.title2 }}
 				</div>
 				<div class="put-in-details">
-				  Helps prevent buildup of<br> chemicals & dead skin.
+					{{ product.metafields.put_in.description2 }}
 				</div>
 			  </div>
 			</li>
 			<li class="put-in-list-holder">
 			  <div class="put-in-list">
 				<div class="put-in-image">
-				  <img src="{{ 'argan.png' | asset_url }}">
+				  <img src="{{ product.metafields.put_in.image3 | img_url: '300x' }}">
 				</div>
 				<div class="put-in-heading">
-				  Argan
+					{{ product.metafields.put_in.title3 }}
 				</div>
 				<div class="put-in-details">
-				  Moisturizes your hair & scalp &<br> protects your hair from every-<br>day damage.
+					{{ product.metafields.put_in.description3 }}
 				</div>
 			  </div>
 			</li>
