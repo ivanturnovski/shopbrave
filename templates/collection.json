@@ -36,11 +36,16 @@
     "be-collection-filters-mobile": {
       "type": "be-collection-filters-mobile",
       "settings": {}
+    },
+    "be-collection-products": {
+      "type": "be-collection-products",
+      "settings": {}
     }
   },
   "order": [
     "1643840245d6da491c",
     "collection-nav",
-    "be-collection-filters-mobile"
+    "be-collection-filters-mobile",
+    "be-collection-products"
   ]
 }
