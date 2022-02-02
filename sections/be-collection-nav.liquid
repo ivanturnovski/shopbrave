@@ -1,11 +1,11 @@
-<div class="products-nav">
+<div class="products-nav desktop-only">
     <div class="container">
         <ul class="product-nav-holder">
             <li class="nav-list">
                 <a href="{{ shop.url }}">Home</a>
             </li>
             <li class="nav-list">
-                <a href="{{ product.url }}">{{ product.title }}</a>
+                <a href="{{ collection.url }}">{{ collection.title }}</a>
             </li>
         </ul>
     </div>
@@ -14,8 +14,8 @@
 {% schema %}
 
 {
-    "name": "Products Nav",
-    "class": "be-products-nav",
+    "name": "Collection Nav",
+    "class": "be-collection-nav",
     "tag": "section",
     "settings": []
 }

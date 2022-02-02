@@ -28,7 +28,11 @@
 				"a7600025-2112-4a45-be40-e726d1e33cf0"
 			],
 			"settings": {}
+		},
+		"collection-nav": {
+			"type": "be-collection-nav",
+			"settings": {}
 		}
 	},
-	"order": ["1643840245d6da491c"]
+	"order": ["1643840245d6da491c", "collection-nav"]
 }
