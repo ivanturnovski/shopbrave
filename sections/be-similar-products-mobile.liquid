@@ -1,0 +1,48 @@
+{% assign review_rating = shop.metafields.judgeme.all_reviews_rating | round: 1 %}
+<div class="recently-viewed mobile-only">
+	<div class="container">
+	  <h3 class="sub-heading">Similar Products</h3>
+	  <ul id="recent-products" class="recent-products-slider">
+
+	  </ul>
+	</div>
+  </div>
+
+
+  <script>
+	var RecomendationBody = document.getElementById("recent-products");
+		fetch("/recommendations/products.json?product_id={{ product.id }}")
+			.then(resp => resp.json())
+			.then(({products}) => {
+				console.log(products);
+				if (products.length > 0) {
+					products.forEach(function (product, index) {
+						var card;
+						card = '<li class="recent-products-list-holder">';
+						card += '<div class="recent-products-list">';
+						card += '<div class="recent-product-image">';	
+						if (product.images.length > 0) {
+							card += '<img src="' + product.images[0] + '&width=1200">';
+						}
+						card += '</div>';
+						// card +=  '<div class="product-rating"><span class="number">{{ review_rating }}</span> <span class="star"><img src=""></span></div>';						
+						card += '<div class="recent-heading">' + product.title + '</div>';					
+						card += '<div class="recent-details">' + product.vendor + '</div>';					
+						card += '<div class="recent-price"><span class="currency">{{ shop.currency }}</span>' + product.price / 100 + '</div>';				
+						card += '</div></li>';
+						RecomendationBody.innerHTML += card;
+					});
+				}
+			});
+	</script>
+	
+{% schema %}
+
+{
+    "name": "Similar Products Mobile",
+    "class": "be-similar-products-mobile",
+    "tag": "section",
+    "settings": []
+}
+
+{% endschema %}

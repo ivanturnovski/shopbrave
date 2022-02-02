@@ -26,13 +26,20 @@
           "settings": {
             "banner_collection": "shampoo"
           }
+        },
+        "69f73b1e-312d-40ae-a215-e218cee999c6": {
+          "type": "bancollection",
+          "settings": {
+            "banner_collection": "beard-growth-test"
+          }
         }
       },
       "block_order": [
         "f7671709-373f-489b-b45e-9b85fac203eb",
         "e7a194b7-d446-43ef-8d2d-ec5b7b0ca820",
         "f01cf66a-87c5-4124-9f3a-f65d17e2c790",
-        "86bc2f57-c725-40ae-816c-920d99616193"
+        "86bc2f57-c725-40ae-816c-920d99616193",
+        "69f73b1e-312d-40ae-a215-e218cee999c6"
       ],
       "settings": {}
     },
@@ -82,6 +89,10 @@
     "be-also-bought": {
       "type": "be-also-bought",
       "settings": {}
+    },
+    "be-similar-products-mobile": {
+      "type": "be-similar-products-mobile",
+      "settings": {}
     }
   },
   "order": [
@@ -90,6 +101,7 @@
     "main",
     "product-accordion",
     "reviews-mobile",
-    "be-also-bought"
+    "be-also-bought",
+    "be-similar-products-mobile"
   ]
 }
