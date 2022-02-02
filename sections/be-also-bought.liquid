@@ -1,0 +1,45 @@
+<div class="people-also-bought desktop-only">	
+	<div class="container">
+	  <h3 class="sub-heading">People also bought<span class="dash"></span></h3>
+	  <ul id="products-holder" class="products-holder">		
+	  </ul>
+	</div>
+</div>
+
+<script>
+var productRecomendationBody = document.getElementById("products-holder");
+	fetch("/recommendations/products.json?product_id={{ product.id }}")
+		.then(resp => resp.json())
+		.then(({products}) => {
+			console.log(products);
+			if (products.length > 0) {
+				products.forEach(function (product, index) {
+					var card;
+					card = '<li class="products-list">';
+					card += '<div class="products-list-holder">';
+					card += '<div class="products-image">';	
+					if (product.images.length > 0) {
+						card += '<img src="' + product.images[0] + '&width=1200">';
+					}
+					card += '</div>';
+					card += '<div class="products-heading">' + product.title + '</div>';					
+					card += '<div class="products-details">' + product.vendor + '</div>';					
+					card += '<div class="products-price"><span class="currency">{{ shop.currency }}</span>' + product.price / 100 + '</div>';					
+					card += '<ul class="add-to-cart-btn"><li class="cart-button"><a href="#">Add to Cart</a></li></ul>'
+					card += '</div></li>';
+					productRecomendationBody.innerHTML += card;
+				});
+			}
+		});
+</script>
+
+{% schema %}
+
+{
+	"name": "People Also Bought",
+	"class": "be-also-bought",    
+	"tag": "section",
+	"settings": []
+}
+
+{% endschema %}

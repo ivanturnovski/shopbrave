@@ -33,9 +33,9 @@ $(window).on('load', function () {
 	if ($('.branding-slider').length) {
 	  applyBrandingSlider(".branding-slider");
 	}
-  });
-  
-  $(document).ready(function () {
+	});
+	
+	$(document).ready(function () {
 	$(".cart-button").on("click", function() {
 	  $('.mini-cart-holder').fadeIn();
 	  $(".mini-cart-holder").addClass('active');
@@ -56,89 +56,89 @@ $(window).on('load', function () {
 	$('.categories-products-holder .categories-list-holder:gt(' + (limitPerPage - 1) + ')').hide();
 	var totalPages = Math.round(numberOfItems / limitPerPage); // Get number of pages
 	$(".pagination").append("<li class='current-page active'><a href='javascript:void(0)'>" + 1 + "</a></li>");
-  
+	
 	// Loop to insert page number for each sets of items equal to page limit (e.g., limit of 4 with 20 total items = insert 5 pages)
 	for (var i = 2; i <= totalPages; i++) {
 	  $(".pagination").append("<li class='current-page'><a href='javascript:void(0)'>" + i + "</a></li>"); // Insert page number into pagination tabs
 	}
-  
+	
 	// Add next button after all the page numbers  
 	$(".pagination").append("<li id='next-page'><a href='javascript:void(0)' aria-label=Next><span aria-hidden=true><i class='fas fa-arrow-right'></i></span></a></li>");
-  
+	
 	// Function that displays new items based on page number that was clicked
 	$(".pagination li.current-page").on("click", function() {
 	  // Check if page number that was clicked on is the current page that is being displayed
 	  if ($(this).hasClass('active')) {
-		return false;
+	  return false;
 	  } else {
-		var currentPage = $(this).index();
-		$(".pagination li").removeClass('active');
-		$(this).addClass('active');
-		$(".categories-products-holder .categories-list-holder").hide();
-		var grandTotal = limitPerPage * currentPage;
-  
-		// Loop through total items, selecting a new set of items based on page number
-		for (var i = grandTotal - limitPerPage; i < grandTotal; i++) {
-		  $(".categories-products-holder .categories-list-holder:eq(" + i + ")").show();
-		}
+	  var currentPage = $(this).index();
+	  $(".pagination li").removeClass('active');
+	  $(this).addClass('active');
+	  $(".categories-products-holder .categories-list-holder").hide();
+	  var grandTotal = limitPerPage * currentPage;
+	
+	  // Loop through total items, selecting a new set of items based on page number
+	  for (var i = grandTotal - limitPerPage; i < grandTotal; i++) {
+		$(".categories-products-holder .categories-list-holder:eq(" + i + ")").show();
 	  }
-  
+	  }
+	
 	});
-  
+	
 	// Function to navigate to the next page when users click on the next-page id (next page button)
 	$("#next-page").on("click", function() {
 	  var currentPage = $(".pagination li.active").index(); // Identify the current active page
 	  // Check to make sure that navigating to the next page will not exceed the total number of pages
 	  if (currentPage === totalPages) {
-		return false; // Return false (i.e., cannot navigate any further, since it would exceed the maximum number of pages)
+	  return false; // Return false (i.e., cannot navigate any further, since it would exceed the maximum number of pages)
 	  } else {
-		currentPage++; // Increment the page by one
-		$(".pagination li").removeClass('active'); // Remove the 'active' class status from the current page
-		$(".categories-products-holder .categories-list-holder").hide(); // Hide all items in the pagination loop
-		var grandTotal = limitPerPage * currentPage; // Get the total number of items up to the page that was selected
-  
-		// Loop through total items, selecting a new set of items based on page number
-		for (var i = grandTotal - limitPerPage; i < grandTotal; i++) {
-		  $(".categories-products-holder .categories-list-holder:eq(" + i + ")").show(); // Show items from the new page that was selected
-		}
-  
-		$(".pagination li.current-page:eq(" + (currentPage - 1) + ")").addClass('active'); // Make new page number the 'active' page
+	  currentPage++; // Increment the page by one
+	  $(".pagination li").removeClass('active'); // Remove the 'active' class status from the current page
+	  $(".categories-products-holder .categories-list-holder").hide(); // Hide all items in the pagination loop
+	  var grandTotal = limitPerPage * currentPage; // Get the total number of items up to the page that was selected
+	
+	  // Loop through total items, selecting a new set of items based on page number
+	  for (var i = grandTotal - limitPerPage; i < grandTotal; i++) {
+		$(".categories-products-holder .categories-list-holder:eq(" + i + ")").show(); // Show items from the new page that was selected
+	  }
+	
+	  $(".pagination li.current-page:eq(" + (currentPage - 1) + ")").addClass('active'); // Make new page number the 'active' page
 	  }
 	});
-  
+	
 	// Function to navigate to the previous page when users click on the previous-page id (previous page button)
 	$("#previous-page").on("click", function() {
 	  var currentPage = $(".pagination li.active").index(); // Identify the current active page
 	  // Check to make sure that users is not on page 1 and attempting to navigating to a previous page
 	  if (currentPage === 1) {
-		return false; // Return false (i.e., cannot navigate to a previous page because the current page is page 1)
+	  return false; // Return false (i.e., cannot navigate to a previous page because the current page is page 1)
 	  } else {
-		currentPage--; // Decrement page by one
-		$(".pagination li").removeClass('active'); // Remove the 'activate' status class from the previous active page number
-		$(".categories-products-holder .categories-list-holder").hide(); // Hide all items in the pagination loop
-		var grandTotal = limitPerPage * currentPage; // Get the total number of items up to the page that was selected
-  
-		// Loop through total items, selecting a new set of items based on page number
-		for (var i = grandTotal - limitPerPage; i < grandTotal; i++) {
-		  $(".categories-products-holder .categories-list-holder:eq(" + i + ")").show(); // Show items from the new page that was selected
-		}
-  
-		$(".pagination li.current-page:eq(" + (currentPage - 1) + ")").addClass('active'); // Make new page number the 'active' page
+	  currentPage--; // Decrement page by one
+	  $(".pagination li").removeClass('active'); // Remove the 'activate' status class from the previous active page number
+	  $(".categories-products-holder .categories-list-holder").hide(); // Hide all items in the pagination loop
+	  var grandTotal = limitPerPage * currentPage; // Get the total number of items up to the page that was selected
+	
+	  // Loop through total items, selecting a new set of items based on page number
+	  for (var i = grandTotal - limitPerPage; i < grandTotal; i++) {
+		$(".categories-products-holder .categories-list-holder:eq(" + i + ")").show(); // Show items from the new page that was selected
+	  }
+	
+	  $(".pagination li.current-page:eq(" + (currentPage - 1) + ")").addClass('active'); // Make new page number the 'active' page
 	  }
 	});
-  
+	
 	// faq js
 	var acc = document.getElementsByClassName("accordion");
 	var i;
 	for (i = 0; i < acc.length; i++) {
 	  acc[i].addEventListener("click", function () {
-		this.classList.toggle("active");
-		var answer = this.nextElementSibling;
-		if (answer.style.display === "block") {
-		  answer.style.display = "none";
-		} else {
-		  answer.style.display = "block";
-		}
+	  this.classList.toggle("active");
+	  var answer = this.nextElementSibling;
+	  if (answer.style.display === "block") {
+		answer.style.display = "none";
+	  } else {
+		answer.style.display = "block";
+	  }
 	  });
 	}
 	// show on click
@@ -152,10 +152,10 @@ $(window).on('load', function () {
 	  $(".more").toggle();
 	  var more = $(".read-more-btn").text().trim();
 	  if (more === "Read More") {
-		$('.read-more-btn').text("Read less");
+	  $('.read-more-btn').text("Read less");
 	  }
 	  else {
-		$('.read-more-btn').text("Read More");
+	  $('.read-more-btn').text("Read More");
 	  }
 	});
 	// active class js
@@ -163,12 +163,12 @@ $(window).on('load', function () {
 	var btns = header.getElementsByClassName("size-quantity");
 	for (var i = 0; i < btns.length; i++) {
 	  btns[i].addEventListener("click", function () {
-		var current = document.getElementsByClassName("active");
-		current[0].className = current[0].className.replace(" active", "");
-		this.className += " active";
+	  var current = document.getElementsByClassName("active");
+	  current[0].className = current[0].className.replace(" active", "");
+	  this.className += " active";
 	  });
 	}
-  
+	
 	// increment number
 	var clicks = 1; $(".plus").click(function () {
 	 clicks++; 
@@ -181,48 +181,48 @@ $(window).on('load', function () {
 	  $(".quantity").val(clicks);
 	}
 	});
-  });
-  
-  //stars rating
-  jQuery(function ($) {
+	});
+	
+	//stars rating
+	jQuery(function ($) {
 	var count = $('.rating-stars').data('defaultValue');
-// 	$('.rating-stars > span').slice(0, count).addClass("rated");
-    $('.rating-stars').children('span').each(function(i) {
-        $(this).addClass('rated');
-        if (i >= count) {
-          $(this).find(">:first-child").addClass('far fa-star');
-          $(this).find(">:first-child").removeClass('fa');
-        }
-    });
+  //  $('.rating-stars > span').slice(0, count).addClass("rated");
+	  $('.rating-stars').children('span').each(function(i) {
+		  $(this).addClass('rated');
+		  if (i >= count) {
+			$(this).find(">:first-child").addClass('far fa-star');
+			$(this).find(">:first-child").removeClass('fa');
+		  }
+	  });
 	var count = $('.rating-stars-product').data('defaultValue');
-// 	$('.rating-stars-product > span').slice(0, count).addClass("rated");
-    $('.rating-stars-product').children('span').each(function(i) {
-        $(this).addClass('rated');
-        if (i >= count) {
-          $(this).find(">:first-child").addClass('far fa-star');
-          $(this).find(">:first-child").removeClass('fa');
-        }
-    });
+  //  $('.rating-stars-product > span').slice(0, count).addClass("rated");
+	  $('.rating-stars-product').children('span').each(function(i) {
+		  $(this).addClass('rated');
+		  if (i >= count) {
+			$(this).find(">:first-child").addClass('far fa-star');
+			$(this).find(">:first-child").removeClass('fa');
+		  }
+	  });
 	var count = $('.rating-stars-reviews').data('defaultValue');
-// 	$('.rating-stars-reviews > span').slice(0, count).addClass("rated");
-    $('.rating-stars-reviews').children('span').each(function(i) {
-        $(this).addClass('rated');
-        if (i >= count) {
-          $(this).find(">:first-child").addClass('far fa-star');
-          $(this).find(">:first-child").removeClass('fa');
-        }
-    });
+  //  $('.rating-stars-reviews > span').slice(0, count).addClass("rated");
+	  $('.rating-stars-reviews').children('span').each(function(i) {
+		  $(this).addClass('rated');
+		  if (i >= count) {
+			$(this).find(">:first-child").addClass('far fa-star');
+			$(this).find(">:first-child").removeClass('fa');
+		  }
+	  });
 	var count = $('.rating-stars-reviews-form').data('defaultValue');
-// 	$('.rating-stars-reviews-form > span').slice(0, count).addClass("rated");
-    $('.rating-stars-reviews-form').children('span').each(function(i) {
-        $(this).addClass('rated');
-        if (i >= count) {
-          $(this).find(">:first-child").addClass('far fa-star');
-          $(this).find(">:first-child").removeClass('fa');
-        }
-    });
-  });
-  applyBannerSlider = function (containerSelector) {
+  //  $('.rating-stars-reviews-form > span').slice(0, count).addClass("rated");
+	  $('.rating-stars-reviews-form').children('span').each(function(i) {
+		  $(this).addClass('rated');
+		  if (i >= count) {
+			$(this).find(">:first-child").addClass('far fa-star');
+			$(this).find(">:first-child").removeClass('fa');
+		  }
+	  });
+	});
+	applyBannerSlider = function (containerSelector) {
 	$(containerSelector).slick({
 	  dots: true,
 	  infinite: true,
@@ -232,14 +232,14 @@ $(window).on('load', function () {
 	  autoplay: true,
 	  autoplayspeed: 2000,
 	  responsive: [{
-		breakpoint: 768,
-		settings: {
-		  dots: false,
-		}
+	  breakpoint: 768,
+	  settings: {
+		dots: false,
+	  }
 	  }]
 	});
-  }
-  applyProductsSlider = function (containerSelector) {
+	}
+	applyProductsSlider = function (containerSelector) {
 	$(containerSelector).slick({
 	  dots: false,
 	  infinite: true,
@@ -249,16 +249,16 @@ $(window).on('load', function () {
 	  autoplay: true,
 	  speed: 2000,
 	  responsive: [{
-		breakpoint: 768,
-		settings: {
-		  slidesToShow: 1,
-		  dots: true,
-		  arrows: false,
-		}
+	  breakpoint: 768,
+	  settings: {
+		slidesToShow: 1,
+		dots: true,
+		arrows: false,
+	  }
 	  }]
 	});
-  }
-  applySolutionsSlider = function (containerSelector) {
+	}
+	applySolutionsSlider = function (containerSelector) {
 	$(containerSelector).slick({
 	  dots: true,
 	  infinite: true,
@@ -268,8 +268,8 @@ $(window).on('load', function () {
 	  autoplay: true,
 	  speed: 2000,
 	});
-  }
-  applyProductSolutionsSlider = function (containerSelector) {
+	}
+	applyProductSolutionsSlider = function (containerSelector) {
 	$(containerSelector).slick({
 	  dots: false,
 	  infinite: true,
@@ -279,8 +279,8 @@ $(window).on('load', function () {
 	  autoplay: true,
 	  speed: 2000,
 	});
-  }
-  applyNewLaunchesSlider = function (containerSelector) {
+	}
+	applyNewLaunchesSlider = function (containerSelector) {
 	$(containerSelector).slick({
 	  dots: true,
 	  infinite: true,
@@ -290,14 +290,14 @@ $(window).on('load', function () {
 	  autoplay: true,
 	  speed: 2000,
 	  responsive: [{
-		breakpoint: 768,
-		settings: {
-		  slidesToShow: 2,
-		}
+	  breakpoint: 768,
+	  settings: {
+		slidesToShow: 2,
+	  }
 	  }]
 	});
-  }
-  applyBlogsSlider = function (containerSelector) {
+	}
+	applyBlogsSlider = function (containerSelector) {
 	$(containerSelector).slick({
 	  dots: false,
 	  infinite: true,
@@ -307,15 +307,15 @@ $(window).on('load', function () {
 	  autoplay: true,
 	  speed: 2000,
 	  responsive: [{
-		breakpoint: 768,
-		settings: {
-		  dots: true,
-		  arrows: false,
-		}
+	  breakpoint: 768,
+	  settings: {
+		dots: true,
+		arrows: false,
+	  }
 	  }]
 	});
-  }
-  applyCategoriesSlider = function (containerSelector) {
+	}
+	applyCategoriesSlider = function (containerSelector) {
 	$(containerSelector).slick({
 	  dots: false,
 	  infinite: true,
@@ -325,14 +325,14 @@ $(window).on('load', function () {
 	  autoplay: true,
 	  speed: 2000,
 	  responsive: [{
-		breakpoint: 480,
-		settings: {
-		  slidesToShow: 3,
-		}
+	  breakpoint: 480,
+	  settings: {
+		slidesToShow: 3,
+	  }
 	  }]
 	});
-  }
-  applyProductsImageSlider = function (containerSelector) {
+	}
+	applyProductsImageSlider = function (containerSelector) {
 	$(containerSelector).slick({
 	  dots: true,
 	  infinite: true,
@@ -342,8 +342,8 @@ $(window).on('load', function () {
 	  autoplay: true,
 	  speed: 2000,
 	});
-  }
-  applyCertificatesSlider = function (containerSelector) {
+	}
+	applyCertificatesSlider = function (containerSelector) {
 	$(containerSelector).slick({
 	  dots: true,
 	  infinite: true,
@@ -353,8 +353,8 @@ $(window).on('load', function () {
 	  autoplay: true,
 	  speed: 2000,
 	});
-  }
-  applyRecentSlider = function (containerSelector) {
+	}
+	applyRecentSlider = function (containerSelector) {
 	$(containerSelector).slick({
 	  dots: false,
 	  infinite: true,
@@ -364,15 +364,15 @@ $(window).on('load', function () {
 	  autoplay: true,
 	  speed: 2000,
 	  responsive: [{
-		breakpoint: 768,
-		settings: {
-		  dots: true,
-		  arrows: false,
-		}
+	  breakpoint: 768,
+	  settings: {
+		dots: true,
+		arrows: false,
+	  }
 	  }]
 	});
-  }
-  applyBrandingSlider = function (containerSelector) {
+	}
+	applyBrandingSlider = function (containerSelector) {
 	$(containerSelector).slick({
 	  dots: true,
 	  infinite: true,
@@ -382,21 +382,21 @@ $(window).on('load', function () {
 	  autoplay: true,
 	  speed: 2000,
 	  responsive: [
-		{
-		  breakpoint: 9999,
-		  settings: "unslick"
-		},
-		{
-		  breakpoint: 767,
-		  settings: {
-			slidesToScroll: 1,
-			slidesToShow: 1,
-			infinite: true,
-			dots: false,
-			dots: true,
-		  }
+	  {
+		breakpoint: 9999,
+		settings: "unslick"
+	  },
+	  {
+		breakpoint: 767,
+		settings: {
+		slidesToScroll: 1,
+		slidesToShow: 1,
+		infinite: true,
+		dots: false,
+		dots: true,
 		}
+	  }
 	  ]
 	});
-  }
-  
+	}
+	

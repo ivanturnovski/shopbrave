@@ -21,6 +21,10 @@
       "type": "be-product-accordion",
       "settings": {}
     },
+    "be-also-bought": {
+      "type": "be-also-bought",
+      "settings": {}
+    },
     "16437570350a930bbf": {
       "type": "apps",
       "blocks": {
@@ -53,6 +57,7 @@
     "product-nav",
     "main",
     "product-accordion",
+    "be-also-bought",
     "16437570350a930bbf"
   ]
 }
