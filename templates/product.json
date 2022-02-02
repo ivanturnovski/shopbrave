@@ -1,50 +1,95 @@
 {
-	"sections": {
-		"product-find-solutions": {
-			"type": "be-product-find-solutions",
-			"settings": {}
-		},
-		"product-nav": {
-			"type": "be-product-nav",
-			"settings": {}
-		},
-		"main": {
-			"type": "be-product-main",
-			"blocks": {
-				"8c1b7f8a-ee86-4226-bf56-5d312d60af63": {
-					"type": "rating_value",
-					"settings": {}
-				}
-			},
-			"block_order": ["8c1b7f8a-ee86-4226-bf56-5d312d60af63"],
-			"settings": {}
-		},
-		"product-accordion": {
-			"type": "be-product-accordion",
-			"blocks": {
-				"b2680083-1816-4921-842a-830da667cca8": {
-					"type": "shopify://apps/judge-me-product-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-					"settings": {}
-				}
-			},
-			"block_order": ["b2680083-1816-4921-842a-830da667cca8"],
-			"settings": {}
-		},
-		"reviews-mobile": {
-			"type": "be-reviews-mobile",
-			"settings": {}
-		},
-		"be-also-bought": {
-			"type": "be-also-bought",
-			"settings": {}
-		}
-	},
-	"order": [
-		"product-find-solutions",
-		"product-nav",
-		"main",
-		"product-accordion",
-		"reviews-mobile",
-		"be-also-bought"
-	]
+  "sections": {
+    "product-find-solutions": {
+      "type": "be-product-find-solutions",
+      "blocks": {
+        "f7671709-373f-489b-b45e-9b85fac203eb": {
+          "type": "bancollection",
+          "settings": {
+            "banner_collection": "acne-test"
+          }
+        },
+        "e7a194b7-d446-43ef-8d2d-ec5b7b0ca820": {
+          "type": "bancollection",
+          "settings": {
+            "banner_collection": "pigmentation-test"
+          }
+        },
+        "f01cf66a-87c5-4124-9f3a-f65d17e2c790": {
+          "type": "bancollection",
+          "settings": {
+            "banner_collection": "beard-growth-test"
+          }
+        },
+        "86bc2f57-c725-40ae-816c-920d99616193": {
+          "type": "bancollection",
+          "settings": {
+            "banner_collection": "shampoo"
+          }
+        }
+      },
+      "block_order": [
+        "f7671709-373f-489b-b45e-9b85fac203eb",
+        "e7a194b7-d446-43ef-8d2d-ec5b7b0ca820",
+        "f01cf66a-87c5-4124-9f3a-f65d17e2c790",
+        "86bc2f57-c725-40ae-816c-920d99616193"
+      ],
+      "settings": {}
+    },
+    "product-nav": {
+      "type": "be-product-nav",
+      "settings": {}
+    },
+    "main": {
+      "type": "be-product-main",
+      "blocks": {
+        "8c1b7f8a-ee86-4226-bf56-5d312d60af63": {
+          "type": "rating_value",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "8c1b7f8a-ee86-4226-bf56-5d312d60af63"
+      ],
+      "settings": {}
+    },
+    "product-accordion": {
+      "type": "be-product-accordion",
+      "blocks": {
+        "b2680083-1816-4921-842a-830da667cca8": {
+          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "b2680083-1816-4921-842a-830da667cca8"
+      ],
+      "settings": {}
+    },
+    "reviews-mobile": {
+      "type": "be-reviews-mobile",
+      "blocks": {
+        "d9811943-f76e-4be9-bc5e-135b5c24515a": {
+          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "d9811943-f76e-4be9-bc5e-135b5c24515a"
+      ],
+      "settings": {}
+    },
+    "be-also-bought": {
+      "type": "be-also-bought",
+      "settings": {}
+    }
+  },
+  "order": [
+    "product-find-solutions",
+    "product-nav",
+    "main",
+    "product-accordion",
+    "reviews-mobile",
+    "be-also-bought"
+  ]
 }
