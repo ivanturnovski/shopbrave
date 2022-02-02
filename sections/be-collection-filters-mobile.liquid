@@ -1,0 +1,36 @@
+<div class="filter-sort-holder mobile-only">
+    <div class="container">
+        <ul class="filter-sort">
+            <li class="filter-holder">
+                <a href="#">
+                    <div class="filter">
+                        <span class="filter-icon">
+                            <img src="{{ 'filter.png' | asset_url }}">
+                        </span>
+                        <span class="filter-text">Filter</span>
+                    </div>
+                </a>
+            </li>
+            <li class="filter-holder">
+                <a href="#">
+                    <div class="sort">
+                        <span class="sort-icon">
+                            <img src="{{ 'sort.png' | asset_url }}">
+                        </span>
+                        <span class="sort-text">Sort</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% schema %}
+
+{
+    "name": "Collection Filters Mobile",
+    "class": "be-collection-filters-mobile",
+    "tag": "section",
+    "settings": []
+}
+
+{% endschema %}
