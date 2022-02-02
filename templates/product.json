@@ -1,44 +1,45 @@
 {
-  "sections": {
-    "product-nav": {
-      "type": "be-product-nav",
-      "settings": {}
-    },
-    "main": {
-      "type": "be-product-main",
-      "blocks": {
-        "8c1b7f8a-ee86-4226-bf56-5d312d60af63": {
-          "type": "rating_value",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "8c1b7f8a-ee86-4226-bf56-5d312d60af63"
-      ],
-      "settings": {}
-    },
-    "product-accordion": {
-      "type": "be-product-accordion",
-      "blocks": {
-        "b2680083-1816-4921-842a-830da667cca8": {
-          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "b2680083-1816-4921-842a-830da667cca8"
-      ],
-      "settings": {}
-    },
-    "be-also-bought": {
-      "type": "be-also-bought",
-      "settings": {}
-    }
-  },
-  "order": [
-    "product-nav",
-    "main",
-    "product-accordion",
-    "be-also-bought"
-  ]
+	"sections": {
+		"product-find-solutions": {
+			"type": "be-product-find-solutions",
+			"settings": {}
+		},
+		"product-nav": {
+			"type": "be-product-nav",
+			"settings": {}
+		},
+		"main": {
+			"type": "be-product-main",
+			"blocks": {
+				"8c1b7f8a-ee86-4226-bf56-5d312d60af63": {
+					"type": "rating_value",
+					"settings": {}
+				}
+			},
+			"block_order": ["8c1b7f8a-ee86-4226-bf56-5d312d60af63"],
+			"settings": {}
+		},
+		"product-accordion": {
+			"type": "be-product-accordion",
+			"blocks": {
+				"b2680083-1816-4921-842a-830da667cca8": {
+					"type": "shopify://apps/judge-me-product-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+					"settings": {}
+				}
+			},
+			"block_order": ["b2680083-1816-4921-842a-830da667cca8"],
+			"settings": {}
+		},
+		"be-also-bought": {
+			"type": "be-also-bought",
+			"settings": {}
+		}
+	},
+	"order": [
+		"product-find-solutions",
+		"product-nav",
+		"main",
+		"product-accordion",
+		"be-also-bought"
+	]
 }

@@ -279,8 +279,7 @@
     </script>
     {% render 'judgeme_core' %}
 </head>
-  <body class="gradient">
-    <div class="brave-essentials">
+  <body class="gradient">    
     <div class="loader-holder">
       <div class="loader">
       </div>
@@ -289,13 +288,12 @@
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
-
     {% endcomment %}
 
     {% comment %}
     {% section 'announcement-bar' %}
     {% endcomment %}
-    <div class="brave-essentials">
+    <div class="brave-essentials {% if request.page_type == "product" %}products-page{% endif %}">
     {% section 'header' %}
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}

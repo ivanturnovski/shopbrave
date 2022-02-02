@@ -1,0 +1,46 @@
+<div class="find-solutions mobile-only">
+    <div class="container">
+        <ul class="products-solutions-slider">
+            {% for block in section.blocks %}
+                {% assign item = block.settings %}
+                {% case block.type %}
+                    {% when 'bancollection' %}
+                        <li class="solutions-list">
+                            <div class="solutions-list-holder">
+                                <div class="solutions-image">
+                                    <img src="{{ collections[item.banner_collection] | img_url: '100x' }}">
+                                </div>
+                                <div class="solutions-heading">
+                                   <a href="{{ collections[item.banner_collection].url }}">{{ collections[item.banner_collection].title }}</a>
+                                </div>
+                            </div>
+                        </li>
+                {% endcase %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% schema %}
+
+{
+    "name": "Product Find Solutions",
+    "class": "be-product-find-solutions",
+    "tag": "section",
+    "settings": [],
+    "blocks": [
+        {
+            "name": "Collection",
+            "type": "bancollection",
+            "settings": [
+                {
+                    "type": "collection",
+					"label": "Banner Collection",
+                    "id": "banner_collection"
+                }
+            ]
+        }
+    ]
+}
+
+{% endschema %}
