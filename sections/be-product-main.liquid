@@ -396,23 +396,20 @@ customElements.define("variant-radios", RadioChange);
 
 {% schema %}
 
-  {
-	  "name": "Product Main",
-	  "class": "be-product-main",    
-	  "tag": "section",
-	  "settings": [],
-	  "blocks": [
-	  {
-		  "name": "Rating Value",
-		  "type": "rating_value",
-		  "limit": 1
-	  },
-	  {
-		
-		"type": "@app"
-		
-	}
-	  ]
-  }
-  
-  {% endschema %}
+{
+    "name": "Product Main",
+    "class": "be-product-main",
+    "tag": "section",
+    "settings": [],
+    "blocks": [
+        {
+            "name": "Rating Value",
+            "type": "rating_value",
+            "limit": 1
+        }, {
+            "type": "@app"
+        }
+    ]
+}
+
+{% endschema %}

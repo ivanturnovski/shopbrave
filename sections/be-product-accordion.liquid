@@ -129,9 +129,14 @@
 		<h3 class="accordion sub-heading">Reviews
 		</h3>
 		<div class="answer">
-		  <p><span class="bullet"></span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-			ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		  <p>
+			{% for block in section.blocks %}
+				{%- case block.type -%}
+					{%- when '@app' -%}
+						{% render block %}
+					{% endcase %}
+			{% endfor %}
+		</p>
 		</div>
 	  </div>
 	  <div class="accordian-list desktop-only">
@@ -149,10 +154,19 @@
 {% schema %}
 
 {
-	"name": "Product Accordion",
-	"class": "be-product-accordion",    
-	"tag": "section",
-	"settings": []
+    "name": "Product Accordion",
+    "class": "be-product-accordion",
+    "tag": "section",
+    "settings": [],
+    "blocks": [
+        {
+            "name": "Rating Value",
+            "type": "rating_value",
+            "limit": 1
+        }, {
+            "type": "@app"
+        }
+    ]
 }
 
 {% endschema %}
