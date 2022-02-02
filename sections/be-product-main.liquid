@@ -93,17 +93,17 @@
 			  <div class="rating-number">
 				{%- for block in section.blocks -%}
 						{%- case block.type -%}
-							{%- when '@app' -%}
-								{% render block %}
+							{%- when 'rating_value' -%}
+							{{ shop.metafields.judgeme.all_reviews_rating | round: 1 }}
 						{% endcase %}
 				{%- endfor -%}
 			  </div>
-			  <div class="rating-stars rating" data-default-value="4">
+			  <div class="rating-stars rating" data-default-value="{{ shop.metafields.judgeme.all_reviews_rating | round: 1 }}">
 				<span><span data-value="1" class="fa fa-star checked"></span></span>
 				<span><span data-value="2" class="fa fa-star checked"></span></span>
 				<span><span data-value="3" class="fa fa-star checked"></span></span>
 				<span><span data-value="4" class="fa fa-star"></span></span>
-				<span><span data-value="5" class="fa fa-star"></span></span>
+				<span><span data-value="5" class="fa fa-star"></span></span>			
 			  </div>
 			</div>
 			<div class="product-quantity mobile-only">
@@ -375,9 +375,15 @@ customElements.define("variant-radios", RadioChange);
 	  "settings": [],
 	  "blocks": [
 	  {
-		  
-		  "type": "@app"
-	  }
+		  "name": "Rating Value",
+		  "type": "rating_value",
+		  "limit": 1
+	  },
+	  {
+		
+		"type": "@app"
+		
+	}
 	  ]
   }
   
