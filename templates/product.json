@@ -30,6 +30,10 @@
 			"block_order": ["b2680083-1816-4921-842a-830da667cca8"],
 			"settings": {}
 		},
+		"reviews-mobile": {
+			"type": "be-reviews-mobile",
+			"settings": {}
+		},
 		"be-also-bought": {
 			"type": "be-also-bought",
 			"settings": {}
@@ -40,6 +44,7 @@
 		"product-nav",
 		"main",
 		"product-accordion",
+		"reviews-mobile",
 		"be-also-bought"
 	]
 }

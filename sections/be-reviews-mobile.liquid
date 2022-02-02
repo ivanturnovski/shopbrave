@@ -1,0 +1,42 @@
+{% assign review_rating = shop.metafields.judgeme.all_reviews_rating | round: 1 %}
+<div class="reviews mobile-only">
+	<div class="container">
+	  <h3 class="sub-heading">
+		Ratings, Reviews & Questions
+	  </h3>
+	  <ul class="ratings-holder">
+		<li class="heading">Overall Ratings</li>
+		<li class="rating-number">{{ review_rating }}</li>
+		<li class="rating-stars-reviews rating" data-default-value="{{ review_rating }}">
+		  <span><span data-value="1" class="fa fa-star checked"></span></span>
+		  <span><span data-value="2" class="fa fa-star checked"></span></span>
+		  <span><span data-value="3" class="fa fa-star checked"></span></span>
+		  <span><span data-value="4" class="fa fa-star"></span></span>
+		  <span><span data-value="5" class="fa fa-star"></span></span>
+		</li>
+	  </ul>
+	  	{% for block in section.blocks %}
+	  	{%- case block.type -%}
+		  {%- when '@app' -%}
+			  {% render block %}
+		  {% endcase %}
+  		{% endfor %}
+	</div>
+  </div>
+
+
+{% schema %}
+
+{
+    "name": "Reviews Mobile",
+    "class": "be-reviews-mobile",
+    "tag": "section",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "@app"
+        }
+    ]
+}
+
+{% endschema %}
