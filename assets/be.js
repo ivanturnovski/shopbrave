@@ -186,15 +186,42 @@ $(window).on('load', function () {
   //stars rating
   jQuery(function ($) {
 	var count = $('.rating-stars').data('defaultValue');
-	$('.rating-stars > span').slice(0, count).addClass("rated");
+// 	$('.rating-stars > span').slice(0, count).addClass("rated");
+    $('.rating-stars').children('span').each(function(i) {
+        $(this).addClass('rated');
+        if (i >= count) {
+          $(this).find(">:first-child").addClass('far fa-star');
+          $(this).find(">:first-child").removeClass('fa');
+        }
+    });
 	var count = $('.rating-stars-product').data('defaultValue');
-	$('.rating-stars-product > span').slice(0, count).addClass("rated")
+// 	$('.rating-stars-product > span').slice(0, count).addClass("rated");
+    $('.rating-stars-product').children('span').each(function(i) {
+        $(this).addClass('rated');
+        if (i >= count) {
+          $(this).find(">:first-child").addClass('far fa-star');
+          $(this).find(">:first-child").removeClass('fa');
+        }
+    });
 	var count = $('.rating-stars-reviews').data('defaultValue');
-	$('.rating-stars-reviews > span').slice(0, count).addClass("rated")
+// 	$('.rating-stars-reviews > span').slice(0, count).addClass("rated");
+    $('.rating-stars-reviews').children('span').each(function(i) {
+        $(this).addClass('rated');
+        if (i >= count) {
+          $(this).find(">:first-child").addClass('far fa-star');
+          $(this).find(">:first-child").removeClass('fa');
+        }
+    });
 	var count = $('.rating-stars-reviews-form').data('defaultValue');
-	$('.rating-stars-reviews-form > span').slice(0, count).addClass("rated")
-  
-  })
+// 	$('.rating-stars-reviews-form > span').slice(0, count).addClass("rated");
+    $('.rating-stars-reviews-form').children('span').each(function(i) {
+        $(this).addClass('rated');
+        if (i >= count) {
+          $(this).find(">:first-child").addClass('far fa-star');
+          $(this).find(">:first-child").removeClass('fa');
+        }
+    });
+  });
   applyBannerSlider = function (containerSelector) {
 	$(containerSelector).slick({
 	  dots: true,

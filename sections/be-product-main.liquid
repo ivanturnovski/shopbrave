@@ -62,14 +62,18 @@
 						</div>
 					{%- endfor -%}
 					<script id="be-variant-data" type="application/json">
-					  {{ product.variants | json }}
+					  {{ product.variants | json}}
 					</script>
 				  </variant-radios>
+            {%- for block in section.blocks -%}
+            {%- case block.type -%}
+            {%- when 'rating_value' -%}
+            {% assign review_rating = shop.metafields.judgeme.all_reviews_rating | round: 1 %}
 			  <div class="rating-holder mobile-only">
 				<div class="rating-number">
-					4
+					{{ review_rating }}
 				</div>
-				<div class="rating-stars-product rating" data-default-value="4">
+				<div class="rating-stars-product rating" data-default-value="{{ review_rating }}">
 				  <span><span data-value="1" class="fa fa-star checked"></span></span>
 				  <span><span data-value="2" class="fa fa-star checked"></span></span>
 				  <span><span data-value="3" class="fa fa-star checked"></span></span>
@@ -77,40 +81,43 @@
 				  <span><span data-value="5" class="fa fa-star"></span></span>
 				</div>
 			  </div>
+            {% endcase %}
+            {%- endfor -%}
 			</div>
 		  </div>
 		  <div class="product-price-holder">
 			<div class="product-price">
-			  <span class="currency">&#8377</span> {{ product_price.price  | money_without_currency | remove: '.00' }}
+              <span class="currency">&#8377</span> <span class="product-price-value">{{ product_price.price  | money_without_currency | remove: '.00' }}</span>
 			</div>
-			<div class="strike">
+			<div class="strike compare-at-price">
 				{% if product_price.compare_at_price != blank %}
 					<span class="currency">&#8377</span> 
-					<span class="strike-through">{{ product_price.compare_at_price  | money_without_currency | remove: '.00' }}</span>
+					<span class="strike-through compare-at-price-value">{{ product_price.compare_at_price  | money_without_currency | remove: '.00' }}</span>
 				{% endif %}				
 			</div>
+            {%- for block in section.blocks -%}
+            {%- case block.type -%}
+            {%- when 'rating_value' -%}
+            {% assign review_rating = shop.metafields.judgeme.all_reviews_rating | round: 1 %}
 			<div class="rating-holder desktop-only">
 			  <div class="rating-number">
-				{%- for block in section.blocks -%}
-						{%- case block.type -%}
-							{%- when 'rating_value' -%}
-							{{ shop.metafields.judgeme.all_reviews_rating | round: 1 }}
-						{% endcase %}
-				{%- endfor -%}
+                {{ review_rating }}
 			  </div>
-			  <div class="rating-stars rating" data-default-value="{{ shop.metafields.judgeme.all_reviews_rating | round: 1 }}">
-				<span><span data-value="1" class="fa fa-star checked"></span></span>
-				<span><span data-value="2" class="fa fa-star checked"></span></span>
-				<span><span data-value="3" class="fa fa-star checked"></span></span>
+			  <div class="rating-stars rating" data-default-value="{{ review_rating }}">
+                <span><span data-value="1" class="fa fa-star"></span></span>
+				<span><span data-value="2" class="fa fa-star"></span></span>
+				<span><span data-value="3" class="fa fa-star"></span></span>
 				<span><span data-value="4" class="fa fa-star"></span></span>
 				<span><span data-value="5" class="fa fa-star"></span></span>			
 			  </div>
 			</div>
+            {% endcase %}
+            {%- endfor -%}
 			<div class="product-quantity mobile-only">
                 <span class="minus"><a>-</a></span>
-               <!-- <input type="number" name="quantity" id="Quantity"> -->
+               	<input type="number" name="quantity" id="Quantity" min="1" value="1">
                 <span class="plus"><a>+</a></span>
-              </div>
+            </div>
 		  </div>
 		  <div class="product-quantity-holder">
 			<div class="product-quantity desktop-only">
@@ -294,7 +301,7 @@ if (addToCart != null) {
 }
 
 function AddToCart() {
-	console.log('button click test');
+// 	console.log('button click test');
 
 	let addToCartForm = document.getElementById('product-form');
 	let formData = new FormData(addToCartForm);
@@ -317,7 +324,7 @@ function AddToCart() {
 }
 
 class RadioChange extends HTMLElement {
-	constructor() {
+		constructor() {
             super();
             this.addEventListener("change", this.onRadioChange);
         }
@@ -326,6 +333,7 @@ class RadioChange extends HTMLElement {
 			this.getSelectedOptions();
 			this.getSelectedVariant();
 			if(this.currentVariant) {
+              	this.updatePrices();
 				this.updateURL();
                 this.updateFormID();                
             }
@@ -347,7 +355,27 @@ class RadioChange extends HTMLElement {
             for (var i = 0; i < getVariantJSON.length; i++){
               if (getVariantJSON[i]['title'] == selectedValue){
                 	this.currentVariant = getVariantJSON[i];
+//                 	console.log(this.currentVariant);
               }
+            }
+        }
+  
+        updatePrices() {
+			if(!this.currentVariant) return;
+            if ((this.currentVariant.price != undefined) && (this.currentVariant.price != null) && (this.currentVariant.price != "")) {
+				document.querySelector("#product-form > div > div.product-price-holder > div.product-price > span.product-price-value").innerHTML = this.currentVariant.price.toString().slice(0, -2);
+            }
+          
+          	const compareAtPriceDiv = document.querySelector("#product-form > div > div.product-price-holder > div.strike.compare-at-price > span.strike-through.compare-at-price-value");
+          	if ((this.currentVariant.compare_at_price != undefined) && (this.currentVariant.compare_at_price != null) && (this.currentVariant.compare_at_price != "")) {
+              	if (compareAtPriceDiv) {
+            		compareAtPriceDiv.innerHTML = this.currentVariant.compare_at_price.toString().slice(0, -2);
+                } else if (!compareAtPriceDiv) {
+                  	const compareAtPriceHtml = '<span class="currency">&#8377</span> <span class="strike-through compare-at-price-value">'+this.currentVariant.compare_at_price.toString().slice(0, -2)+'</span>';
+                	$("#product-form > div > div.product-price-holder > div.strike.compare-at-price").html(compareAtPriceHtml);
+                }
+            } else if (compareAtPriceDiv) {
+            	$("#product-form > div > div.product-price-holder > div.strike.compare-at-price").html(' ');
             }
         }
 

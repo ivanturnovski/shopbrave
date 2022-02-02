@@ -10,15 +10,10 @@
         "8c1b7f8a-ee86-4226-bf56-5d312d60af63": {
           "type": "rating_value",
           "settings": {}
-        },
-        "eafa23a6-d686-4848-a06f-063d1724c5d7": {
-          "type": "shopify:\/\/apps\/judge-me-product-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
         }
       },
       "block_order": [
-        "8c1b7f8a-ee86-4226-bf56-5d312d60af63",
-        "eafa23a6-d686-4848-a06f-063d1724c5d7"
+        "8c1b7f8a-ee86-4226-bf56-5d312d60af63"
       ],
       "settings": {}
     },
