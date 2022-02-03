@@ -5,7 +5,7 @@
 		<div class="welcome-holder">
 			<div class="welcome">
 				<div class="profile-img">
-					<img src="./images/homepage/profile.png">
+					<img src="{{ 'profile.png' | asset_url }}">
 				</div>
 				<div class="welcome-text-holder">
 					<div class="text-holder">
@@ -22,47 +22,32 @@
 		</div>
 		<div class="accordian-list-holder">
 			<div class="accordian-list">
-				<button class="accordian-menu">All Products
+				{%- for link in linklists.brave-main-menu.links -%}
+
+				{% if link.levels == 0 %}
+				<a class="accordian-1" href="{{ link.url }}" {% if link.active %}aria-current="page" {% endif %}>
+					{{ link.title }}
+				</a>
+				{%else %}
+				<button class="accordian-menu" href="{{ link.url }}" {% if link.active %}aria-current="page" {% endif
+					%}>
+					{{ link.title }}
 				</button>
+				{% endif %}
+				{%- if link.links != blank -%}
 				<div class="answer">
-					<div class="image-holder">
-						<span><img src="./images/homepage/shampoo.png"></span><span class="heading">2+1 Shampoo
-							Conditioner</span>
+					<a href="{{ link.url }}">View All {{ link.title }}</a>
+					{%- for child_link in link.links -%}
+					<div class="accordian-list">
+						<a class="" href="{{ child_link.url }}" {% if child_link.active %}aria-current="page" {% endif
+							%}>
+							{{ child_link.title }}
+						</a>	
 					</div>
+					{%- endfor -%}
 				</div>
-				<div class="answer sub-menu">
-					lorem ipsum
-				</div>
-				<button class="accordian-menu">Bestsellers
-				</button>
-				<div class="answer">
-					Lorem ipsem
-				</div>
-				<button class="accordian-menu">Skincare
-				</button>
-				<div class="answer">
-					Lorem ipsem
-				</div>
-				<button class="accordian-menu">Facecare
-				</button>
-				<div class="answer">
-					Lorem ipsem
-				</div>
-				<button class="accordian-menu">Gifts
-				</button>
-				<div class="answer">
-					Lorem ipsem
-				</div>
-				<button class="accordian-menu">Haircare
-				</button>
-				<div class="answer">
-					Lorem ipsem
-				</div>
-				<button class="accordian-menu">Offers
-				</button>
-				<div class="answer">
-					Lorem ipsem
-				</div>
+				{%- endif -%}
+				{%- endfor -%}
 			</div>
 		</div>
 		<div class="social-icons-holder">
@@ -87,3 +72,19 @@
 	</div>
 </div>
 </div>
+
+
+<style>
+	.brave-essentials .menu-bar-holder .menu-bar .accordian-list-holder .accordian-list .accordian-1 {
+		font-family: Agency FB;
+		font-weight: 400;
+		font-size: 20px;
+		letter-spacing: 1px;
+		color: #4a3a2a;
+		text-transform: uppercase;
+		padding: 18px 15px 12px;
+		border-bottom: 2px solid #cbc5b8;
+		margin-bottom: 0;
+		display: block;
+}
+</style>
