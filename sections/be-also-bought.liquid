@@ -31,6 +31,37 @@ var productRecomendationBody = document.getElementById("products-holder");
 				});
 			}
 		});
+
+
+	
+
+	$(document).on('submit', '#add_to_cart_btn', function (e) {
+		let formData = {
+			items: [
+				{
+					id: document.getElementById('item_id').value,
+					quantity: document.getElementById('Quantity').value,
+				},
+			],
+		};
+		fetch('/cart/add.js', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(formData),
+		})
+			.then((resp) => {
+				if (resp.ok) {
+					return resp.json();
+				}
+			})
+			.catch((err) => {
+				console.log('Error:' + err);
+			});
+	});
+
+
 </script>
 
 {% schema %}
