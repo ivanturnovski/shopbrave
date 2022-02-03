@@ -1,0 +1,60 @@
+<div class="recently-viewed">
+    <div class="container">
+        <h3 class="sub-heading">{{ section.settings.title }}</h3>
+        <ul class="recent-products-slider">
+			{% for block in section.blocks %}	
+				{%- assign item = block.settings -%}
+				{%- assign bundle_product = all_products[item.product] -%}
+				{%- assign bundle_product_img = bundle_product.featured_media.preview_image -%}
+				<li class="recent-products-list-holder">
+					<div class="recent-products-list">
+						<div class="recent-product-image">
+							<img src="{{ bundle_product_img | img_url: '240x' }}">
+						</div>
+						<div class="recent-heading">{{ bundle_product.title }}</div>
+				
+						<div class="recent-details">{{ bundle_product.vendor }}</div>
+						<div class="recent-price">
+							<span class="currency">&#8377</span>{{ bundle_product.price }}
+						</div>
+						<ul class="add-to-cart-btn">
+							<li class="cart-button">
+							  <a href="#">Add to Cart</a>
+							</li>
+						  </ul>
+					</div>
+				</li>		
+			{% endfor %}   
+        </ul>
+    </div>
+</div>
+
+{% schema %}
+
+{
+    "name": "Bundle Offers",
+    "class": "be-cart-bundle-offers",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Section Heading"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Bundle Product",
+            "type": "product",
+            "settings": [
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Product"
+                }
+            ]
+        }
+    ]
+}
+
+{% endschema %}

@@ -16,6 +16,51 @@
         "link": "shopify:\/\/collections\/all"
       }
     },
+    "cart-bundle": {
+      "type": "be-cart-bundle-offers",
+      "blocks": {
+        "a32ef321-7862-4577-b231-d1282c1b7c90": {
+          "type": "product",
+          "settings": {
+            "product": "dummy-product"
+          }
+        },
+        "5e3ef209-088a-41fd-8ffc-dba448839628": {
+          "type": "product",
+          "settings": {
+            "product": "dummy-product-2"
+          }
+        },
+        "f8abfb1e-214a-4f42-8e55-c988633a046d": {
+          "type": "product",
+          "settings": {
+            "product": "dummy-4"
+          }
+        },
+        "0357619e-58a0-4a4d-baaf-61872890a385": {
+          "type": "product",
+          "settings": {
+            "product": "dummy-product"
+          }
+        },
+        "6a0ef916-b36f-40c1-9a94-74a2ebf0f2f3": {
+          "type": "product",
+          "settings": {
+            "product": "test-product"
+          }
+        }
+      },
+      "block_order": [
+        "a32ef321-7862-4577-b231-d1282c1b7c90",
+        "5e3ef209-088a-41fd-8ffc-dba448839628",
+        "f8abfb1e-214a-4f42-8e55-c988633a046d",
+        "0357619e-58a0-4a4d-baaf-61872890a385",
+        "6a0ef916-b36f-40c1-9a94-74a2ebf0f2f3"
+      ],
+      "settings": {
+        "title": "!BUNDLE OFFERS"
+      }
+    },
     "cart-footer": {
       "type": "main-cart-footer",
       "blocks": {
@@ -57,6 +102,7 @@
   "order": [
     "cart-items",
     "cart-offers",
+    "cart-bundle",
     "cart-footer",
     "featured-collection"
   ]
