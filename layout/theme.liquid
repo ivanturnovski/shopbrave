@@ -293,7 +293,7 @@
     {% comment %}
     {% section 'announcement-bar' %}
     {% endcomment %}
-    <div class="brave-essentials {% if request.page_type == "product" %}products-page{% elsif request.page_type == "collection" %}category{% endif %}">
+    <div class="brave-essentials {% if request.page_type == "product" %}products-page{% elsif request.page_type == "collection" %}category{% elsif request.page_type == "cart" %}cart{% endif %}">
     {% section 'header' %}
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
