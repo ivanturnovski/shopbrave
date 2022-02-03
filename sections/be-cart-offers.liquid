@@ -1,0 +1,44 @@
+<div class="cart-offer">
+    <div class="container">
+        <div class="offers">
+            <h6 class="offer-heading">{{ section.settings.title }}</h6>
+            <div class="offer-content-holder">
+                <div class="offer-content">
+                    <span class="offer-icon"><img src="{{ 'offer.png'  | asset_url }}"></span>
+					{{ section.settings.description }}
+                </div>
+            </div>
+        </div>
+        <div class="view-more">
+            <a href="{{ section.settings.link }}">View more</a>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+
+{
+    "name": "Offers",
+    "class": "be-cart-offers",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Section Heading"
+        },
+		{
+            "type": "text",
+            "id": "description",
+            "label": "Offer Description"
+        },
+		{
+            "type": "url",
+            "id": "link",
+            "label": "Offer Link"
+        }
+    ]
+}
+
+{% endschema %}
