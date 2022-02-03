@@ -112,6 +112,76 @@ img {
 .brave-essentials {
 	background-color: #f7f5e8;
 }
+.brave-essentials .social-icons-holder {
+	margin-bottom: 15px;
+	order: 3;
+}
+.brave-essentials .social-icons-holder .social-icons {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 320px;
+	margin: 0 auto;
+	cursor: pointer;
+	position: relative;
+	padding: 40px 40px 0;
+}
+@media (min-width: 768px) {
+	.brave-essentials .social-icons-holder .social-icons {
+		max-width: 390px;
+	}
+}
+.brave-essentials .social-icons-holder .social-icons:before {
+	position: absolute;
+	content: '';
+	background-image: url(../images/homepage/divider.png);
+	background-size: cover;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	max-height: 3px;
+	right: 0;
+	max-width: 272px;
+	margin: 0 auto;
+}
+@media (min-width: 480px) {
+	.brave-essentials .social-icons-holder .social-icons:before {
+		max-width: 400px;
+		max-height: 4px;
+	}
+}
+@media (min-width: 768px) {
+	.brave-essentials .social-icons-holder .social-icons:before {
+		max-height: 5px;
+		right: auto;
+		margin: 0;
+		max-width: 100%;
+	}
+}
+.brave-essentials .social-icons-holder .social-icons .social-icon {
+	transition: 0.2s;
+}
+.brave-essentials .social-icons-holder .social-icons .social-icon:hover {
+	filter: contrast(2);
+}
+.brave-essentials .social-icons-holder .social-icons .social-icon svg {
+	color: #f7f4e9;
+	font-size: 25px;
+}
+@media (min-width: 480px) {
+	.brave-essentials .social-icons-holder .social-icons .social-icon svg {
+		font-size: 30px;
+	}
+}
+@media (min-width: 768px) {
+	.brave-essentials .social-icons-holder .social-icons .social-icon svg {
+		font-size: 35px;
+	}
+}
 .brave-essentials .offers {
 	border-top: 3px solid #4a3a2a;
 	padding: 12px 0 15px;
@@ -472,9 +542,6 @@ img {
 }
 .brave-essentials.category .products-nav .container {
 	width: 100%;
-}
-.brave-essentials.products-page .header-holder .icon.mobile-only {
-	display: none !important;
 }
 .brave-essentials.products-page .find-solutions {
 	padding-bottom: 0;
@@ -876,7 +943,8 @@ img {
 .brave-essentials .slick-dots .slick-active {
 	background-color: #75754f;
 }
-.brave-essentials .accordion {
+.brave-essentials .accordion,
+.brave-essentials .accordian-menu {
 	font-family: 'Agency FB';
 	font-size: 27px;
 	cursor: pointer;
@@ -893,22 +961,29 @@ img {
 	padding: 18px 2px 0;
 }
 @media (min-width: 480px) {
-	.brave-essentials .accordion {
+	.brave-essentials .accordion,
+	.brave-essentials .accordian-menu {
 		font-size: 40px;
 		padding: 18px 5px 0;
 	}
 }
 @media (min-width: 768px) {
-	.brave-essentials .accordion {
+	.brave-essentials .accordion,
+	.brave-essentials .accordian-menu {
 		font-size: 20px;
 	}
 }
-.brave-essentials .accordion:after {
+.brave-essentials .accordion:after,
+.brave-essentials .accordian-menu:after {
 	content: '\002B';
 	color: #fff;
 	font-weight: bold;
 	float: right;
 	margin-left: 5px;
+}
+.brave-essentials .accordion.active:after,
+.brave-essentials .accordian-menu.active:after {
+	content: '-';
 }
 .brave-essentials .bullet {
 	width: 100%;
@@ -3103,108 +3178,6 @@ img {
 @media (min-width: 768px) {
 	.brave-essentials .footer-upper-section .company-logo {
 		margin-bottom: 10px;
-	}
-}
-.brave-essentials .footer-upper-section .social-icons-holder {
-	margin-bottom: 15px;
-	order: 3;
-}
-.brave-essentials .footer-upper-section .social-icons-holder .social-icons {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	max-width: 320px;
-	margin: 0 auto;
-	cursor: pointer;
-	position: relative;
-	padding: 40px 40px 0;
-}
-@media (min-width: 768px) {
-	.brave-essentials .footer-upper-section .social-icons-holder .social-icons {
-		max-width: 390px;
-	}
-}
-.brave-essentials
-	.footer-upper-section
-	.social-icons-holder
-	.social-icons:before {
-	position: absolute;
-	content: '';
-	background-image: url(../images/homepage/divider.png);
-	background-size: cover;
-	top: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	max-height: 3px;
-	right: 0;
-	max-width: 272px;
-	margin: 0 auto;
-}
-@media (min-width: 480px) {
-	.brave-essentials
-		.footer-upper-section
-		.social-icons-holder
-		.social-icons:before {
-		max-width: 400px;
-		max-height: 4px;
-	}
-}
-@media (min-width: 768px) {
-	.brave-essentials
-		.footer-upper-section
-		.social-icons-holder
-		.social-icons:before {
-		max-height: 5px;
-		right: auto;
-		margin: 0;
-		max-width: 100%;
-	}
-}
-.brave-essentials
-	.footer-upper-section
-	.social-icons-holder
-	.social-icons
-	.social-icon {
-	transition: 0.2s;
-}
-.brave-essentials
-	.footer-upper-section
-	.social-icons-holder
-	.social-icons
-	.social-icon:hover {
-	filter: contrast(2);
-}
-.brave-essentials
-	.footer-upper-section
-	.social-icons-holder
-	.social-icons
-	.social-icon
-	svg {
-	color: #f7f4e9;
-	font-size: 25px;
-}
-@media (min-width: 480px) {
-	.brave-essentials
-		.footer-upper-section
-		.social-icons-holder
-		.social-icons
-		.social-icon
-		svg {
-		font-size: 30px;
-	}
-}
-@media (min-width: 768px) {
-	.brave-essentials
-		.footer-upper-section
-		.social-icons-holder
-		.social-icons
-		.social-icon
-		svg {
-		font-size: 35px;
 	}
 }
 .brave-essentials .footer-lower-section-holder {
@@ -6939,6 +6912,254 @@ img {
 	.brave-essentials .mini-cart-holder .mini-cart .checkout-btn a {
 		padding: 5px 70px;
 	}
+}
+.brave-essentials .menu-bar-holder {
+	position: fixed;
+	left: 0;
+	display: flex;
+	top: 0;
+	display: none;
+	width: 100%;
+	max-width: 265px;
+	z-index: 999999999999999;
+	transition: 0.4s transform;
+	box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.9), 0 0 4px 0 rgba(0, 0, 0, 0.21),
+		0 0 0 1px rgba(0, 0, 0, 0.9);
+	transform: translateX(-100%);
+	height: 100%;
+	background: #f7f5e8;
+	flex-direction: column;
+	max-height: 732px;
+	overflow-y: auto;
+}
+@media (min-width: 480px) {
+	.brave-essentials .menu-bar-holder {
+		max-width: 380px;
+	}
+}
+.brave-essentials .menu-bar-holder.active {
+	transform: translateX(0);
+}
+.brave-essentials .menu-bar-holder .menu-bar .welcome-holder {
+	background-color: #4a3a2a;
+	display: flex;
+	align-items: flex-start;
+	padding: 20px 10px;
+	justify-content: space-between;
+}
+.brave-essentials .menu-bar-holder .menu-bar .welcome-holder .welcome {
+	display: flex;
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.welcome-holder
+	.welcome
+	.profile-img {
+	max-width: 30px;
+	margin-right: 15px;
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.welcome-holder
+	.welcome
+	.profile-img
+	img {
+	object-fit: cover;
+	height: auto;
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.welcome-holder
+	.welcome
+	.welcome-text-holder
+	.text-holder {
+	font-family: 'Agency FB';
+	font-weight: bold;
+	font-size: 20px;
+	letter-spacing: 2px;
+	color: #f7f5e8;
+	text-transform: uppercase;
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.welcome-holder
+	.welcome
+	.welcome-text-holder
+	.login-signup {
+	font-family: 'Agency FB';
+	font-weight: 400;
+	font-size: 12px;
+	letter-spacing: 2px;
+	color: #f7f5e8;
+	text-transform: capitalize;
+}
+.brave-essentials .menu-bar-holder .menu-bar .welcome-holder .cross-icon {
+	cursor: pointer;
+}
+.brave-essentials .menu-bar-holder .menu-bar .welcome-holder .cross-icon svg {
+	color: #fff;
+	font-size: 9px;
+	border: 3px solid #f7f5e8;
+	padding: 3px;
+}
+.brave-essentials .menu-bar-holder .menu-bar .accordian-list-holder {
+	padding: 0 10px;
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.accordian-list-holder
+	.accordian-list
+	.accordian-menu {
+	font-family: 'Agency FB';
+	font-weight: normal;
+	font-size: 20px;
+	letter-spacing: 1px;
+	color: #4a3a2a;
+	text-transform: uppercase;
+	padding: 18px 15px 12px;
+	margin-bottom: 10px;
+	border-bottom: 2px solid #cbc5b8;
+	margin-bottom: 0;
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.accordian-list-holder
+	.accordian-list
+	.accordian-menu:after {
+	content: '\003E';
+	color: #8b8377;
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.accordian-list-holder
+	.accordian-list
+	.accordian-menu.active:after {
+	transform: rotate(90deg);
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.accordian-list-holder
+	.accordian-list
+	.answer {
+	font-family: 'Agency FB';
+	font-weight: normal;
+	font-size: 20px;
+	letter-spacing: normal;
+	color: #4a3a2a;
+	display: none;
+	border-bottom: 2px solid #cbc5b8;
+	padding: 11px 20px;
+	align-items: center;
+	cursor: pointer;
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.accordian-list-holder
+	.accordian-list
+	.answer.active
+	.image-holder:after {
+	transform: rotate(90deg);
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.accordian-list-holder
+	.accordian-list
+	.answer.sub-menu {
+	padding: 11px 40px;
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.accordian-list-holder
+	.accordian-list
+	.answer
+	.image-holder {
+	display: flex;
+	align-items: center;
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.accordian-list-holder
+	.accordian-list
+	.answer
+	.image-holder
+	.heading {
+	padding-right: 10px;
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.accordian-list-holder
+	.accordian-list
+	.answer
+	.image-holder:after {
+	content: '\003E';
+	color: #8b8377;
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.accordian-list-holder
+	.accordian-list
+	.answer
+	.image-holder.active:after {
+	transform: rotate(90deg);
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.accordian-list-holder
+	.accordian-list
+	.answer
+	img {
+	max-width: 15px;
+	margin-right: 10px;
+}
+.brave-essentials .menu-bar-holder .menu-bar .social-icons-holder {
+	margin-top: 20px;
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.social-icons-holder
+	.social-icons {
+	padding: 40px 70px 0 15px;
+}
+@media (min-width: 480px) {
+	.brave-essentials
+		.menu-bar-holder
+		.menu-bar
+		.social-icons-holder
+		.social-icons {
+		padding: 40px 110px 0 28px;
+	}
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.social-icons-holder
+	.social-icons:before {
+	display: none;
+}
+.brave-essentials
+	.menu-bar-holder
+	.menu-bar
+	.social-icons-holder
+	.social-icons
+	.social-icon
+	svg {
+	color: #4a3a2a;
 }
 
 /*# sourceMappingURL=style.css.map */

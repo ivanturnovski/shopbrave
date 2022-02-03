@@ -51,19 +51,34 @@ $(window).on('load', function () {
 	  $(".mini-cart-holder").removeClass('active');
 	  $(".cart-overlay").removeClass('open');
 	});
+	$(".icon").on("click", function() {
+	  $('.menu-bar-holder').fadeIn();
+	  $(".menu-bar-holder").addClass('active');
+	  $(".cart-overlay").addClass('open');
+	});
+	$(".cross-icon").on("click", function() {
+	  $('.menu-bar-holder').fadeOut(); 
+	  $(".menu-bar-holder").removeClass('active');
+	  $(".cart-overlay").removeClass('open');
+	});
+	$(".cart-overlay").on("click", function() {
+	  $('.menu-bar-holder').fadeOut(); 
+	  $(".menu-bar-holder").removeClass('active');
+	  $(".cart-overlay").removeClass('open');
+	});
 	var numberOfItems = $('.categories-products-holder .categories-list-holder').length; 
 	var limitPerPage = 6; // Limit of items per each page
 	$('.categories-products-holder .categories-list-holder:gt(' + (limitPerPage - 1) + ')').hide();
 	var totalPages = Math.round(numberOfItems / limitPerPage); // Get number of pages
-	$(".pagination").append("<li class='current-page active'><a href='javascript:void(0)'>" + 1 + "</a></li>");
+	// $(".pagination").append("<li class='current-page active'><a href='javascript:void(0)'>" + 1 + "</a></li>");
 	
 	// Loop to insert page number for each sets of items equal to page limit (e.g., limit of 4 with 20 total items = insert 5 pages)
 	for (var i = 2; i <= totalPages; i++) {
-	  $(".pagination").append("<li class='current-page'><a href='javascript:void(0)'>" + i + "</a></li>"); // Insert page number into pagination tabs
+	//   $(".pagination").append("<li class='current-page'><a href='javascript:void(0)'>" + i + "</a></li>"); // Insert page number into pagination tabs
 	}
 	
 	// Add next button after all the page numbers  
-	$(".pagination").append("<li id='next-page'><a href='javascript:void(0)' aria-label=Next><span aria-hidden=true><i class='fas fa-arrow-right'></i></span></a></li>");
+	// $(".pagination").append("<li id='next-page'><a href='javascript:void(0)' aria-label=Next><span aria-hidden=true><i class='fas fa-arrow-right'></i></span></a></li>");
 	
 	// Function that displays new items based on page number that was clicked
 	$(".pagination li.current-page").on("click", function() {
@@ -139,6 +154,22 @@ $(window).on('load', function () {
 	  } else {
 		answer.style.display = "block";
 	  }
+	  });
+	}
+	var acc = document.getElementsByClassName("accordian-menu");
+	var i;
+	for (i = 0; i < acc.length; i++) {
+	  acc[i].addEventListener("click", function () {
+	  this.classList.toggle("active");
+	  $(this).next("div").slideToggle('slow');
+	  });
+	}
+	var acc = document.getElementsByClassName("answer");
+	var i;
+	for (i = 0; i < acc.length; i++) {
+	  acc[i].addEventListener("click", function () {
+	  this.classList.toggle("active");
+	  $(this).next("div").slideToggle('slow');
 	  });
 	}
 	// show on click
