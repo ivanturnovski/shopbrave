@@ -1,5 +1,5 @@
 $(window).on('load', function () {
-	$('.loader-holder').fadeOut("slow");
+	$('.loader-holder').fadeOut("fast");
 	if ($('.banner-holder').length) {
 	  applyBannerSlider(".banner-holder");
 	}
@@ -51,7 +51,7 @@ $(window).on('load', function () {
 	  $(".mini-cart-holder").removeClass('active');
 	  $(".cart-overlay").removeClass('open');
 	});
-	$(".icon").on("click", function() {
+	$(".mobile-menu-icon").on("click", function() {
 	  $('.menu-bar-holder').fadeIn();
 	  $(".menu-bar-holder").addClass('active');
 	  $(".menu-overlay").addClass('open');
@@ -221,8 +221,7 @@ $(window).on('load', function () {
 	  $('.rating-stars').children('span').each(function(i) {
 		$(this).addClass('rated');
 		if (i >= count) {
-		$(this).find(">:first-child").addClass('far fa-star');
-		$(this).find(">:first-child").removeClass('fa');
+			$(this).find(">:first-child").addClass('far fa-star').removeClass('fa');
 		}
 	  });
 	var count = $('.rating-stars-product').data('defaultValue');
@@ -230,8 +229,7 @@ $(window).on('load', function () {
 	  $('.rating-stars-product').children('span').each(function(i) {
 		$(this).addClass('rated');
 		if (i >= count) {
-		$(this).find(">:first-child").addClass('far fa-star');
-		$(this).find(">:first-child").removeClass('fa');
+			$(this).find(">:first-child").addClass('far fa-star').removeClass('fa');
 		}
 	  });
 	var count = $('.rating-stars-reviews').data('defaultValue');
@@ -239,8 +237,7 @@ $(window).on('load', function () {
 	  $('.rating-stars-reviews').children('span').each(function(i) {
 		$(this).addClass('rated');
 		if (i >= count) {
-		$(this).find(">:first-child").addClass('far fa-star');
-		$(this).find(">:first-child").removeClass('fa');
+			$(this).find(">:first-child").addClass('far fa-star').removeClass('fa');
 		}
 	  });
 	var count = $('.rating-stars-reviews-form').data('defaultValue');
@@ -248,8 +245,7 @@ $(window).on('load', function () {
 	  $('.rating-stars-reviews-form').children('span').each(function(i) {
 		$(this).addClass('rated');
 		if (i >= count) {
-		$(this).find(">:first-child").addClass('far fa-star');
-		$(this).find(">:first-child").removeClass('fa');
+			$(this).find(">:first-child").addClass('far fa-star').removeClass('fa');
 		}
 	  });
 	});
@@ -306,7 +302,7 @@ $(window).on('load', function () {
 	  infinite: true,
 	  slidesToScroll: 3,
 	  slidesToShow: 4,
-	  arrows: true,
+	  arrows: false,
 	  autoplay: true,
 	  speed: 2000,
 	});

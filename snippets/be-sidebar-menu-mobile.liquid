@@ -9,11 +9,17 @@
 				</div>
 				<div class="welcome-text-holder">
 					<div class="text-holder">
-						Welcome!
+                      {% if customer.id != null %}
+                      	Hi, {{ customer.name }}
+                      {% else %}
+                      	Welcome!
+                      {% endif %}
 					</div>
+                  	{% if customer.id == null %}
 					<div class="login-signup">
-						Login/Signup
+                      <a href="/account/login">Login</a> / <a href="/account/register">Signup</a>
 					</div>
+                  	{% endif %}
 				</div>
 			</div>
 			<div class="cross-icon">
@@ -22,7 +28,7 @@
 		</div>
 		<div class="accordian-list-holder">
 			<div class="accordian-list">
-				{%- for link in linklists.brave-main-menu.links -%}
+				{%- for link in linklists.brave-mobile-menu.links -%}
 
 				{% if link.levels == 0 %}
 				<a class="accordian-1" href="{{ link.url }}" {% if link.active %}aria-current="page" {% endif %}>

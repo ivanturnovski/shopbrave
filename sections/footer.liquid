@@ -44,7 +44,7 @@
     </div>
     <ul class="faq-list-holder">
       <li class="faq-list">
-        <div class="accordian-list">
+<!--         <div class="accordian-list">
           <button class="accordion">Online Presence
           </button>
           <div class="answer">
@@ -52,14 +52,20 @@
               et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
               aliquip ex ea commodo consequat.</p>
           </div>
-        </div>
+        </div> -->
         <div class="accordian-list">
           <button class="accordion">Information
           </button>
           <div class="answer">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat.</p>
+            <p style="font-size: 18px;line-height: 1.8rem;">
+              {%- for link in linklists.footer-menu-information.links -%}
+              {% if link.levels == 0 %}
+              <a href="{{ link.url }}" {% if link.active %}aria-current="page" {% endif %}>
+					&#9632; {{ link.title }}
+              </a><br/>
+              {% endif %}
+              {%- endfor -%}
+            </p>
           </div>
         </div>
       </li>
@@ -68,12 +74,18 @@
           <button class="accordion">Support
           </button>
           <div class="answer">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat.</p>
+            <p style="font-size: 18px;line-height: 1.8rem;">
+              {%- for link in linklists.footer-menu-support.links -%}
+              {% if link.levels == 0 %}
+              <a href="{{ link.url }}" {% if link.active %}aria-current="page" {% endif %}>
+					&#9632; {{ link.title }}
+              </a><br/>
+              {% endif %}
+              {%- endfor -%}
+            </p>
           </div>
         </div>
-        <div class="accordian-list">
+<!--         <div class="accordian-list">
           <button class="accordion">Contact Us
           </button>
           <div class="answer">
@@ -81,7 +93,7 @@
               et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
               aliquip ex ea commodo consequat.</p>
           </div>
-        </div>
+        </div> -->
       </li>
     </ul>
   </div>
@@ -129,13 +141,17 @@
     <!-- payment method section ends here -->
     <div class="copyright">
       <h6 class="copyright-text">
-        <span class="text-holder"><span class="bullet"></span>2021Copyright<span class="bullet"></span></span> <span
-          class="text-holder">Terms and Conditions<span class="bullet"></span></span>
+        <span class="text-holder"><span class="bullet"></span>{{ 'now' | date: "%Y" }}Copyright<span class="bullet"></span></span> <span class="text-holder"><a href="/pages/terms-conditions" target="_blank">Terms and Conditions</a><span class="bullet"></span></span>
       </h6>
     </div>
     <!-- minicart html -->
     <div class="cart-overlay"></div>
       <div class="mini-cart-holder">
+        <div class="minicart-loader-bg">
+          <div class="minicart-loader">
+            <div></div><div></div><div></div>
+          </div>
+        </div>
         <div class="mini-cart">
           <div class="shopping-cart-holder">
             <a href="{{ routes.cart_url }}" class="heading">Shopping cart</a>            
@@ -163,12 +179,13 @@
 {% render 'be-sidebar-menu-mobile' %}
 
 <style>
-  #cart-empty .heading {
+  #mini-cart-empty .heading {
     font-family: Agency FB;
     font-weight: 400;
-    font-size: 25px;
     letter-spacing: 2px;
     color: #4a3a2a;
+    text-align: center;
+    font-size: 24px;
   }
 </style>
 <script>
@@ -179,8 +196,35 @@
     populateMiniCart();
     e.stopPropagation();
   });
+  
+  // delete item from mini cart
+  $(document).on("click", "#mini-cart-products-holder .delete-btn" ,function () {
+	const id = parseInt($(this).closest(".products-list").data("id"));
+    const quantity = 0;
+    jQuery.post('/cart/change.js', { id: id, quantity: quantity });
+    setTimeout(function() {populateMiniCart()}, 400);
+  });
+  
+  // reduce 1 quantity of item to mini cart
+  $(document).on("click", "#mini-cart-products-holder .product-quantity-holder .minus" ,function () {
+	const id = parseInt($(this).closest(".products-list").data("id"));
+    const quantity = parseInt($(this).closest(".products-list").find('.quantity').text()) - 1;
+    $(this).closest(".products-list").find('.quantity').text(quantity);
+    jQuery.post('/cart/change.js', { id: id, quantity: quantity });
+    setTimeout(function() {populateMiniCart()}, 400);
+  });
+  
+  // add 1 quantity of item to mini cart
+  $(document).on("click", "#mini-cart-products-holder .product-quantity-holder .plus" ,function () {
+	const id = parseInt($(this).closest(".products-list").data("id"));
+    const quantity = parseInt($(this).closest(".products-list").find('.quantity').text()) + 1;
+    $(this).closest(".products-list").find('.quantity').text(quantity);
+    jQuery.post('/cart/change.js', { id: id, quantity: quantity });
+    setTimeout(function() {populateMiniCart()}, 400);
+  });
 
   function populateMiniCart() {
+//     $(".mini-cart-holder .minicart-loader-bg").show();
     fetch('/cart.js')
       .then((resp) => resp.json())
       .then(function (data) {
@@ -188,10 +232,13 @@
         document.getElementById('mini-cart-products-holder').innerHTML = '';
         document.getElementById('mini-cart-total').innerHTML = '';
         if (data.items.length > 0) {
+          $(".mini-cart .total-cost").show();
+          $(".mini-cart .checkout-btn").show();
+          $("#mini-cart-empty").hide();
           document.getElementById('mini-cart-total').innerHTML += `${data.currency} ${data.total_price/100}`;
           data.items.forEach(function (product, index) {
             document.getElementById('mini-cart-products-holder').innerHTML +=
-              `<div class="products-list">
+              `<div class="products-list" data-id="${product.id }">
                 <div class="products-image">
                   <img width="200" src="${product.image}&width=200">
                 </div>
@@ -214,12 +261,15 @@
                 </div>
               </div>`;
           });
+//           $(".mini-cart-holder .minicart-loader-bg").hide();
         } else {
-          document.getElementById('mini-cart-empty').innerHTML = '<div class="heading">The Cart Is Empty</div>';
+          $(".mini-cart .total-cost").hide();
+          $(".mini-cart .checkout-btn").hide();
+          $("#mini-cart-empty").show();
+          document.getElementById('mini-cart-empty').innerHTML = '<div class="heading">The Cart Is Empty<br/></div>';
         }
       })
       .catch((err) => console.log(err));
-
   }
 </script>
 

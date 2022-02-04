@@ -4,6 +4,12 @@
             <li class="nav-list">
                 <a href="{{ shop.url }}">Home</a>
             </li>
+            {% for collection in product.collections %}
+          	<li class="nav-list">
+                <a href="{{ collection.url }}">{{ collection.title }}</a>
+            </li>
+          	{% break %}
+            {% endfor %}
             <li class="nav-list">
                 <a href="{{ product.url }}">{{ product.title }}</a>
             </li>

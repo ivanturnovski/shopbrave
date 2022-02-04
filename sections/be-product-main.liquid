@@ -113,6 +113,13 @@
 			</div>
             {% endcase %}
             {%- endfor -%}
+            <div class="mobile-only" style="flex: 1;"></div><!-- empty div for flex -->
+            <div class="product-quantity mobile-only">
+			  <span class="minus"><a>-</a></span>
+			  <!-- <span class="quantity">1</span> -->
+			  <input  class="quantity" name="quantity" id="Quantity" min="1" value="1">
+			  <span class="plus"><a>+</a></span>
+			</div>
 			<!-- <div class="product-quantity mobile-only">
                 <span class="minus"><a>-</a></span>
                	<input type="number" name="quantity" id="Quantity" min="1" value="1">
@@ -120,7 +127,7 @@
             </div> -->
 		  </div>
 		  <div class="product-quantity-holder">
-			<div class="product-quantity">
+			<div class="product-quantity desktop-only">
 			  <span class="minus"><a>-</a></span>
 			  <!-- <span class="quantity">1</span> -->
 			  <input  class="quantity" name="quantity" id="Quantity" min="1" value="1">
@@ -132,7 +139,15 @@
 			  </li>
 			</ul>
 		  </div>
-		  <div class="type-holder desktop-only">
+          <div class="check-holder mobile-only">
+			<input class="check" type="text" placeholder="Check for Availability">
+			<ul class="check-btn">
+			  <li class="check-btn-list">
+				<a href="#">Check</a>
+			  </li>
+			</ul>
+		  </div>
+		  <div class="type-holder">
 			<div class="type-content-holder">
 			  <div class="type-heading">
 				Best Suited for
@@ -152,33 +167,6 @@
 		  </div>
 		  <div class="product-text">
 			{{ product.description | escape_html }}
-		  </div>
-
-		  <div class="check-holder mobile-only">
-			<input class="check" type="text" placeholder="Check for Availability">
-			<ul class="check-btn">
-			  <li class="check-btn-list">
-				<a href="#">Check</a>
-			  </li>
-			</ul>
-		  </div>
-		  <div class="type-holder mobile-only">
-			<div class="type-content-holder">
-			  <div class="type-heading">
-				Best Suited for
-			  </div>
-			  <div class="type-content">
-				{{ product.metafields.suited.best_suited }}
-			  </div>
-			</div>
-			<div class="type-content-holder">
-			  <div class="type-heading">
-				NOT Advised For
-			  </div>
-			  <div class="type-content">
-				{{ product.metafields.suited.not_advised }}
-			  </div>
-			</div>
 		  </div>
 		  <div class="certificates-holder desktop-only">
 			<ul class="certificates">
@@ -280,7 +268,6 @@
 			  <div class="offer-content">
 				<span class="offer-icon"><img src="{{ 'offer.png' | asset_url }}"></span>
 					{{ product.metafields.offers.val }}
-				</span>
 			  </div>
 			</div>
 		  </div>
