@@ -155,10 +155,16 @@
             </a>
           </div>
         </div>
-        <div class="search-container">
-          <form action="/action_page.php">
-            <input class="search-bar" type="text" placeholder="Search for your favourite products" name="search">
+        <div class="search-container">    
+          <form action="/search" method="GET" role="search">
+            <input id="search" class="search-bar" type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search for your favourite products">
           </form>
+          <div id="myModal" class="modal">            
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="search-results"></div>
+            </div>          
+          </div>          
         </div>
       </div>
     </div>   
@@ -185,6 +191,117 @@
   </header>
 
 {%- render 'cart-notification', color_scheme: section.settings.color_scheme -%}
+
+<style> 
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;    
+    left: 0;    
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+ 
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    position: relative;
+  }
+  @media (max-width: 768px) {
+    .modal-content {    
+    width: auto;    
+  }
+  }
+  
+  .close {
+    color: #aaaaaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #search-results .result {
+    display: flex;
+    height: 45px;
+    border-bottom: 2px solid #6a6a48;
+    padding: 5px 0px;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
+
+<script>
+  var span = document.getElementsByClassName("close")[0];
+  var myModal = document.getElementById('myModal');
+  span.onclick = function () {
+    myModal.style.display = "none";
+  }
+
+  window.onclick = function (event) {
+    if (event.target == myModal) {
+      myModal.style.display = "none";
+    }
+  }
+
+  // Predictive Search
+  var predictiveSearch = document.getElementById('search');  
+  var timer;
+  var searchResults = document.getElementById('search-results');
+  searchResults.style.display = "none;"
+
+  if (predictiveSearch != null) {
+    predictiveSearch.addEventListener('input', function (e) {
+      clearTimeout(timer);
+      if (predictiveSearch.value) {
+        timer = setTimeout(fetchPredictiveSearch, 1000);
+      }
+    });
+  }
+
+  function fetchPredictiveSearch() {
+    fetch(
+      `/search/suggest.json?q=${predictiveSearch.value}&resources[type]=product`
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data);
+        var products = data.resources.results.products;
+        var length = data.resources.results.products.length;
+        if (length < 1) {
+          document.getElementById('search-results').innerHTML = 'No Results';
+        } else {
+          document.getElementById('search-results').innerHTML = '';
+        }        
+        products.forEach(function (product, index) {
+          document.getElementById('search-results').innerHTML += `
+				<div class="result">
+					<a href="${product.url}">
+            <img class="result-img" width="45" src="${product.image}&width=45&height=45"">
+          </a>					
+					<h5 class="result-title"><a href="${product.url}">${product.title}</a></h5>
+					<p class="result-price">INR ${product.price}</p>					
+				</div>
+				`;
+        });
+        myModal.style.display = "block";
+      });
+  }
+// Predictive Search
+</script>
 
 {% javascript %}
   class StickyHeader extends HTMLElement {
