@@ -202,7 +202,7 @@
 	const id = parseInt($(this).closest(".products-list").data("id"));
     const quantity = 0;
     jQuery.post('/cart/change.js', { id: id, quantity: quantity });
-    setTimeout(function() {populateMiniCart()}, 400);
+    setTimeout(function() {populateMiniCart(); cart_count();}, 400);
   });
   
   // reduce 1 quantity of item to mini cart
@@ -273,6 +273,26 @@
       })
       .catch((err) => console.log(err));
   }
+
+function cart_count() {
+	fetch('/cart.js')
+		.then((resp) => resp.json())
+		.then(
+			(data) =>
+				(document.getElementById('cart-count').innerHTML = data.items.length)
+		)
+		.catch((err) => console.log);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+	cart_count();
+});
+
+$(document).on("click", "#cart-del-btn" ,function () { 
+  console.log("delete click");
+  setTimeout(function() {cart_count()}, 400);  
+});
+
 </script>
 
 {% javascript %}

@@ -176,7 +176,7 @@
               </div>
 
               <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
-                <div class="delete-btn">
+                <div id="cart-del-btn" class="delete-btn">
                   <a href="{{ item.url_to_remove }}" class="button button--tertiary"
                   aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
                   <img src="{{ 'delete.png' | asset_url }}" alt="">
@@ -245,6 +245,8 @@
       {{ 'accessibility.loading' | t }}</p>
   </form>
 </cart-items>
+
+
 
 {% schema %}
 {
