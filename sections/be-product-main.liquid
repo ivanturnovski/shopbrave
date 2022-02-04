@@ -6,10 +6,10 @@
 		  <ul class="products-image-holder">
 			{%- for image in product.images -%}
 			<li class="products-image">
-				<div class="image-holder">
-				  <img class="product" src="{{ image.src | img_url: '240x' }}" alt="{{ image.alt }}">
-				</div>
-			  </li>
+              <div class="image-holder">
+                <img class="product" src="{{ image.src | img_url: '1400x1400' }}" alt="{{ image.alt | escape }}">
+              </div>
+            </li>
 			{%- endfor -%}
 		  </ul>
 		</div>
@@ -24,31 +24,25 @@
 		  </div>
 		  <div class="products-image-rating mobile-only">
 			<ul class="products-image-holder">
-			  <li class="products-image">
-				<div class="image-holder">
-					<img class="product" src="{{ 'product-detail.png' | asset_url }}">
-				</div>
-			  </li>
-			  <li class="products-image">
-				<div class="image-holder">
-					<img class="product" src="{{ 'product-detail.png' | asset_url }}">
-				</div>
-			  </li>
-			  <li class="products-image">
-				<div class="image-holder">
-					<img class="product" src="{{ 'product-detail.png' | asset_url }}">
-				</div>
-			  </li>
+              {%- for image in product.images -%}
+              <li class="products-image">
+                <div class="image-holder">
+                  <img class="product" src="{{ image.src | img_url: '800x800' }}" alt="{{ image.alt | escape }}">
+                </div>
+              </li>
+              {%- endfor -%}
 			</ul>
 		  </div>
-		  <div class="products-size">			
+		  <div class="products-size" style="{% if product.has_only_default_variant %}display:none;{% endif %}">			
 			<div id="sizes">
 				<variant-radios data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
-					{%- for option in product.options_with_values -%}						
-						  
-						<h6 class="size-heading">{{ option.name }}</h6>
+					{%- for option in product.options_with_values -%}
+                  		{% if option.name != "Title" %}
+							<h6 class="size-heading">{{ option.name }}</h6>
+                  		{% endif %}
 						<div id="sizes">
 							{%- for value in option.values -%}
+                          	{% if value != "Default Title" %}
 								<input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
 									name="{{ option.name }}"
 									value="{{ value | escape }}"
@@ -58,6 +52,7 @@
 								<label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
 								{{ value }}
 								</label>
+                          	{% endif %}
 							{%- endfor -%}
 						</div>
 					{%- endfor -%}
@@ -147,6 +142,7 @@
 			  </li>
 			</ul>
 		  </div>
+          {% if product.metafields.suited.best_suited and product.metafields.suited.not_advised %}
 		  <div class="type-holder">
 			<div class="type-content-holder">
 			  <div class="type-heading">
@@ -165,9 +161,12 @@
 			  </div>
 			</div>
 		  </div>
+          {% endif %}
+          {% if product.description %}
 		  <div class="product-text">
 			{{ product.description | escape_html }}
 		  </div>
+          {% endif %}
 		  <div class="certificates-holder desktop-only">
 			<ul class="certificates">
 			  <li class="certificates-list">
@@ -262,6 +261,7 @@
 			  </li>
 			</ul>
 		  </div>
+          {% if product.metafields.offers.val %}
 		  <div class="offers">
 			<h6 class="offer-heading">Offers</h6>
 			<div class="offer-content-holder">
@@ -271,6 +271,7 @@
 			  </div>
 			</div>
 		  </div>
+          {% endif %}
 		</div>
 		{% endform %}
 	  </div>
@@ -302,7 +303,7 @@ function AddToCart() {
 		})
 		.then((data) => {
 			console.log(data);
-			// update_cart();
+			populateMiniCart();
 			// AddToCartMessage(data);
 		})
 		.catch((error) => {

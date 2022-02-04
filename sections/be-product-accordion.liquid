@@ -1,155 +1,229 @@
-<div class="how-to-use">
-	<div class="container">
-	  <div class="how-to-use-holder">
-		<h3 class="accordion sub-heading">
-		  How to use
-		</h3>
-		<div class="steps-hide-holder">
-		  <ul class="steps-holder">
-			<li class="steps-list-holder">
-			  <div class="steps-list">
-				<div class="step-image">
-				  <img class="desktop-only" src="{{ product.metafields.how_to_use.image1 | img_url: '120x' }}">
-				  <img class="mobile-only" src="{{ product.metafields.how_to_use.image1mobile | img_url: '80x' }}">
-				</div>
-				<div class="step-heading">
-				  Step 1
-				</div>
-				<div class="step-details">
-					{{ product.metafields.how_to_use.description1 }}
-				</div>
-			  </div>
-			</li>
-			<span class="seperator desktop-only">></span>
-			<li class="steps-list-holder">
-			  <div class="steps-list">
-				<div class="step-image">
-				  <img class="desktop-only" src="{{ product.metafields.how_to_use.image2 | img_url: '120x' }}">
-				  <img class="mobile-only" src="{{ product.metafields.how_to_use.image2mobile | img_url: '80x' }}">
-				</div>
-				<div class="step-heading">
-				  Step 2
-				</div>
-				<div class="step-details">
-					{{ product.metafields.how_to_use.description2 }}
-				</div>
-			  </div>
-			</li>
-			<span class="seperator desktop-only">></span>
-			<li class="steps-list-holder">
-			  <div class="steps-list">
-				<div class="step-image">
-				  <img class="desktop-only" src="{{ product.metafields.how_to_use.image3 | img_url: '120x' }}">
-				  <img class="mobile-only" src="{{ product.metafields.how_to_use.image3mobile | img_url: '80x' }}">
-				</div>
-				<div class="step-heading">
-				  Step 3
-				</div>
-				<div class="step-details">
-					{{ product.metafields.how_to_use.description3 }}
-				</div>
-			  </div>
-			</li>
-		  </ul>
-		</div>
-	  </div>
-	</div>
-  </div>
-  <!-- how to use section ends here -->
-  <div class="what-we-put-in">
-	<div class="container">
-	  <div class="puts-in-section-holder">
-		<h3 class="accordion sub-heading">
-		  wHAT wE PUT IN
-		</h3>
-		<div class="answer put-in-holder">
-		  <ul class="put-in-unorder">
-			<li class="put-in-list-holder">
-			  <div class="put-in-list">
-				<div class="put-in-image">
-				  <img src="{{ product.metafields.put_in.image1 | img_url: '300x' }}">
-				</div>
-				<div class="put-in-heading">
-					{{ product.metafields.put_in.title1 }}
-				</div>
-				<div class="put-in-details">
-					{{ product.metafields.put_in.description1 }}
-				</div>
-			  </div>
-			</li>
-			<li class="put-in-list-holder">
-			  <div class="put-in-list">
-				<div class="put-in-image">
-				  <img src="{{ product.metafields.put_in.image2 | img_url: '300x' }}">
-				</div>
-				<div class="put-in-heading">
-					{{ product.metafields.put_in.title2 }}
-				</div>
-				<div class="put-in-details">
-					{{ product.metafields.put_in.description2 }}
-				</div>
-			  </div>
-			</li>
-			<li class="put-in-list-holder">
-			  <div class="put-in-list">
-				<div class="put-in-image">
-				  <img src="{{ product.metafields.put_in.image3 | img_url: '300x' }}">
-				</div>
-				<div class="put-in-heading">
-					{{ product.metafields.put_in.title3 }}
-				</div>
-				<div class="put-in-details">
-					{{ product.metafields.put_in.description3 }}
-				</div>
-			  </div>
-			</li>
-		  </ul>
-		</div>
-	  </div>
-	</div>
-  </div>
-  <!-- what we put in section ends here -->
-  <div class="safe-with-brave">
-	<div class="container">
-	  <div class="accordian-list desktop-only">
-		<h3 class="accordion sub-heading">Safe with Brave
-		</h3>
-		<div class="answer">
-		  <p><span class="bullet"></span>{{ product.metafields.safe_with_brave.val }}</p>
-		</div>
-	  </div>
-	  <div class="accordian-list">
-		<h3 class="accordion sub-heading">Faqs
-		</h3>
-		<div class="answer">
-		  <p><span class="bullet"></span>{{ product.metafields.faqs.val }}</p>
-		</div>
-	  </div>
-	  <div class="accordian-list desktop-only">
-		<h3 class="accordion sub-heading">Reviews
-		</h3>
-		<div class="answer">
-		  <p>
-			{% for block in section.blocks %}
-				{%- case block.type -%}
-					{%- when '@app' -%}
-						{% render block %}
-					{% endcase %}
-			{% endfor %}
-		</p>
-		</div>
-	  </div>
-	  <div class="accordian-list desktop-only">
-		<h3 class="accordion sub-heading">Q&A
-		</h3>
-		<div class="answer">
-		  <p><span class="bullet"></span>{{ product.metafields.q_a.val }}</p>
-		</div>
-	  </div>
-	</div>
-  </div>
-
-
+{% if product.metafields.how_to_use.image1 %}
+  <div class="how-to-use">
+      <div class="container">
+        <div class="how-to-use-holder">
+          <h3 class="accordion sub-heading">
+            How To Use
+          </h3>
+          <div class="steps-hide-holder">
+            <ul class="steps-holder">
+              <li class="steps-list-holder">
+                <div class="steps-list">
+                  <div class="step-image">
+                    <img src="{{ product.metafields.how_to_use.image1 | img_url: '800x800' }}">
+                  </div>
+                  <div class="step-heading">
+                    Step 1
+                  </div>
+                  <div class="step-details">
+                      {{ product.metafields.how_to_use.description1 }}
+                  </div>
+                </div>
+              </li>
+              {% if product.metafields.how_to_use.image2 %}
+              <span class="seperator desktop-only">></span>
+              <li class="steps-list-holder">
+                <div class="steps-list">
+                  <div class="step-image">
+                    <img src="{{ product.metafields.how_to_use.image2 | img_url: '800x800' }}">
+                  </div>
+                  <div class="step-heading">
+                    Step 2
+                  </div>
+                  <div class="step-details">
+                      {{ product.metafields.how_to_use.description2 }}
+                  </div>
+                </div>
+              </li>
+              {% endif %}
+              {% if product.metafields.how_to_use.image3 %}
+              <span class="seperator desktop-only">></span>
+              <li class="steps-list-holder">
+                <div class="steps-list">
+                  <div class="step-image">
+                    <img src="{{ product.metafields.how_to_use.image3 | img_url: '800x800' }}">
+                  </div>
+                  <div class="step-heading">
+                    Step 3
+                  </div>
+                  {% if product.metafields.how_to_use.description3 %}
+                  <div class="step-details">
+                      {{ product.metafields.how_to_use.description3 }}
+                  </div>
+                  {% endif %}
+                </div>
+              </li>
+              {% endif %}
+              {% if product.metafields.how_to_use.image4 %}
+              <span class="seperator desktop-only">></span>
+              <li class="steps-list-holder">
+                <div class="steps-list">
+                  <div class="step-image">
+                    <img src="{{ product.metafields.how_to_use.image4 | img_url: '800x800' }}">
+                  </div>
+                  <div class="step-heading">
+                    Step 4
+                  </div>
+                  {% if product.metafields.how_to_use.description4 %}
+                  <div class="step-details">
+                      {{ product.metafields.how_to_use.description4 }}
+                  </div>
+                  {% endif %}
+                </div>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- how to use section ends here -->
+	{% endif %}
+	{% if product.metafields.put_in.title1 %}
+    <div class="what-we-put-in">
+      <div class="container">
+        <div class="puts-in-section-holder">
+          <h3 class="accordion sub-heading">
+            What We Put In
+          </h3>
+          <div class="answer put-in-holder">
+            <ul class="put-in-unorder">
+              {% if product.metafields.put_in.title1 %}
+              <li class="put-in-list-holder">
+                <div class="put-in-list">
+                  {% if product.metafields.put_in.image1 %}
+                  <div class="put-in-image">
+                    <img src="{{ product.metafields.put_in.image1 | img_url: '800x800' }}">
+                  </div>
+                  {% endif %}
+                  {% if product.metafields.put_in.title1 %}
+                  <div class="put-in-heading">
+                    {{ product.metafields.put_in.title1 }}
+                  </div>
+                  {% endif %}
+                  {% if product.metafields.put_in.description1 %}
+                  <div class="put-in-details">
+                    {{ product.metafields.put_in.description1 }}
+                  </div>
+                  {% endif %}
+                </div>
+              </li>
+              {% endif %}
+              {% if product.metafields.put_in.title2 %}
+              <li class="put-in-list-holder">
+                <div class="put-in-list">
+                  {% if product.metafields.put_in.image2 %}
+                  <div class="put-in-image">
+                    <img src="{{ product.metafields.put_in.image2 | img_url: '800x800' }}">
+                  </div>
+                  {% endif %}
+                  {% if product.metafields.put_in.title2 %}
+                  <div class="put-in-heading">
+                    {{ product.metafields.put_in.title2 }}
+                  </div>
+                  {% endif %}
+                  {% if product.metafields.put_in.description2 %}
+                  <div class="put-in-details">
+                    {{ product.metafields.put_in.description2 }}
+                  </div>
+                  {% endif %}
+                </div>
+              </li>
+              {% endif %}
+              {% if product.metafields.put_in.title3 %}
+              <li class="put-in-list-holder">
+                <div class="put-in-list">
+                  {% if product.metafields.put_in.image3 %}
+                  <div class="put-in-image">
+                    <img src="{{ product.metafields.put_in.image3 | img_url: '800x800' }}">
+                  </div>
+                  {% endif %}
+                  {% if product.metafields.put_in.title3 %}
+                  <div class="put-in-heading">
+                    {{ product.metafields.put_in.title3 }}
+                  </div>
+                  {% endif %}
+                  {% if product.metafields.put_in.description3 %}
+                  <div class="put-in-details">
+                    {{ product.metafields.put_in.description3 }}
+                  </div>
+                  {% endif %}
+                </div>
+              </li>
+              {% endif %}
+              {% if product.metafields.put_in.title4 %}
+              <li class="put-in-list-holder">
+                <div class="put-in-list">
+                  {% if product.metafields.put_in.image4 %}
+                  <div class="put-in-image">
+                    <img src="{{ product.metafields.put_in.image4 | img_url: '800x800' }}">
+                  </div>
+                  {% endif %}
+                  {% if product.metafields.put_in.title4 %}
+                  <div class="put-in-heading">
+                    {{ product.metafields.put_in.title4 }}
+                  </div>
+                  {% endif %}
+                  {% if product.metafields.put_in.description4 %}
+                  <div class="put-in-details">
+                    {{ product.metafields.put_in.description4 }}
+                  </div>
+                  {% endif %}
+                </div>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- what we put in section ends here -->
+	{% endif %}
+    <div class="safe-with-brave">
+      <div class="container">
+        {% if product.metafields.safe_with_brave.val %}
+        <div class="accordian-list desktop-only">
+          <h3 class="accordion sub-heading">Safe with Brave
+          </h3>
+          <div class="answer">
+            <p><span class="bullet"></span>{{ product.metafields.safe_with_brave.val }}</p>
+          </div>
+        </div>
+        {% endif %}
+        {% if product.metafields.faqs.val %}
+        <div class="accordian-list">
+          <h3 class="accordion sub-heading">Faqs
+          </h3>
+          <div class="answer">
+            <p><span class="bullet"></span>{{ product.metafields.faqs.val }}</p>
+          </div>
+        </div>
+        {% endif %}
+        <div class="accordian-list desktop-only">
+          <h3 class="accordion sub-heading">Reviews
+          </h3>
+          <div class="answer">
+            <p>
+              {% for block in section.blocks %}
+                  {%- case block.type -%}
+                      {%- when '@app' -%}
+                          {% render block %}
+                      {% endcase %}
+              {% endfor %}
+          </p>
+          </div>
+        </div>
+        {% if product.metafields.q_a.val %}
+        <div class="accordian-list desktop-only">
+          <h3 class="accordion sub-heading">Q&amp;A
+          </h3>
+          <div class="answer">
+            <p><span class="bullet"></span>{{ product.metafields.q_a.val }}</p>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
   
 {% schema %}
 

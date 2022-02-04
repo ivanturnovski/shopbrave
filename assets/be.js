@@ -207,7 +207,7 @@ $(window).on('load', function () {
 	})
 	var clicks = 1; 
 	$(".minus").click(function () {
-	if(clicks > 0){ 
+	if(clicks > 1){ 
 	  clicks--; 
 	  $(".quantity").val(clicks);
 	}

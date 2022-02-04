@@ -209,9 +209,11 @@
   $(document).on("click", "#mini-cart-products-holder .product-quantity-holder .minus" ,function () {
 	const id = parseInt($(this).closest(".products-list").data("id"));
     const quantity = parseInt($(this).closest(".products-list").find('.quantity').text()) - 1;
-    $(this).closest(".products-list").find('.quantity').text(quantity);
-    jQuery.post('/cart/change.js', { id: id, quantity: quantity });
-    setTimeout(function() {populateMiniCart()}, 400);
+    if (quantity >= 1) {
+      $(this).closest(".products-list").find('.quantity').text(quantity);
+      jQuery.post('/cart/change.js', { id: id, quantity: quantity });
+      setTimeout(function() {populateMiniCart()}, 400);
+    }
   });
   
   // add 1 quantity of item to mini cart
