@@ -1,110 +1,136 @@
 <div class="bestsellers">
-	<h3 class="section-heading bestsellers-heading">
-	  Bestsellers
-	</h3>
-	<div class="container">
-	  <ul class="products-holder">
-		<li class="products-list">
-		  <div class="products-list-holder">
-			<div class="products-image">
-			  <img src="{{ 'product.png' | asset_url }}">
-			</div>
-			<div class="products-heading">
-			  2+1 Shampoo Conditioner
-			</div>
-			<div class="products-details">
-			  Controls Dandruff, Hair Fall & Frizz
-			</div>
-			<div class="products-price">
-			  <span class="currency">&#8377</span>375
-			</div>
-			<ul class="add-to-cart-btn">
-			  <li class="cart-button">
-				<a href="#">Add to Cart</a>
-			  </li>
-			</ul>
-		  </div>
-		</li>
-		<li class="products-list">
-		  <div class="products-list-holder">
-			<div class="products-image">
-			  <img src="{{ 'product.png' | asset_url }}">
-			</div>
-			<div class="products-heading">
-			  2+1 Shampoo Conditioner
-			</div>
-			<div class="products-details">
-			  Controls Dandruff, Hair Fall & Frizz
-			</div>
-			<div class="products-price">
-			  <span class="currency">&#8377</span>375
-			</div>
-			<ul class="add-to-cart-btn">
-			  <li class="cart-button">
-				<a href="#">Add to Cart</a>
-			  </li>
-			</ul>
-		  </div>
-		</li>
-		<li class="products-list">
-		  <div class="products-list-holder">
-			<div class="products-image">
-			  <img src="{{ 'product.png' | asset_url }}">
-			</div>
-			<div class="products-heading">
-			  2+1 Shampoo Conditioner
-			</div>
-			<div class="products-details">
-			  Controls Dandruff, Hair Fall & Frizz
-			</div>
-			<div class="products-price">
-			  <span class="currency">&#8377</span>375
-			</div>
-			<ul class="add-to-cart-btn">
-			  <li class="cart-button">
-				<a href="#">Add to Cart</a>
-			  </li>
-			</ul>
-		  </div>
-		</li>
-		<li class="products-list">
-		  <div class="products-list-holder">
-			<div class="products-image">
-			  <img src="{{ 'product.png' | asset_url }}">
-			</div>
-			<div class="products-heading">
-			  2+1 Shampoo Conditioner
-			</div>
-			<div class="products-details">
-			  Controls Dandruff, Hair Fall & Frizz
-			</div>
-			<div class="products-price">
-			  <span class="currency">&#8377</span>375
-			</div>
-			<ul class="add-to-cart-btn">
-			  <li class="cart-button">
-				<a href="#">Add to Cart</a>
-			  </li>
-			</ul>
-		  </div>
-		</li>
-	  </ul>
-	</div>
-  </div>
+    <h3 class="section-heading bestsellers-heading">
+        Bestsellers
+    </h3>
+    <div class="container">
+        <ul class="products-holder">
+            {% for block in section.blocks %}
+                {%- assign item = block.settings -%}
+                {%- assign bs_product = all_products[item.product] -%}
+                {%- assign bs_product_img = bs_product.featured_media.preview_image -%}
+                <li class="products-list" data-id="{{ bs_product.selected_or_first_available_variant.id }}">
+                    <div class="products-list-holder">
+                        <div class="products-image">
+                            <a href="{{ bs_product.url }}"><img src="{{ bs_product_img | img_url: '240x' }}"></a>
+                        </div>
+                        <div class="products-heading">
+                            <a href="{{ bs_product.url }}">{{ bs_product.title }}</a>
+                        </div>
 
-  {% schema %}
+                        <div class="products-details">{{ bs_product.vendor }}</div>
+                        <div class="products-price">
+                            <span class="currency">&#8377</span>
+                            {{ bs_product.price | money_without_trailing_zeros }}
+                        </div>
+                        {% form 'product', bs_product, id: 'bs-product-form', class: 'bs-product-form',  novalidate: 'novalidate' %}
+                            <input type="hidden" id="item_id" name="id" value="{{ bs_product.selected_or_first_available_variant.id }}">
+                            <input class="form-control" id="Quantity" min="1" name="quantity" style="display: none" type="number" value="1">
+                            <ul class="add-to-cart-btn">
+                                <li class="cart-button">
+                                    <button id="AddToCart" name="add" type="button">Add to Cart</button>
+                                </li>
+                            </ul>
+                        {% endform %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 
-  {
-	  "name": "Bestsellers",
-	  "class": "be-bestsellers",    
-	  "tag": "section",
-	  "settings": [],
-	  "presets": [
-		  {
-			  "category": "BE",
-			  "name": "Bestsellers"
-		  }
-	  ]
-  }
-  
-  {% endschema %}
+<script type="text/javascript">
+$(document).on("click", "#AddToCart" ,function () {
+	const id = parseInt($(this).closest(".products-list").data("id"));
+    const quantity = 1;
+    jQuery.post('/cart/add.js', { 
+		items: [
+			{
+				id: id,
+				quantity: quantity 
+			}
+		]		
+	});
+    setTimeout(function() {populateMiniCart(); cart_count();}, 400);
+  });
+</script>
+
+<style>
+	.brave-essentials .recently-viewed .recent-products-slider .recent-products-list-holder .recent-products-list .add-to-cart-btn .cart-button button {
+		display: block;
+		padding: 2.5px 0;
+		width: 100%;
+	}
+	.brave-essentials .add-to-cart-btn .cart-button button {
+		font-family: "Robinson";
+		font-weight: normal;
+		font-style: normal;
+		font-size: 30px;
+		letter-spacing: 5px;
+		color: #fff;
+		text-transform: uppercase;
+		background-color: #75754f;
+		padding: 5.6px 65px;
+		border: 3px solid #75754f;
+		display: block;
+		width: 100%;
+		text-align: center;
+		box-sizing: border-box;
+		transition: 0.2s;
+	}
+	@media (min-width: 1200px) {
+		.brave-essentials .add-to-cart-btn .cart-button button {
+			padding: 5.6px 120px;
+		}
+	}
+	@media (min-width: 1024px) {
+		.brave-essentials .add-to-cart-btn .cart-button button {
+			padding: 5.6px 35px;
+		}
+	}
+	@media (min-width: 768px) {
+		.brave-essentials .add-to-cart-btn .cart-button button {
+			padding: 5.6px 25px;
+			display: unset;
+		}
+	}
+	.brave-essentials .add-to-cart-btn .cart-button button:hover {
+		background-color: transparent;
+		color: #75754f;
+		border-color: #75754f;
+	}
+</style>
+{% schema %}
+
+{
+    "name": "Bestsellers",
+    "class": "be-bestsellers",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Section Heading"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Product",
+            "type": "product",
+            "settings": [
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Product"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "BE",
+            "name": "Bestsellers"
+        }
+    ]
+}
+
+{% endschema %}

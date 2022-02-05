@@ -84,7 +84,41 @@
     },
     "164346061381d5b2a6": {
       "type": "be-best-sellers",
-      "settings": {}
+      "blocks": {
+        "5c621e4f-650a-4ef8-973e-ced7b39804c4": {
+          "type": "product",
+          "settings": {
+            "product": "brave-essentials-2-in1-shampoo-conditioner-100-ml"
+          }
+        },
+        "2c74896f-961e-4724-aab8-b23120f28cb7": {
+          "type": "product",
+          "settings": {
+            "product": "brave-essentials-all-natural-beard-oil-50-ml"
+          }
+        },
+        "70db4b4c-4a37-4f23-87cd-1fb222bec227": {
+          "type": "product",
+          "settings": {
+            "product": "brave-essentials-anti-acne-face-wash-100-ml"
+          }
+        },
+        "e646f565-54de-4c6a-9497-6b2329d94dfc": {
+          "type": "product",
+          "settings": {
+            "product": "brave-essentials-aqua-noir-body-wash-200-ml"
+          }
+        }
+      },
+      "block_order": [
+        "5c621e4f-650a-4ef8-973e-ced7b39804c4",
+        "2c74896f-961e-4724-aab8-b23120f28cb7",
+        "70db4b4c-4a37-4f23-87cd-1fb222bec227",
+        "e646f565-54de-4c6a-9497-6b2329d94dfc"
+      ],
+      "settings": {
+        "title": "Bestsellers"
+      }
     },
     "164347055564aa4cb2": {
       "type": "be-find-solutions",
