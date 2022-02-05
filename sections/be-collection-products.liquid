@@ -1,66 +1,130 @@
-{%- paginate collection.products by 2 -%}
-<div class="categories-products">
-    <div class="container">
-        <ul class="categories-products-holder">
-            {% for product in collection.products %}
-                {%- assign image = product.featured_media.preview_image -%}
-                <li class="categories-list-holder">
-                    <div class="categories-list">
-                        <a href="{{ product.url }}">
-                            <img src="{{ image | img_url: '240x'}}" alt="{{ product.title }}">
-                        </a>
-                        <h6 class="product-name">
-                            <a href="{{ product.url }}">{{ product.title }}</a>
-                        </h6>
-                        <div class="product-details">
-                            {{ product.vendor }}
-                        </div>
-                        <div class="product-price">
-                            <span class="currency">&#8377</span>
-                            {{ product.price | money_without_trailing_zeros}}
-                        </div>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-
-		{%- if paginate.pages > 1 -%}
-		<div class="pagination">
-			{%- if paginate.previous.is_link -%}
-			<li id="previous-page"><a href="{{ paginate.previous.url }}"><span aria-hidden="false">
-				<i class="fas fa-arrow-left"></i>
-			</span></a>
-			</li>
-			{% endif %}			
-            {%- for part in paginate.parts -%}
-                {%- if part.is_link -%}
-                    <li class="page-item">
-                        <a href="{{ part.url }}" class="page-link">{{ part.title }}</a>
-                    </li>
-                {%- else -%}
-                    <li class="page-item disabled">
-                        <a href="{{ part.url }}" class="page-link">{{ part.title }}</a>
-                    </li>
-                {%- endif -%}
-            {%- endfor -%}
-			{%- if paginate.next.is_link -%}
-			<li id="next-page"><a href="{{ paginate.next.url }}"><span aria-hidden="true">
-				<i class="fas fa-arrow-right"></i>
-			</span></a>
-			</li>
-			{% endif %}
-        </div>
-		{% endif %}
+<div class="container">
+    {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+    {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+  
+    <div id="main-collection-filters" data-id="{{ section.id }}">
+      {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, collapse_on_larger_devices: section.settings.collapse_on_larger_devices %}
     </div>
+  {%- endif -%}
 </div>
-{%- endpaginate -%}
+
+
+<div id="ProductGridContainer">
+    {%- paginate collection.products by 2 -%}
+    <div class="categories-products">
+        <div class="container">
+            <div class="collection">
+                <div class="loading-overlay gradient"></div>
+                <ul id="product-grid" data-id="{{ section.id }}" class="categories-products-holder ">
+                    {% for product in collection.products %}
+                    {%- assign image = product.featured_media.preview_image -%}
+                    <li class="categories-list-holder">
+                        <div class="categories-list">
+                            <a href="{{ product.url }}">
+                                <img src="{{ image | img_url: '240x'}}" alt="{{ product.title }}">
+                            </a>
+                            <h6 class="product-name">
+                                <a href="{{ product.url }}">{{ product.title }}</a>
+                            </h6>
+                            <div class="product-details">
+                                {{ product.vendor }}
+                            </div>
+                            <div class="product-price">
+                                <span class="currency">&#8377</span>
+                                {{ product.price | money_without_trailing_zeros}}
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {%- if paginate.pages > 1 -%}
+            <div class="pagination">
+                {%- if paginate.previous.is_link -%}
+                <li id="previous-page"><a href="{{ paginate.previous.url }}"><span aria-hidden="false">
+                            <i class="fas fa-arrow-left"></i>
+                        </span></a>
+                </li>
+                {% endif %}
+                {%- for part in paginate.parts -%}
+                {%- if part.is_link -%}
+                <li class="page-item">
+                    <a href="{{ part.url }}" class="page-link">{{ part.title }}</a>
+                </li>
+                {%- else -%}
+                <li class="page-item disabled">
+                    <a href="{{ part.url }}" class="page-link">{{ part.title }}</a>
+                </li>
+                {%- endif -%}
+                {%- endfor -%}
+                {%- if paginate.next.is_link -%}
+                <li id="next-page"><a href="{{ paginate.next.url }}"><span aria-hidden="true">
+                            <i class="fas fa-arrow-right"></i>
+                        </span></a>
+                </li>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {%- endpaginate -%}
+</div>
+
+
+
+<script>
+
+    if (document.getElementById('sort_by') != null) {
+        var select = document.querySelector('#sort_by');
+        select.addEventListener('change', function (e) {
+            var url = new URL(window.location.href);
+            url.searchParams.set('sort_by', e.currentTarget.value);
+            window.location = url.href;
+        });
+    }
+
+</script>
+<style>
+    .facets__wrapper, .facet-filters__sort.select__select {
+        font-family: 'Agency FB';
+    }
+    .facets__heading, .facet-filters__label, #ProductCountDesktop {
+        font-family: 'Robinson';
+    }
+    
+
+</style>
 
 {% schema %}
+
 {
     "name": "Collection Products",
     "class": "be-collection-products",
     "tag": "section",
-    "settings": []
+    "settings": [
+        {
+            "type": "header",
+            "content": "t:sections.main-collection-product-grid.settings.header__1.content"
+        }, {
+            "type": "checkbox",
+            "id": "enable_filtering",
+            "default": true,
+            "label": "t:sections.main-collection-product-grid.settings.enable_filtering.label",
+            "info": "t:sections.main-collection-product-grid.settings.enable_filtering.info"
+        }, {
+            "type": "checkbox",
+            "id": "enable_sorting",
+            "default": true,
+            "label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
+        }, {
+            "type": "checkbox",
+            "id": "collapse_on_larger_devices",
+            "default": false,
+            "label": "t:sections.main-collection-product-grid.settings.collapse_on_larger_devices.label"
+        }
+    ]
 }
 
 {% endschema %}
