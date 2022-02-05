@@ -1,7 +1,9 @@
 <div class="video-section">
 	<div class="container">
 	  <div class="video-section-holder">
-		<!-- <video src=""></video> -->
+		<video controls="controls" style="max-width: 100%; height: auto;">
+			<source src="{{ section.settings.video }}" type="video/mp4" />		 
+		  </video>
 	  </div>
 	</div>
   </div>
@@ -12,7 +14,13 @@
 	  "name": "Video",
 	  "class": "be-video",    
 	  "tag": "section",
-	  "settings": [],
+	  "settings": [
+	  {
+		  "type": "url",
+		  "id": "video",
+		  "label": "Paste video link from Settings->Files"
+	  }
+	  ],
 	  "presets": [
 		  {
 			  "category": "BE",
