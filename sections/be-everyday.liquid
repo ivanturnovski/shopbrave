@@ -1,39 +1,61 @@
 <div class="everyday-section">
 	<div class="container">
-	  <div class="branding-slider">
-		<div class="branding">
-		  <img class="desktop-only" src="{{ 'everyday.png' | asset_url }}">
-		  <img class="mobile-only" src="{{ 'banner-mobile.png' | asset_url }} ">
-		  <div class="content-holder">
-			<h6 class="content-header">
-			  EveryDay
-			</h6>
-			<div class="content-details">
-			  Essentials
+		<div class="branding-slider">
+			<div class="branding">
+				<img class="desktop-only" src="{{ section.settings.desktop_banner | img_url: '1400x'}}">
+				<img class="mobile-only" src="{{ section.settings.mobile_banner | img_url: '400x' }}">
+				<div class="content-holder">
+					<h6 class="content-header">
+						{{ section.settings.heading }}
+					</h6>
+					<div class="content-details">
+						{{ section.settings.subtitle }}
+					</div>
+				</div>
 			</div>
-		  </div>
+			<div class="branding">
+				<img src="{{ section.settings.universal_banner | img_url: '1400x'}}">
+			</div>
 		</div>
-		<div class="branding">
-		  <img src="{{ 'branding-1.jpg' | asset_url }}">
-		</div>
-	  </div>
 	</div>
-  </div>
+</div>
 
 
-  {% schema %}
+{% schema %}
 
-  {
-	  "name": "Everyday",
-	  "class": "be-everyday",    
-	  "tag": "section",
-	  "settings": [],
-	  "presets": [
-		  {
-			  "category": "BE",
-			  "name": "Everyday"
-		  }
-	  ]
-  }
-  
-  {% endschema %}
+{
+    "name": "Everyday",
+    "class": "be-everyday",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+        }, {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle "
+        }, {
+            "type": "image_picker",
+            "id": "desktop_banner",
+            "label": "Desktop Banner"
+        }, {
+            "type": "image_picker",
+            "id": "mobile_banner",
+            "label": "Mobile Banner"
+        }, {
+            "type": "image_picker",
+            "id": "universal_banner",
+            "label": "Desktop & Mobile Banner"
+        }
+    ],
+    "presets": [
+        {
+            "category": "BE",
+            "name": "Everyday"
+        }
+    ]
+}
+
+{% endschema %}

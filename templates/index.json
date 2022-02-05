@@ -74,7 +74,13 @@
     },
     "164345976677309293": {
       "type": "be-everyday",
-      "settings": {}
+      "settings": {
+        "heading": "EveryDay",
+        "subtitle": "Essentials",
+        "desktop_banner": "shopify:\/\/shop_images\/everyday.png",
+        "mobile_banner": "shopify:\/\/shop_images\/banner-mobile.png",
+        "universal_banner": "shopify:\/\/shop_images\/branding-1.jpg"
+      }
     },
     "164346061381d5b2a6": {
       "type": "be-best-sellers",
