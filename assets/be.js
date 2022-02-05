@@ -6,7 +6,7 @@ $(window).on('load', function () {
 	if ($('.products-holder').length) {
 	  applyProductsSlider(".products-holder");
 	}
-	if ($('.solutions-slider').length) {
+	if ($('.solutions-slider').length && $(".solutions-slider li").length > 6) {
 	  applySolutionsSlider(".solutions-slider");
 	}
 	if ($('.products-solutions-slider').length) {

@@ -15,7 +15,7 @@
 				
 						<div class="recent-details">{{ bundle_product.vendor }}</div>
 						<div class="recent-price">
-							<span class="currency">&#8377</span>{{ bundle_product.price }}
+							<span class="currency">&#8377</span>{{ bundle_product.price | money_without_trailing_zeros }}
 						</div>
                         {% form 'product', bundle_product, id: 'product-form-bundle', class: 'bundle-form',  novalidate: 'novalidate' %}
                         <input type="hidden" id="item_id" name="id" value="{{ bundle_product.selected_or_first_available_variant.id }}">
