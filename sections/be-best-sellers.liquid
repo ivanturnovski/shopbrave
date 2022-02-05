@@ -11,16 +11,15 @@
                 <li class="products-list" data-id="{{ bs_product.selected_or_first_available_variant.id }}">
                     <div class="products-list-holder">
                         <div class="products-image">
-                            <a href="{{ bs_product.url }}"><img src="{{ bs_product_img | img_url: '240x' }}"></a>
+                            <a href="{{ bs_product.url }}"><img src="{{ bs_product_img | img_url: '1080x' }}"></a>
                         </div>
                         <div class="products-heading">
                             <a href="{{ bs_product.url }}">{{ bs_product.title }}</a>
                         </div>
-
                         <div class="products-details">{{ bs_product.vendor }}</div>
                         <div class="products-price">
                             <span class="currency">&#8377</span>
-                            {{ bs_product.price | money_without_trailing_zeros }}
+                            {{ bs_product.price | money_without_currency }}
                         </div>
                         {% form 'product', bs_product, id: 'bs-product-form', class: 'bs-product-form',  novalidate: 'novalidate' %}
                             <input type="hidden" id="item_id" name="id" value="{{ bs_product.selected_or_first_available_variant.id }}">

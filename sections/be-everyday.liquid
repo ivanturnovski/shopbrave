@@ -1,21 +1,33 @@
 <div class="everyday-section">
 	<div class="container">
 		<div class="branding-slider">
-			<div class="branding">
-				<img class="desktop-only" src="{{ section.settings.desktop_banner | img_url: '1400x'}}">
-				<img class="mobile-only" src="{{ section.settings.mobile_banner | img_url: '400x' }}">
-				<div class="content-holder">
-					<h6 class="content-header">
-						{{ section.settings.heading }}
-					</h6>
-					<div class="content-details">
-						{{ section.settings.subtitle }}
-					</div>
-				</div>
-			</div>
-			<div class="branding">
-				<img src="{{ section.settings.universal_banner | img_url: '1400x'}}">
-			</div>
+          	{% if section.settings.link1 and section.settings.link1 != "https://" %}
+          		<a href="{{ section.settings.link1 }}">
+          	{% endif %}
+              <div class="branding">
+                  <img class="desktop-only" src="{{ section.settings.desktop_banner | img_url: '1400x'}}">
+                  <img class="mobile-only" src="{{ section.settings.mobile_banner | img_url: '800x' }}">
+                  <div class="content-holder">
+                      <h6 class="content-header">
+                          {{ section.settings.heading }}
+                      </h6>
+                      <div class="content-details">
+                          {{ section.settings.subtitle }}
+                      </div>
+                  </div>
+              </div>
+            {% if section.settings.link1 and section.settings.link1 != "https://" %}
+          		</a>
+          	{% endif %}
+          	{% if section.settings.link2 and section.settings.link2 != "https://" %}
+          		<a href="{{ section.settings.link2 }}">
+          	{% endif %}
+              <div class="branding">
+                <img src="{{ section.settings.universal_banner | img_url: '1400x'}}">
+              </div>
+          	{% if section.settings.link2 and section.settings.link2 != "https://" %}
+          		</a>
+          	{% endif %}
 		</div>
 	</div>
 </div>
@@ -35,19 +47,29 @@
         }, {
             "type": "text",
             "id": "subtitle",
-            "label": "Subtitle "
-        }, {
+            "label": "Subtitle"
+		}, {
+            "type": "text",
+            "id": "link1",
+            "default": "https://",
+            "label": "Link for First Banner"
+		}, {
+            "type": "text",
+            "id": "link2",
+            "default": "https://",
+            "label": "Link for Second Banner"
+		}, {
             "type": "image_picker",
             "id": "desktop_banner",
-            "label": "Desktop Banner"
+            "label": "First Banner (Desktop)"
         }, {
             "type": "image_picker",
             "id": "mobile_banner",
-            "label": "Mobile Banner"
+            "label": "First Banner (Mobile)"
         }, {
             "type": "image_picker",
             "id": "universal_banner",
-            "label": "Desktop & Mobile Banner"
+            "label": "Second Banner (Universal)"
         }
     ],
     "presets": [
