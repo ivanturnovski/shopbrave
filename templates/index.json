@@ -49,19 +49,22 @@
         "2d288809-c76f-41a8-81c6-76707c99198e": {
           "type": "banner",
           "settings": {
-            "img": "shopify:\/\/shop_images\/banner.png"
+            "img": "shopify:\/\/shop_images\/banner.png",
+            "link": "https:\/\/"
           }
         },
         "ee0ed2ca-b5d2-49e8-baee-e3e14d4755a4": {
           "type": "banner",
           "settings": {
-            "img": "shopify:\/\/shop_images\/banner-2.png"
+            "img": "shopify:\/\/shop_images\/banner-2.png",
+            "link": "https:\/\/"
           }
         },
         "5f9bbc61-cac2-46dc-9ea0-51137de734a0": {
           "type": "banner",
           "settings": {
-            "img": "shopify:\/\/shop_images\/banner.png"
+            "img": "shopify:\/\/shop_images\/banner.png",
+            "link": "https:\/\/"
           }
         }
       },
@@ -77,6 +80,8 @@
       "settings": {
         "heading": "EveryDay",
         "subtitle": "Essentials",
+        "link1": "https:\/\/",
+        "link2": "https:\/\/",
         "desktop_banner": "shopify:\/\/shop_images\/everyday.png",
         "mobile_banner": "shopify:\/\/shop_images\/banner-mobile.png",
         "universal_banner": "shopify:\/\/shop_images\/branding-1.jpg"
@@ -283,7 +288,9 @@
     },
     "16434751456519e7ba": {
       "type": "be-video",
-      "settings": {}
+      "settings": {
+        "video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0555\/2416\/3649\/files\/sample-5s.mp4?v=1644077349"
+      }
     },
     "1643475583ec6bfa5f": {
       "type": "be-refer",
