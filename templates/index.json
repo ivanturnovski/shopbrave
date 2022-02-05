@@ -195,7 +195,41 @@
     },
     "1643471664c3e9b9a6": {
       "type": "be-new-launches",
-      "settings": {}
+      "blocks": {
+        "922b713c-6cd7-4938-ac31-c04746fca51c": {
+          "type": "product",
+          "settings": {
+            "product": "brave-essentials-2-in1-shampoo-conditioner-100-ml"
+          }
+        },
+        "ac36b60d-3a1e-4171-9f83-61a7cbc05772": {
+          "type": "product",
+          "settings": {
+            "product": "brave-essentials-de-tan-face-scrub-75-ml"
+          }
+        },
+        "cb6dfa87-44e3-4b8b-8b98-b1bd34e0bd60": {
+          "type": "product",
+          "settings": {
+            "product": "brave-essentials-spf-20-pa-brightening-face-cream-50ml"
+          }
+        },
+        "12c55165-ca8d-432e-9fc9-d328daa07f51": {
+          "type": "product",
+          "settings": {
+            "product": "brave-essentials-daily-beard-wash-100-ml"
+          }
+        }
+      },
+      "block_order": [
+        "922b713c-6cd7-4938-ac31-c04746fca51c",
+        "ac36b60d-3a1e-4171-9f83-61a7cbc05772",
+        "cb6dfa87-44e3-4b8b-8b98-b1bd34e0bd60",
+        "12c55165-ca8d-432e-9fc9-d328daa07f51"
+      ],
+      "settings": {
+        "title": "New launches"
+      }
     },
     "16434733525f3230e4": {
       "type": "be-brave-hearts",
