@@ -242,10 +242,10 @@
             document.getElementById('mini-cart-products-holder').innerHTML +=
               `<div class="products-list" data-id="${product.id }">
                 <div class="products-image">
-                  <img width="200" src="${product.image}&width=200">
+                  <a href="${product.url}"><img width="200" src="${product.image}&width=200"></a>
                 </div>
                 <div class="product-details">
-                  <div class="products-header">${product.title}</div>
+                  <div class="products-header"><a href="${product.url}">${product.title}</a></div>
                   <div class="products-details">${product.vendor}</div>
                   <div class="products-price">${data.currency} ${product.price/100}</div>	
                   <div class="holder">

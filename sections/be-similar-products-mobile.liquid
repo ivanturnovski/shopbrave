@@ -22,11 +22,11 @@
 						card += '<div class="recent-products-list">';
 						card += '<div class="recent-product-image">';	
 						if (product.images.length > 0) {
-							card += '<img src="' + product.images[0] + '&width=1200">';
+							card += '<a href='+ product.url +'><img src="' + product.images[0] + '&width=1200"></a>';
 						}
 						card += '</div>';
 						// card +=  '<div class="product-rating"><span class="number">{{ review_rating }}</span> <span class="star"><img src=""></span></div>';						
-						card += '<div class="recent-heading">' + product.title + '</div>';					
+						card += '<div class="recent-heading"><a href='+ product.url +'>' + product.title + '</a></div>';					
 						card += '<div class="recent-details">' + product.vendor + '</div>';					
 						card += '<div class="recent-price"><span class="currency">{{ shop.currency }}</span>' + product.price / 100 + '</div>';				
 						card += '</div></li>';
