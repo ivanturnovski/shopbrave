@@ -242,7 +242,11 @@
     },
     "16434738892326f4e8": {
       "type": "be-gifting-banner",
-      "settings": {}
+      "settings": {
+        "title": "Gifting Banner",
+        "link": "shopify:\/\/collections",
+        "image": "shopify:\/\/shop_images\/branding-1.jpg"
+      }
     },
     "1643474259f9ff5874": {
       "type": "be-blogs",

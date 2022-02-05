@@ -1,26 +1,51 @@
 <div class="gifting-banner">
-	<div class="container">
-	  <div class="gifting-banner-holder">
-		<h3 class="gifting-banner-heading">
-		  Gifting - Banner
-		</h3>
-	  </div>
-	</div>
-  </div>
+    <div class="container">
+        <div class="gifting-banner-holder">
+            <a href="{{ section.settings.link }}">
+                <h3 class="gifting-banner-heading">
+                    {{ section.settings.title }}
+                </h3>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+{% style %}
+.gifting-banner-holder {
+	background: url("{{ section.settings.image | img_url: '1400x', crop: 'center' }}");
+	background-size: cover;
+}
+{% endstyle %}
 
 {% schema %}
 
-  {
-	  "name": "Gifting Banner",
-	  "class": "be-gifting-banner",    
-	  "tag": "section",
-	  "settings": [],
-	  "presets": [
-		  {
-			  "category": "BE",
-			  "name": "Gifting Banner"
-		  }
-	  ]
-  }
-  
-  {% endschema %}
+{
+    "name": "Gifting Banner",
+    "class": "be-gifting-banner",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Section Heading"
+        }, {
+            "type": "url",
+            "id": "link",
+            "label": "Gifting Banner URL"
+        }
+		, {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Gifting Banner"
+        }
+    ],
+    "presets": [
+        {
+            "category": "BE",
+            "name": "Gifting Banner"
+        }
+    ]
+}
+
+{% endschema %}
