@@ -2,6 +2,45 @@
   "sections": {
     "164344943926daa1fd": {
       "type": "be-categories-slider",
+      "blocks": {
+        "276e1a53-feb9-4ff6-bdaf-6a54d29ab5b9": {
+          "type": "slide_collection",
+          "settings": {
+            "slide_collection": "acne-test"
+          }
+        },
+        "1ef204dc-d1d6-4c00-90b7-c4eaec280cfe": {
+          "type": "slide_collection",
+          "settings": {
+            "slide_collection": "beard-growth-test"
+          }
+        },
+        "d1d3ed3e-74af-49c9-a03f-e4bb2df72f1c": {
+          "type": "slide_collection",
+          "settings": {
+            "slide_collection": "pigmentation-test"
+          }
+        },
+        "e2595b91-c770-4960-b929-21567d117bb7": {
+          "type": "slide_collection",
+          "settings": {
+            "slide_collection": "beard-growth-test"
+          }
+        },
+        "8efb7df2-f891-419e-b6c3-ccc9a198b0ee": {
+          "type": "slide_collection",
+          "settings": {
+            "slide_collection": "acne-test"
+          }
+        }
+      },
+      "block_order": [
+        "276e1a53-feb9-4ff6-bdaf-6a54d29ab5b9",
+        "1ef204dc-d1d6-4c00-90b7-c4eaec280cfe",
+        "d1d3ed3e-74af-49c9-a03f-e4bb2df72f1c",
+        "e2595b91-c770-4960-b929-21567d117bb7",
+        "8efb7df2-f891-419e-b6c3-ccc9a198b0ee"
+      ],
       "settings": {}
     },
     "164345847515201647": {

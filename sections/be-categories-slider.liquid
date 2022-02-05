@@ -1,46 +1,40 @@
 <div class="categories-slider mobile-only">
-	<ul class="categories-holder">
-	  <li class="categories-list-holder">
-		<div class="categories-list">
-		  <img src="{{ 'beard-category.png' | asset_url }}">
-		  <h6 class="categories-header">Beard Care</h6>
-		</div>
-	  </li>
-	  <li class="categories-list-holder">
-		<div class="categories-list">
-		  <img src="{{ 'haircare.png' | asset_url }}">		  
-		  <h6 class="categories-header">Hair Care</h6>
-		</div>
-	  </li>
-	  <li class="categories-list-holder">
-		<div class="categories-list">
-		  <img src="{{ 'facecare.png' | asset_url }}">
-		  <h6 class="categories-header">Face Care</h6>
-		</div>
-	  </li>
-	  <li class="categories-list-holder">
-		<div class="categories-list">
-		  <img src="{{ 'shave.png ' | asset_url }}">
-		  <h6 class="categories-header">Shave</h6>
-		</div>
-	  </li>
-	  <li class="categories-list-holder">
-		<div class="categories-list">
-		  <img src="{{ 'haircare.png ' | asset_url }}">
-		  <h6 class="categories-header">Fragrance</h6>
-		</div>
-	  </li>
-	</ul>
-  </div>
+    <ul class="categories-holder">
+        {% for block in section.blocks %}
+            {% assign item = block.settings %}
+            {% case block.type %}
+                {% when 'slide_collection' %}
+                    <li class="categories-list-holder">
+                        <div class="categories-list">
+                            <img src="{{ collections[item.slide_collection] | img_url: '100x' }}">
+                            <a class="categories-header" href="{{ collections[item.slide_collection].url }}">{{ collections[item.slide_collection].title }}</a>
+                        </div>
+                    </li>
+            {% endcase %}
+        {% endfor %}
+    </ul>
+</div>
 
-
-  {% schema %}
+{% schema %}
 
 {
     "name": "Categories Slider",
-	"class": "be-categories-slider",    
+    "class": "be-categories-slider",
     "tag": "section",
     "settings": [],
+    "blocks": [
+        {
+            "name": "Slide Collection",
+            "type": "slide_collection",
+            "settings": [
+                {
+                    "type": "collection",
+                    "label": "Choose Collection",
+                    "id": "slide_collection"
+                }
+            ]
+        }
+    ],
     "presets": [
         {
             "category": "BE",
