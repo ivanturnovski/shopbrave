@@ -246,7 +246,34 @@
     },
     "1643474259f9ff5874": {
       "type": "be-blogs",
-      "settings": {}
+      "blocks": {
+        "f1030e64-d358-41b6-ad2a-44e3457e8d0d": {
+          "type": "blog_article",
+          "settings": {
+            "article": "news\/blog-post-1"
+          }
+        },
+        "3bd72cbb-cbc0-4813-9613-f7b9e5ca7281": {
+          "type": "blog_article",
+          "settings": {
+            "article": "news\/blog-post-2"
+          }
+        },
+        "650f4421-022d-4b86-b097-c59afa3423a8": {
+          "type": "blog_article",
+          "settings": {
+            "article": "news\/blog-post-1"
+          }
+        }
+      },
+      "block_order": [
+        "f1030e64-d358-41b6-ad2a-44e3457e8d0d",
+        "3bd72cbb-cbc0-4813-9613-f7b9e5ca7281",
+        "650f4421-022d-4b86-b097-c59afa3423a8"
+      ],
+      "settings": {
+        "title": "Blogs"
+      }
     },
     "1643474607e045ee57": {
       "type": "be-media-coverage",
