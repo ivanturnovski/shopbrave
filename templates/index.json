@@ -245,7 +245,41 @@
     },
     "1643474607e045ee57": {
       "type": "be-media-coverage",
-      "settings": {}
+      "blocks": {
+        "924f91c9-f418-41b9-a189-c42d92440928": {
+          "type": "media_coverage",
+          "settings": {
+            "media_image": "shopify:\/\/shop_images\/times-of-india.png"
+          }
+        },
+        "b32c318f-8873-46b8-b804-f75ff4527958": {
+          "type": "media_coverage",
+          "settings": {
+            "media_image": "shopify:\/\/shop_images\/vogue.png"
+          }
+        },
+        "2dfc9edc-472c-4efb-91ca-595d0c28be55": {
+          "type": "media_coverage",
+          "settings": {
+            "media_image": "shopify:\/\/shop_images\/forbes.png"
+          }
+        },
+        "49f84b40-048e-48fc-abf7-96722535c550": {
+          "type": "media_coverage",
+          "settings": {
+            "media_image": "shopify:\/\/shop_images\/times-of-india.png"
+          }
+        }
+      },
+      "block_order": [
+        "924f91c9-f418-41b9-a189-c42d92440928",
+        "b32c318f-8873-46b8-b804-f75ff4527958",
+        "2dfc9edc-472c-4efb-91ca-595d0c28be55",
+        "49f84b40-048e-48fc-abf7-96722535c550"
+      ],
+      "settings": {
+        "title": "Media Coverage"
+      }
     },
     "16434751456519e7ba": {
       "type": "be-video",
