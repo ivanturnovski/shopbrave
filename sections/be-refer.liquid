@@ -7,7 +7,7 @@
 			  <div class="refer-heading-holder">
 				<h6 class="refer-heading">
 <!-- 				  Refer &amp; Earn -->
-                  Join The Club 
+                  {{ section.settings.title }}
 				</h6>
 			  </div>
 			</div>
@@ -15,7 +15,13 @@
 			  Join The Club of Honor
 			</div> -->
 			<div class="input-holder">
-			  <input class="email-bar" type="email" placeholder="Your Mail" name="email">
+				
+				{% form 'customer' %}
+				<input name="contact[email]" type="email" class="email-bar" placeholder="Your Mail"/>
+				<div class="submit">
+					<input type="submit" value="Sign up" />
+				</div>
+				{% endform %}
 			</div>
 		  </div>
 		</div>
@@ -75,19 +81,41 @@
 	</div>
   </div>
 
+{% style %}
+.refer-section .email-bar {
+	text-align: center
+}
+.refer-section .submit {
+	margin-top: 15px
+}
+.refer-section .submit input:hover {
+	cursor: pointer!important;
+	background-color: transparent!important;
+    color: #75754f!important;
+    border-color: #75754f!important;
+	border: 3px solid #75754f!important;
+}
+{% endstyle %}
+
 {% schema %}
 
-  {
-	  "name": "Refer",
-	  "class": "be-refer",    
-	  "tag": "section",
-	  "settings": [],
-	  "presets": [
-		  {
-			  "category": "BE",
-			  "name": "Refer"
-		  }
-	  ]
-  }
-  
-  {% endschema %}
+{
+    "name": "Refer",
+    "class": "be-refer",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Section Heading"
+        }
+    ],
+    "presets": [
+        {
+            "category": "BE",
+            "name": "Refer"
+        }
+    ]
+}
+
+{% endschema %}

@@ -325,7 +325,9 @@
     },
     "1643475583ec6bfa5f": {
       "type": "be-refer",
-      "settings": {}
+      "settings": {
+        "title": "Join the club"
+      }
     }
   },
   "order": [
