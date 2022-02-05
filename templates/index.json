@@ -122,7 +122,76 @@
     },
     "164347055564aa4cb2": {
       "type": "be-find-solutions",
-      "settings": {}
+      "blocks": {
+        "451b790a-5d4e-45e6-9e17-833b5ade2a91": {
+          "type": "fs_collection",
+          "settings": {
+            "fs_collection": "face-care"
+          }
+        },
+        "090a6355-2e17-4f11-9b10-f42e5eb3c746": {
+          "type": "fs_collection",
+          "settings": {
+            "fs_collection": "hair-care"
+          }
+        },
+        "34cca463-726e-4a06-b7e4-0a5f2e4a08c2": {
+          "type": "fs_collection",
+          "settings": {
+            "fs_collection": "skin-care"
+          }
+        },
+        "5b01eecd-18a8-4991-82dc-504bde41c64a": {
+          "type": "fs_collection",
+          "settings": {
+            "fs_collection": "face-care"
+          }
+        },
+        "a748f5ed-3d96-4944-a223-6b7f30b6a120": {
+          "type": "fs_collection",
+          "settings": {
+            "fs_collection": "hair-care"
+          }
+        },
+        "ceacc697-63a9-4a90-9a7d-5a6eae33fe50": {
+          "type": "fs_collection",
+          "settings": {
+            "fs_collection": "skin-care"
+          }
+        },
+        "51fd43d7-fc36-4113-a996-3f07fec97b3a": {
+          "type": "fs_collection",
+          "settings": {
+            "fs_collection": "face-care"
+          }
+        },
+        "bfb34ac7-c861-4785-b09e-71565d534b7e": {
+          "type": "fs_collection",
+          "settings": {
+            "fs_collection": "hair-care"
+          }
+        },
+        "5aefd063-d39c-4f50-8851-807af5c7a201": {
+          "type": "fs_collection",
+          "settings": {
+            "fs_collection": "skin-care"
+          }
+        }
+      },
+      "block_order": [
+        "451b790a-5d4e-45e6-9e17-833b5ade2a91",
+        "090a6355-2e17-4f11-9b10-f42e5eb3c746",
+        "34cca463-726e-4a06-b7e4-0a5f2e4a08c2",
+        "5b01eecd-18a8-4991-82dc-504bde41c64a",
+        "a748f5ed-3d96-4944-a223-6b7f30b6a120",
+        "ceacc697-63a9-4a90-9a7d-5a6eae33fe50",
+        "51fd43d7-fc36-4113-a996-3f07fec97b3a",
+        "bfb34ac7-c861-4785-b09e-71565d534b7e",
+        "5aefd063-d39c-4f50-8851-807af5c7a201"
+      ],
+      "settings": {
+        "title": "Find solutions for"
+      }
     },
     "1643471664c3e9b9a6": {
       "type": "be-new-launches",
