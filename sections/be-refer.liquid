@@ -18,6 +18,7 @@
 				
 				{% form 'customer' %}
 				<input name="contact[email]" type="email" class="email-bar" placeholder="Your Mail"/>
+				<i class="fas fa-arrow-right"></i>
 				<div class="submit">
 					<input type="submit" value="Sign up" />
 				</div>
@@ -86,7 +87,10 @@
 	text-align: center
 }
 .refer-section .submit {
-	margin-top: 15px
+	margin-top: 15px;
+	display: block;
+    padding: 2.5px 0;
+    width: 100%;
 }
 .refer-section .submit input:hover {
 	cursor: pointer!important;
@@ -94,6 +98,15 @@
     color: #75754f!important;
     border-color: #75754f!important;
 	border: 3px solid #75754f!important;
+}
+.brave-essentials .refer-section .container .refer-section-holder {    
+    justify-content: center;
+}
+.brave-essentials .refer-section form {    
+    width: 100%;
+}
+.brave-essentials .refer-section .container .refer-section-holder .refer-content-holder .refer-content .input-holder svg {
+	top:10px;
 }
 {% endstyle %}
 
