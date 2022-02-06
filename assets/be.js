@@ -6,9 +6,9 @@ $(window).on('load', function () {
 	if ($('.products-holder').length) {
 	  applyProductsSlider(".products-holder");
 	}
-	if ($('.solutions-slider').length) {
-	  applySolutionsSlider(".solutions-slider");
-	}
+    if ($('.solutions-slider').length && $('.solutions-slider li').length > 3) {
+      applySolutionsSlider(".solutions-slider");
+    }
 	if ($('.products-solutions-slider').length) {
 	  applyProductSolutionsSlider(".products-solutions-slider");
 	}
@@ -27,9 +27,9 @@ $(window).on('load', function () {
 	if ($('.certificates-slider-holder').length) {
 	  applyCertificatesSlider(".certificates-slider-holder");
 	}
-	if ($('.recent-products-slider').length) {
-	  applyRecentSlider(".recent-products-slider");
-	}
+    if ($('.recent-products-slider').length) {
+      setTimeout(function () { applyRecentSlider(".recent-products-slider") }, 2000);
+    }
 	if ($('.branding-slider').length) {
 	  applyBrandingSlider(".branding-slider");
 	}
@@ -218,7 +218,7 @@ $(window).on('load', function () {
 	})
 	var clicks = 1; 
 	$(".minus").click(function () {
-	if(clicks > 0){ 
+	if(clicks > 1){ 
 	  clicks--; 
 	  $(".quantity").val(clicks);
 	}
@@ -305,7 +305,7 @@ $(window).on('load', function () {
 	  dots: true,
 	  infinite: true,
 	  slidesPerRow: 3,
-	  rows: 2,
+	  rows: 1,
 	  arrows: false,
 	  autoplay: true,
 	  speed: 2000,
@@ -317,7 +317,7 @@ $(window).on('load', function () {
 	  infinite: true,
 	  slidesToScroll: 3,
 	  slidesToShow: 4,
-	  arrows: true,
+	  arrows: false,
 	  autoplay: true,
 	  speed: 2000,
 	});

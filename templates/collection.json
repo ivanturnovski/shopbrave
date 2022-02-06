@@ -6,19 +6,22 @@
         "957a6cd6-d0ba-420f-9fb1-88d5dbd7fb51": {
           "type": "banner",
           "settings": {
-            "img": "shopify:\/\/shop_images\/banner-2.png"
+            "img": "shopify:\/\/shop_images\/banner-2.png",
+            "link": "https:\/\/"
           }
         },
         "89405c48-d4fd-45cc-b9bf-5d5d71fe8073": {
           "type": "banner",
           "settings": {
-            "img": "shopify:\/\/shop_images\/banner.png"
+            "img": "shopify:\/\/shop_images\/banner.png",
+            "link": "https:\/\/"
           }
         },
         "a7600025-2112-4a45-be40-e726d1e33cf0": {
           "type": "banner",
           "settings": {
-            "img": "shopify:\/\/shop_images\/banner-2.png"
+            "img": "shopify:\/\/shop_images\/banner-2.png",
+            "link": "https:\/\/"
           }
         }
       },
@@ -35,11 +38,16 @@
     },
     "be-collection-filters-mobile": {
       "type": "be-collection-filters-mobile",
+      "disabled": true,
       "settings": {}
     },
     "be-collection-products": {
       "type": "be-collection-products",
-      "settings": {}
+      "settings": {
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "collapse_on_larger_devices": false
+      }
     }
   },
   "order": [
