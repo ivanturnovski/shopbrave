@@ -4,12 +4,35 @@
 	  <div class="product-page-details">
 		<div class="products-image-rating desktop-only">
 		  <ul class="products-image-holder">
-			{%- for image in product.images -%}
-			<li class="products-image">
-              <div class="image-holder">
-                <img class="product" src="{{ image.src | img_url: '1400x1400' }}" alt="{{ image.alt | escape }}">
-              </div>
-            </li>
+			{%- for media in product.media -%}
+			{% case media.media_type %}
+				{% when 'image' %}
+				<li class="products-image">
+					<div class="image-holder">
+					  <img class="product" src="{{ media | img_url: '1400x1400' }}" alt="{{ media.preview_image.alt }}">
+					</div>
+				  </li>
+				{% when 'external_video'%}
+				<li class="products-image">
+					<div class="iframe-container">
+						{{ media | external_video_tag: image_size: '450x', controls: true, class: 'responsive-iframe' }}
+					</div>
+				</li>
+				{% when 'video' %}
+				<li class="products-image">	
+					<div class="image-holder">
+						{{ media | video_tag: image_size: '450x', controls: true }}	
+					</div>									
+				</li>					
+				{% when 'model' %}
+				<li class="products-image">
+					<div class="image-holder">
+						{{ media | model_viewer_tag }}
+					</div>
+				</li>					
+				{% else %}
+					{{ media | media_tag }}
+			{% endcase %}
 			{%- endfor -%}
 		  </ul>
 		</div>
@@ -115,7 +138,9 @@
 				  <span><span data-value="4" class="fa fa-star"></span></span>
 				  <span><span data-value="5" class="fa fa-star"></span></span>			
 				</div>
-			  </div>		
+			  </div>
+			  {% else %}
+			  <div style="display: flex; flex-basis:54%;"></div>		
 			{% endif %}
 			
 
@@ -394,6 +419,32 @@ class RadioChange extends HTMLElement {
 customElements.define("variant-radios", RadioChange);
 </script>
 
+<style>
+	.iframe-container {
+		position: relative;
+		overflow: hidden;
+		width: 100%;
+		padding-top: 56.25%;		
+	}	
+	.responsive-iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+	}
+	.products-image-holder .video,
+	.products-image-holder .external-video {
+		width: 100%;
+	}
+
+	.products-image-holder .video video {
+		width: 100%;
+		height: auto;
+	}
+</style>
 
 {% schema %}
 

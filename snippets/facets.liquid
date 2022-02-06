@@ -252,17 +252,21 @@
 
   <menu-drawer class="mobile-facets__wrapper {% unless collapse_on_larger_devices %} medium-hide large-up-hide{% endunless %}" data-breakpoint="mobile">
     <details class="mobile-facets__disclosure disclosure-has-popup">
-      <summary class="mobile-facets__open-wrapper focus-offset">
-        <span class="mobile-facets__open">
-          {% render 'icon-filter' %}
-          <span class="mobile-facets__open-label button-label">
+      <summary class="mobile-facets__open-wrapper focus-offset filter-sort-holder">
+        <span class="mobile-facets__open filter-sort">          
+          <span class="mobile-facets__open-label button-label filter-holder">
+            <div class="filter">
             {%- if enable_filtering and enable_sorting -%}
-              {{ 'products.facets.filter_and_sort' | t }}
+            <span class="filter-icon">
+              <img src="{{ 'filter.png' | asset_img_url: '15x' }}">
+            </span>
+            <span class="filter-text">Filter</span>
             {%- elsif enable_filtering -%}
               {{ 'products.facets.filter_button' | t }}
             {%- elsif enable_sorting -%}
               {{ 'products.facets.sort_button' | t }}
             {%- endif -%}
+          </div>
           </span>
         </span>
         <span tabindex="0" class="mobile-facets__close mobile-facets__close--no-js">{%- render 'icon-close' -%}</span>
@@ -506,3 +510,12 @@
     </div>
   </div>
 </div>
+
+<style>
+  .mobile-facets__wrapper {
+    display: block;
+  }
+  .product-count {
+    margin-bottom: 45px;
+  }
+</style>
