@@ -1,32 +1,79 @@
 <div class="video-section">
-	<div class="container">
-	  <div class="video-section-holder">
-		<video controls="controls" style="max-width: 100%; height: auto;">
-			<source src="{{ section.settings.video }}" type="video/mp4" />		 
-		  </video>
-	  </div>
-	</div>
-  </div>
+    <div class="container">
+        <div class="video-section-holder">
+            {% for block in section.blocks %}
+                {% case block.type %}
+                    {% when 'uploaded_video' %}
+                        <video controls="controls" style="max-width: 100%; height: auto;">
+                            <source src="{{ block.settings.u_video }}" type="video/mp4"/>
+                        </video>
+                    {% when 'youtube_video' %}
+					<div class="iframe-container">
+						<iframe class="responsive-iframe" src="//www.youtube.com/embed/{{ block.settings.yt_video }}"></iframe>
+					</div>					
+                {% endcase %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
-  {% schema %}
+<style>
+.iframe-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
 
-  {
-	  "name": "Video",
-	  "class": "be-video",    
-	  "tag": "section",
-	  "settings": [
-	  {
-		  "type": "url",
-		  "id": "video",
-		  "label": "Paste video link from Settings->Files"
-	  }
-	  ],
-	  "presets": [
-		  {
-			  "category": "BE",
-			  "name": "Video"
-		  }
-	  ]
-  }
-  
-  {% endschema %}
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
+
+{% schema %}
+
+{
+    "name": "Video",
+    "class": "be-video",
+    "tag": "section",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "uploaded_video",
+            "name": "Uploaded Video",
+            "settings": [
+                {
+                    "type": "url",
+                    "id": "u_video",
+                    "label": "Paste video link from Settings->Files"
+                }
+            ]
+        },
+		{
+            "type": "youtube_video",
+            "name": "Youtube Video",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "yt_video",
+                    "label": "Paste video ID from Youtube"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "BE",
+            "name": "Video"
+        }
+    ]
+}
+
+{% endschema %}

@@ -319,9 +319,26 @@
     },
     "16434751456519e7ba": {
       "type": "be-video",
-      "settings": {
-        "video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0555\/2416\/3649\/files\/sample-5s.mp4?v=1644077349"
-      }
+      "blocks": {
+        "4b04d609-abe1-439b-8917-cf283087ccf9": {
+          "type": "uploaded_video",
+          "disabled": true,
+          "settings": {
+            "u_video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0555\/2416\/3649\/files\/sample-5s.mp4?v=1644077349"
+          }
+        },
+        "acf839a2-e9b8-495b-b80c-dd2e10321c10": {
+          "type": "youtube_video",
+          "settings": {
+            "yt_video": "7X8II6J-6mU"
+          }
+        }
+      },
+      "block_order": [
+        "4b04d609-abe1-439b-8917-cf283087ccf9",
+        "acf839a2-e9b8-495b-b80c-dd2e10321c10"
+      ],
+      "settings": {}
     },
     "1643475583ec6bfa5f": {
       "type": "be-refer",
