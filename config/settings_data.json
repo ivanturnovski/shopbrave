@@ -1,5 +1,10 @@
 {
   "current": {
+    "social_twitter_link": "#brave-twitter",
+    "social_facebook_link": "#brave-face",
+    "social_pinterest_link": "#brave-pin",
+    "social_instagram_link": "#brave-insta",
+    "social_youtube_link": "#brave-yt",
     "sections": {
       "header": {
         "type": "header",
