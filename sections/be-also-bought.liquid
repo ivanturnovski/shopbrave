@@ -15,7 +15,7 @@ var productRecomendationBody = document.getElementById("products-holder");
 			if (products.length > 0) {
 				products.forEach(function (product, index) {
 					var card;
-					card = '<li class="products-list">';
+					card = '<li class="products-list" data-id="' + product.variants[0].id + '">';
 					card += '<div class="products-list-holder">';
 					card += '<div class="products-image">';	
 					if (product.images.length > 0) {
@@ -25,12 +25,27 @@ var productRecomendationBody = document.getElementById("products-holder");
 					card += '<a href="'+ product.url +'" ><div class="products-heading">' + product.title + '</div></a>';					
 					card += '<div class="products-details">' + product.vendor + '</div>';					
 					card += '<div class="products-price"><span class="currency">&#8377</span>' + product.price / 100 + '</div>';					
-					card += '<ul class="add-to-cart-btn"><li class="cart-button"><a href="#">Add to Cart</a></li></ul>';
+					card += '<ul class="add-to-cart-btn"><li class="cart-button"><a id="AddToCart" href="#">Add to Cart</a></li></ul>';
 					card += '</div></li>';
 					productRecomendationBody.innerHTML += card;
 				});
 			}
 		});
+
+
+$(document).on("click", "#AddToCart", function () {
+	const id = parseInt($(this).closest(".products-list").data("id"));
+	const quantity = 1;
+	jQuery.post('/cart/add.js', {
+		items: [
+			{
+				id: id,
+				quantity: quantity
+			}
+		]
+	});
+	setTimeout(function () { populateMiniCart(); cart_count(); }, 400);
+});
 </script>
 
 {% schema %}
