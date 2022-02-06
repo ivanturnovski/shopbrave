@@ -25,26 +25,50 @@
     </div>
     <div class="social-icons-holder">
       <ul class="social-icons">
-        <li class="social-icon">
-          <a><i class="fab fa-instagram"></i></a>
-        </li>
-        <li class="social-icon">
-          <a><i class="fab fa-facebook-f"></i></a>
-        </li>
-        <li class="social-icon">
-          <a><i class="fab fa-youtube"></i></a>
-        </li>
-        <li class="social-icon">
-          <a><i class="fab fa-twitter"></i></a>
-        </li>
-        <li class="social-icon">
-          <a><i class="fab fa-pinterest"></i></a>
-        </li>
+        {% if section.settings.instagram != blank %}
+            <li class="social-icon">
+                <a href="{{ section.settings.instagram }}">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if section.settings.facebook != blank %}
+            <li class="social-icon">
+                <a href="{{ section.settings.facebook }}">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if section.settings.youtube != blank %}
+            <li class="social-icon">
+                <a href="{{ section.settings.youtube }}">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if section.settings.twitter != blank %}
+            <li class="social-icon">
+                <a href="{{ section.settings.twitter }}">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if section.settings.pinterest != blank %}
+            <li class="social-icon">
+                <a href="{{ section.settings.pinterest }}">
+                    <i class="fab fa-pinterest"></i>
+                </a>
+            </li>
+        {% endif %}
       </ul>
     </div>
     <ul class="faq-list-holder">
-      <li class="faq-list">
-<!--         <div class="accordian-list">
+      <!-- <li class="faq-list">
+         <div class="accordian-list">
           <button class="accordion">Online Presence
           </button>
           <div class="answer">
@@ -52,7 +76,7 @@
               et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
               aliquip ex ea commodo consequat.</p>
           </div>
-        </div> -->
+        </div> 
         <div class="accordian-list">
           <button class="accordion">Information
           </button>
@@ -68,8 +92,34 @@
             </p>
           </div>
         </div>
-      </li>
-      <li class="faq-list">
+      </li> -->
+      {%- for block in section.blocks -%}
+      {%- assign item = block.settings -%}
+      {% case block.type %}
+        {% when 'accordion_menu' %}
+        
+        <li class="faq-list">
+          <div class="accordian-list">
+            <button class="accordion">{{ item.title }}
+            </button>
+            <div class="answer">
+              <p style="font-size: 18px;line-height: 1.8rem;">
+                {%- for link in linklists[item.menu].links -%}
+                {% if link.levels == 0 %}
+                <a href="{{ link.url }}" {% if link.active %}aria-current="page" {% endif %}>
+            &#9632; {{ link.title }}
+                </a><br/>
+                {% endif %}
+                {%- endfor -%}
+              </p>
+            </div>
+          </div>
+          </li>
+        {% else %}
+          
+      {% endcase %}
+      {% endfor %}
+      <!-- <li class="faq-list">
         <div class="accordian-list">
           <button class="accordion">Support
           </button>
@@ -85,7 +135,7 @@
             </p>
           </div>
         </div>
-<!--         <div class="accordian-list">
+         <div class="accordian-list">
           <button class="accordion">Contact Us
           </button>
           <div class="answer">
@@ -93,8 +143,8 @@
               et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
               aliquip ex ea commodo consequat.</p>
           </div>
-        </div> -->
-      </li>
+        </div> 
+      </li> -->
     </ul>
   </div>
   <!-- footer upper section ends here -->
@@ -348,226 +398,51 @@ $(document).on("click", "#cart-del-btn" ,function () {
 {% endjavascript %}
 
 {% schema %}
+
 {
-  "name": "t:sections.footer.name",
-  "blocks": [
-    {
-      "type": "link_list",
-      "name": "t:sections.footer.blocks.link_list.name",
-      "settings": [
+    "name": "t:sections.footer.name",
+    "tag": "div",
+    "settings": [
         {
-          "type": "text",
-          "id": "heading",
-          "default": "Quick links",
-          "label": "t:sections.footer.blocks.link_list.settings.heading.label",
-          "info": "t:sections.footer.blocks.link_list.settings.heading.info"
-        },
-        {
-          "type": "link_list",
-          "id": "menu",
-          "default": "footer",
-          "label": "t:sections.footer.blocks.link_list.settings.menu.label",
-          "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+            "type": "url",
+            "id": "instagram",
+            "label": "Link to Instagram"
+        }, {
+            "type": "url",
+            "id": "facebook",
+            "label": "Link to Facebook"
+        }, {
+            "type": "url",
+            "id": "youtube",
+            "label": "Link to Youtube"
+        }, {
+            "type": "url",
+            "id": "twitter",
+            "label": "Link to Twitter"
+        }, {
+            "type": "url",
+            "id": "pinterest",
+            "label": "Link to Pinterest"
         }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "t:sections.footer.blocks.text.name",
-      "settings": [
-        {
-          "type": "text",
-          "id": "heading",
-          "default": "Heading",
-          "label": "t:sections.footer.blocks.text.settings.heading.label"
-        },
-        {
-          "type": "richtext",
-          "id": "subtext",
-          "default": "<p>Share contact information, store details, and brand content with your customers.</p>",
-          "label": "t:sections.footer.blocks.text.settings.subtext.label"
-        }
-      ]
-    },
-    {
-      "type": "image",
-      "name": "Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "range",
-          "id": "image_width",
-          "min": 50,
-          "max": 200,
-          "step": 5,
-          "unit": "px",
-          "label": "Image width",
-          "default": 100
-        },
-        {
-          "type": "select",
-          "id": "alignment",
-          "label": "Image alignment on large screen",
-          "options": [
-            {
-              "value": "",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "center"
-        }
-      ]
-    }
-  ],
-  "settings": [
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "t:sections.footer.settings.color_scheme.options__1.label"
-        },
-        {
-          "value": "accent-2",
-          "label": "t:sections.footer.settings.color_scheme.options__2.label"
-        },
-        {
-          "value": "background-1",
-          "label": "t:sections.footer.settings.color_scheme.options__3.label"
-        },
-        {
-          "value": "background-2",
-          "label": "t:sections.footer.settings.color_scheme.options__4.label"
-        },
-        {
-          "value": "inverse",
-          "label": "t:sections.footer.settings.color_scheme.options__5.label"
-        }
-      ],
-      "default": "background-1",
-      "label": "t:sections.footer.settings.color_scheme.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__1.content",
-      "info": "t:sections.footer.settings.header__1.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "newsletter_enable",
-      "default": true,
-      "label": "t:sections.footer.settings.newsletter_enable.label"
-    },
-    {
-      "type": "text",
-      "id": "newsletter_heading",
-      "default": "Subscribe to our emails",
-      "label": "t:sections.footer.settings.newsletter_heading.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__2.content",
-      "info": "t:sections.footer.settings.header__2.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_social",
-      "default": false,
-      "label": "t:sections.footer.settings.show_social.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__3.content",
-      "info": "t:sections.footer.settings.header__4.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_country_selector",
-      "default": true,
-      "label": "t:sections.footer.settings.enable_country_selector.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__5.content",
-      "info": "t:sections.footer.settings.header__6.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_language_selector",
-      "default": true,
-      "label": "t:sections.footer.settings.enable_language_selector.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__7.content"
-    },
-    {
-      "type": "checkbox",
-      "id": "payment_enable",
-      "default": true,
-      "label": "t:sections.footer.settings.payment_enable.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.spacing"
-    },
-    {
-      "type": "range",
-      "id": "margin_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.footer.settings.margin_top.label",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
-  ],
-  "default": {
+    ],
     "blocks": [
-      {
-        "type": "link_list"
-      },
-      {
-        "type": "text"
-      }
+        {
+            "name": "Accordion Menu",
+            "type": "accordion_menu",
+            "settings": [
+                {
+                    "type": "link_list",
+                    "label": "Choose Accordion Menu",
+                    "id": "menu"
+                },
+                {
+                  "type": "text",
+                  "label": "Enter Name",
+                  "id": "title"
+              }
+            ]
+        }
     ]
-  }
 }
+
 {% endschema %}
