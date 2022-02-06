@@ -6,13 +6,21 @@
 				{%- assign item = block.settings -%}
 				{%- assign bundle_product = all_products[item.product] -%}
 				{%- assign bundle_product_img = bundle_product.featured_media.preview_image -%}
+                {%- assign product_rating_value = bundle_product.metafields.reviews.rating | split: ':"' | last | split: '"}' -%}
 				<li class="recent-products-list-holder" data-id="{{ bundle_product.selected_or_first_available_variant.id }}">
 					<div class="recent-products-list">
 						<div class="recent-product-image">
 							<a href="{{ bundle_product.url }}"><img src="{{ bundle_product_img | img_url: '240x' }}"></a>
 						</div>
 						<div class="recent-heading"><a href="{{ bundle_product.url }}">{{ bundle_product.title }}</a></div>
-				
+
+                        {% if product_rating_value != blank %}
+                            <div class="product-rating">
+                                <span class="number">{{ product_rating_value }}</span>
+                                <span class="star"><img src="{{ 'star.png' | asset_url }}"></span>
+                            </div>
+                        {% endif %}
+
 						<div class="recent-details">{{ bundle_product.vendor }}</div>
 						<div class="recent-price">
 							<span class="currency">&#8377</span>{{ bundle_product.price | money_without_trailing_zeros }}
