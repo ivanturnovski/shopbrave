@@ -153,9 +153,12 @@
 
           </div>
         </div>
-        <div class="search-container">    
+        <div class="search-container">
+          <div class="search-overlay"></div>    
           <form action="/search" method="GET" role="search">
             <input id="search" class="search-bar" type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search for your favourite products">
+            <i class="fas fa-search"></i>
+            <div class="cross-icon"><i class="fas fa-times"></i></div>
           </form>
           <div id="myModal" class="modal">            
             <div class="modal-content">
