@@ -14,14 +14,23 @@
 <!-- 			<div class="join-club">
 			  Join The Club of Honor
 			</div> -->
-			<div class="input-holder">
-				
+			<div class="input-holder">				
 				{% form 'customer' %}
 				<input name="contact[email]" type="email" class="email-bar" placeholder="Your Mail"/>
 				<i class="fas fa-arrow-right"></i>
 				<div class="submit">
 					<input type="submit" value="Sign up" />
 				</div>
+				{%- for error in form.errors -%}
+				<div class="alert alert-danger">
+					{%- if error == 'form' -%}
+						{{ form.errors.messages[error] }}
+					{%- else -%}
+						{{ form.errors.translated_fields[error] }}
+						{{ form.errors.messages[error] }}
+					{%- endif -%}
+				</div>
+				{%- endfor -%}
 				{% endform %}
 			</div>
 		  </div>
@@ -83,6 +92,9 @@
   </div>
 
 {% style %}
+.alert.alert-danger {
+	color: red;
+}
 .refer-section .email-bar {
 	text-align: center
 }
