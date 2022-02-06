@@ -1,39 +1,15 @@
 {
   "current": {
     "sections": {
-      "announcement-bar": {
-        "type": "announcement-bar",
-        "blocks": {
-          "announcement-bar-0": {
-            "type": "announcement",
-            "settings": {
-              "color_scheme": "background-1"
-            }
-          }
-        },
-        "block_order": [
-          "announcement-bar-0"
-        ],
-        "settings": {}
-      },
       "header": {
         "type": "header",
         "settings": {
           "announcement_text": "!25% off sitewide",
           "announcement_button_text": "!Available Now",
           "announcement_button_url": "\/test",
-          "color_scheme": "background-1",
           "logo": "shopify:\/\/shop_images\/logo.png",
           "menu": "main-menu"
         }
-      },
-      "main-password-header": {
-        "type": "main-password-header",
-        "settings": {}
-      },
-      "main-password-footer": {
-        "type": "main-password-footer",
-        "settings": {}
       },
       "footer": {
         "type": "footer",
@@ -71,31 +47,8 @@
   "presets": {
     "Default": {
       "sections": {
-        "announcement-bar": {
-          "type": "announcement-bar",
-          "blocks": {
-            "announcement-bar-0": {
-              "type": "announcement",
-              "settings": {
-                "color_scheme": "background-1"
-              }
-            }
-          },
-          "block_order": [
-            "announcement-bar-0"
-          ],
-          "settings": {}
-        },
         "header": {
           "type": "header",
-          "settings": {}
-        },
-        "main-password-header": {
-          "type": "main-password-header",
-          "settings": {}
-        },
-        "main-password-footer": {
-          "type": "main-password-footer",
           "settings": {}
         }
       }

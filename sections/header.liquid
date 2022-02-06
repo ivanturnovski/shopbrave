@@ -121,27 +121,14 @@
             </a>
           </div>
           <ul class="navbar-list-holder desktop-only">
-            <li class="navbar-list">
-              <a href="#">Home</a>
-            </li>
-            <li class="navbar-list">
-              <a href="#">Bestsellers</a>
-            </li>
-            <li class="navbar-list">
-              <a href="#">SkinCare</a>
-            </li>
-            <li class="navbar-list">
-              <a href="#">Face Care</a>
-            </li>
-            <li class="navbar-list">
-              <a href="#">Gifts</a>
-            </li>
-            <li class="navbar-list">
-              <a href="#">HairCare</a>
-            </li>
-            <li class="navbar-list">
-              <a href="#">Offers</a>
-            </li>
+          {% assign main_menu = section.settings.menu %}
+          {%- for link in linklists[main_menu].links -%}
+              {% if link.levels == 0 %}
+              <li class="navbar-list">
+                <a href="{{ link.url }}" {% if link.active %} aria-current="page" {% endif %}>{{ link.title }}</a>
+              </li> 
+              {% endif %}
+          {%- endfor -%}
           </ul>
           <div class="side-icons-holder">
             <a class="search-icon">
@@ -201,7 +188,9 @@
     </a>
   </header>
 
+{% comment %}
 {%- render 'cart-notification', color_scheme: section.settings.color_scheme -%}
+{% endcomment %}
 
 <style> 
   .modal {
@@ -466,29 +455,6 @@
             "type": "url",
             "id": "announcement_button_url",
             "label": "Announcement Button Link"
-        }, {
-            "type": "select",
-            "id": "color_scheme",
-            "options": [
-                {
-                    "value": "accent-1",
-                    "label": "t:sections.header.settings.color_scheme.options__1.label"
-                }, {
-                    "value": "accent-2",
-                    "label": "t:sections.header.settings.color_scheme.options__2.label"
-                }, {
-                    "value": "background-1",
-                    "label": "t:sections.header.settings.color_scheme.options__3.label"
-                }, {
-                    "value": "background-2",
-                    "label": "t:sections.header.settings.color_scheme.options__4.label"
-                }, {
-                    "value": "inverse",
-                    "label": "t:sections.header.settings.color_scheme.options__5.label"
-                }
-            ],
-            "default": "background-1",
-            "label": "t:sections.header.settings.color_scheme.label"
         }, {
             "type": "image_picker",
             "id": "logo",
