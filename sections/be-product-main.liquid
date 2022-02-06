@@ -63,12 +63,16 @@
             {%- for block in section.blocks -%}
             {%- case block.type -%}
             {%- when 'rating_value' -%}
+			{% comment %}
             {% assign review_rating = shop.metafields.judgeme.all_reviews_rating | round: 1 %}
+			{% endcomment %}
+			{%- assign product_rating_value = product.metafields.reviews.rating | split: ':"' | last | split: '"}' -%}
+			{% if product_rating_value != blank %}
 			  <div class="rating-holder mobile-only">
 				<div class="rating-number">
-					{{ review_rating }}
+					{{ product_rating_value }}
 				</div>
-				<div class="rating-stars-product rating" data-default-value="{{ review_rating }}">
+				<div class="rating-stars-product rating" data-default-value="{{ product_rating_value }}">
 				  <span><span data-value="1" class="fa fa-star checked"></span></span>
 				  <span><span data-value="2" class="fa fa-star checked"></span></span>
 				  <span><span data-value="3" class="fa fa-star checked"></span></span>
@@ -76,6 +80,7 @@
 				  <span><span data-value="5" class="fa fa-star"></span></span>
 				</div>
 			  </div>
+			  {% endif %}
             {% endcase %}
             {%- endfor -%}
 			</div>
@@ -93,19 +98,27 @@
             {%- for block in section.blocks -%}
             {%- case block.type -%}
             {%- when 'rating_value' -%}
+			{% comment %}
             {% assign review_rating = shop.metafields.judgeme.all_reviews_rating | round: 1 %}
+			{% endcomment %}
+			{%- assign product_rating_value = product.metafields.reviews.rating | split: ':"' | last | split: '"}' -%}
+
+			{% if product_rating_value != blank %}
 			<div class="rating-holder desktop-only">
-			  <div class="rating-number">
-                {{ review_rating }}
-			  </div>
-			  <div class="rating-stars rating" data-default-value="{{ review_rating }}">
-                <span><span data-value="1" class="fa fa-star"></span></span>
-				<span><span data-value="2" class="fa fa-star"></span></span>
-				<span><span data-value="3" class="fa fa-star"></span></span>
-				<span><span data-value="4" class="fa fa-star"></span></span>
-				<span><span data-value="5" class="fa fa-star"></span></span>			
-			  </div>
-			</div>
+				<div class="rating-number">
+				  {{ product_rating_value }}
+				</div>
+				<div class="rating-stars rating" data-default-value="{{ product_rating_value }}">
+				  <span><span data-value="1" class="fa fa-star"></span></span>
+				  <span><span data-value="2" class="fa fa-star"></span></span>
+				  <span><span data-value="3" class="fa fa-star"></span></span>
+				  <span><span data-value="4" class="fa fa-star"></span></span>
+				  <span><span data-value="5" class="fa fa-star"></span></span>			
+				</div>
+			  </div>		
+			{% endif %}
+			
+
             {% endcase %}
             {%- endfor -%}
             <div class="mobile-only" style="flex: 1;"></div><!-- empty div for flex -->

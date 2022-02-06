@@ -6,7 +6,7 @@
 				{%- assign item = block.settings -%}
 				{%- assign bundle_product = all_products[item.product] -%}
 				{%- assign bundle_product_img = bundle_product.featured_media.preview_image -%}
-				<li class="recent-products-list-holder">
+				<li class="recent-products-list-holder" data-id="{{ bundle_product.selected_or_first_available_variant.id }}">
 					<div class="recent-products-list">
 						<div class="recent-product-image">
 							<a href="{{ bundle_product.url }}"><img src="{{ bundle_product_img | img_url: '240x' }}"></a>
@@ -22,7 +22,7 @@
                         <input style="display: none" type="number" class="form-control" value="1" min="1" name="quantity" id="Quantity">
                             <ul class="add-to-cart-btn">
                                 <li class="cart-button">
-                                    <button id="add_to_cart_btn" type="submit" name="add">Add to Cart</button>
+                                    <button id="AddToCart" type="submit" name="add">Add to Cart</button>
                                 </li>
                             </ul>
                         {% endform %}
@@ -33,34 +33,20 @@
     </div>
 </div>
 
-<script>
-
-    $(document).on('submit', '#add_to_cart_btn', function (e) {                 
-        let formData = {
-			items: [
-				{
-					id: document.getElementById('item_id').value,
-					quantity: document.getElementById('Quantity').value,
-				},
-			],
-		};
-		fetch('/cart/add.js', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(formData),
-		})
-			.then((resp) => {				
-				if (resp.ok) {					
-					return resp.json();
-				} 
-			})            	
-			.catch((err) => {
-				console.log('Error:' + err);
-			});
+<script type="text/javascript">
+    $(document).on("click", "#AddToCart", function () {
+        const id = parseInt($(this).closest(".recent-products-list-holder").data("id"));
+        const quantity = 1;
+        jQuery.post('/cart/add.js', {
+            items: [
+                {
+                    id: id,
+                    quantity: quantity
+                }
+            ]
+        });
+        setTimeout(function () { populateMiniCart(); cart_count(); }, 400);
     });
-
 </script>
 
 
@@ -88,6 +74,16 @@
     text-align: center;
     box-sizing: border-box;
     transition: 0.2s;
+}
+@media (max-width: 768px) {
+    .brave-essentials .recently-viewed .recent-products-slider .recent-products-list-holder .recent-products-list .add-to-cart-btn .cart-button button {
+        font-size: 24px;
+    }
+}
+@media (max-width: 479px) {
+    .brave-essentials .recently-viewed .recent-products-slider .recent-products-list-holder .recent-products-list .add-to-cart-btn .cart-button button {
+        font-size: 19px;
+    }
 }
 
 @media (min-width: 768px) {
