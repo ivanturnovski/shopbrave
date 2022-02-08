@@ -1,7 +1,12 @@
 {
   "sections": {
+    "be-collection-banner": {
+      "type": "be-collection-banner",
+      "settings": {}
+    },
     "1643840245d6da491c": {
       "type": "be-banner-holder",
+      "disabled": true,
       "blocks": {
         "957a6cd6-d0ba-420f-9fb1-88d5dbd7fb51": {
           "type": "banner",
@@ -51,6 +56,7 @@
     }
   },
   "order": [
+    "be-collection-banner",
     "1643840245d6da491c",
     "collection-nav",
     "be-collection-filters-mobile",

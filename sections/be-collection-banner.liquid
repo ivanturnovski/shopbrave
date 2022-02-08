@@ -1,0 +1,53 @@
+{% if collection.metafields.banner.ban1 != blank or  collection.metafields.banner.ban2 != blank or  collection.metafields.banner.ban3 != blank %}
+<div id="slick-{{ section.id }}">
+    {% for field in collection.metafields.banner %}
+        <div class="collection-banner-image">            
+			{{ field | last | image_url: width: 1600 | image_tag: width: nil }}
+        </div>
+    {% endfor %}
+</div>
+
+
+<style>
+	.be-collection-banner .collection-banner-image {
+		width: 100%;
+		display: inline;
+	}
+
+	.be-collection-banner .collection-banner-image img {
+		max-height: 300px;
+		object-fit: cover;
+	}
+
+	@media (min-width: 768px) {
+		.be-collection-banner .collection-banner-image img {
+			max-height: 480px;
+			object-fit: cover;
+		}
+	}
+</style>
+
+<script>
+	$(document).ready(function () {
+		$('#slick-{{ section.id }}').slick({
+			infinite: true,
+			dots: true,
+			arrows: false,
+			autoplay: true,
+			autoplaySpeed: 2000
+		});
+	})
+</script>
+{% endif %}
+
+{% schema %}
+
+{
+    "name": "Collection Banner",
+    "class": "be-collection-banner",
+    "tag": "section",
+    "settings": [],
+    "blocks": []
+}
+
+{% endschema %}
