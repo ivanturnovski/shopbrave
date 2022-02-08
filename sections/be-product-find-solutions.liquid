@@ -8,7 +8,7 @@
                         <li class="solutions-list">
                             <div class="solutions-list-holder">
                                 <div class="solutions-image">
-                                    <img src="{{ collections[item.banner_collection] | img_url: '100x' }}">
+                                    <a href="{{ collections[item.banner_collection].url }}"><img src="{{ collections[item.banner_collection] | img_url: '400x' }}"></a>
                                 </div>
                                 <div class="solutions-heading">
                                    <a href="{{ collections[item.banner_collection].url }}">{{ collections[item.banner_collection].title }}</a>

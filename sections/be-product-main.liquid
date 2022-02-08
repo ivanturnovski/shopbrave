@@ -110,11 +110,11 @@
 		  </div>
 		  <div class="product-price-holder">
 			<div class="product-price">
-              <span class="currency">&#8377</span> <span class="product-price-value">{{ product_price.price  | money_without_currency | remove: '.00' }}</span>
+              <span class="currency">{{ shop.currency | replace: "INR", "&#8377" }}</span> <span class="product-price-value">{{ product_price.price  | money_without_currency | remove: '.00' }}</span>
 			</div>
 			<div class="strike compare-at-price">
 				{% if product_price.compare_at_price != blank %}
-					<span class="currency">&#8377</span> 
+					<span class="currency">{{ shop.currency | replace: "INR", "&#8377" }}</span> 
 					<span class="strike-through compare-at-price-value">{{ product_price.compare_at_price  | money_without_currency | remove: '.00' }}</span>
 				{% endif %}				
 			</div>
@@ -127,20 +127,20 @@
 			{%- assign product_rating_value = product.metafields.reviews.rating | split: ':"' | last | split: '"}' -%}
 
 			{% if product_rating_value != blank %}
-			<div class="rating-holder desktop-only">
-				<div class="rating-number">
-				  {{ product_rating_value }}
-				</div>
-				<div class="rating-stars rating" data-default-value="{{ product_rating_value }}">
-				  <span><span data-value="1" class="fa fa-star"></span></span>
-				  <span><span data-value="2" class="fa fa-star"></span></span>
-				  <span><span data-value="3" class="fa fa-star"></span></span>
-				  <span><span data-value="4" class="fa fa-star"></span></span>
-				  <span><span data-value="5" class="fa fa-star"></span></span>			
-				</div>
-			  </div>
+            	<div class="rating-holder desktop-only">
+                  <div class="rating-number">
+                    {{ product_rating_value }}
+                  </div>
+                  <div class="rating-stars rating" data-default-value="{{ product_rating_value }}">
+                    <span><span data-value="1" class="fa fa-star"></span></span>
+                    <span><span data-value="2" class="fa fa-star"></span></span>
+                    <span><span data-value="3" class="fa fa-star"></span></span>
+                    <span><span data-value="4" class="fa fa-star"></span></span>
+                    <span><span data-value="5" class="fa fa-star"></span></span>			
+                  </div>
+            	</div>
 			  {% else %}
-			  <div style="display: flex; flex-basis:54%;"></div>		
+			  <div class="empty-reviews-flex-div"></div>		
 			{% endif %}
 			
 
@@ -315,9 +315,6 @@
 	  </div>
 	</div>
   </div>
-
-
-
 <script>
 
 var addToCart = document.getElementById('AddToCart');
@@ -340,7 +337,7 @@ function AddToCart() {
 			return response.json();
 		})
 		.then((data) => {
-			console.log(data);
+// 			console.log(data);
 			populateMiniCart();
 			cart_count();
 		})
@@ -397,7 +394,7 @@ class RadioChange extends HTMLElement {
               	if (compareAtPriceDiv) {
             		compareAtPriceDiv.innerHTML = this.currentVariant.compare_at_price.toString().slice(0, -2);
                 } else if (!compareAtPriceDiv) {
-                  	const compareAtPriceHtml = '<span class="currency">&#8377</span> <span class="strike-through compare-at-price-value">'+this.currentVariant.compare_at_price.toString().slice(0, -2)+'</span>';
+                  	const compareAtPriceHtml = '<span class="currency">{{ shop.currency | replace: "INR", "&#8377" }}</span> <span class="strike-through compare-at-price-value">'+this.currentVariant.compare_at_price.toString().slice(0, -2)+'</span>';
                 	$("#product-form > div > div.product-price-holder > div.strike.compare-at-price").html(compareAtPriceHtml);
                 }
             } else if (compareAtPriceDiv) {

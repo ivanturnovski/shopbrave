@@ -1,6 +1,6 @@
 <div class="brave-hearts">
 	<h3 class="section-heading brave-hearts-heading">
-	  Brave Hearts
+        {{ section.settings.title }}
 	</h3>
 	<div class="container">
 	  <div class="frame-holder" style="border: none;">
@@ -395,7 +395,13 @@
 	  "name": "Brave Hearts",
 	  "class": "be-brave-haers",    
 	  "tag": "section",
-	  "settings": [],
+	  "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Section Heading"
+        }
+      ],
 	  "presets": [
 		  {
 			  "category": "BE",

@@ -1,6 +1,10 @@
 <div class="bestsellers">
     <h3 class="section-heading bestsellers-heading">
-        Bestsellers
+         {% if section.settings.title != blank %}
+        	{{ section.settings.title }}
+         {% else %}
+               Bestsellers
+         {% endif %}
     </h3>
     <div class="container">
         <ul class="products-holder">
@@ -18,8 +22,7 @@
                         </div>
                         <div class="products-details">{{ bs_product.vendor }}</div>
                         <div class="products-price">
-                            <span class="currency">&#8377</span>
-                            {{ bs_product.price | money_without_currency }}
+                            <span class="currency">{{ shop.currency | replace: "INR", "&#8377" }}</span>{{ bs_product.price | money_without_currency }}
                         </div>
                         {% form 'product', bs_product, id: 'bs-product-form', class: 'bs-product-form',  novalidate: 'novalidate' %}
                             <input type="hidden" id="item_id" name="id" value="{{ bs_product.selected_or_first_available_variant.id }}">

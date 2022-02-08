@@ -11,7 +11,7 @@
                 <li class="products-list" data-id="{{ nl_product.selected_or_first_available_variant.id }}">
                     <div class="products-list-holder">
                         <div class="products-image">
-                            <a href="{{ nl_product.url }}"><img src="{{ nl_product_img | img_url: '350x' }}"></a>
+                            <a href="{{ nl_product.url }}"><img src="{{ nl_product_img | img_url: '800x' }}"></a>
                         </div>
                         <div class="products-heading">
                             <a href="{{ nl_product.url }}">{{ nl_product.title }}</a>
@@ -20,8 +20,7 @@
                             {{ nl_product.vendor }}
                         </div>
                         <div class="products-price">
-                            <span class="currency">&#8377</span>
-                            {{ nl_product.price | money_without_currency }}
+                            <span class="currency">{{ shop.currency | replace: "INR", "&#8377" }}</span>{{ nl_product.price | money_without_currency }}
                         </div>
                         <ul class="add-to-cart-btn">
                             <li class="cart-button">

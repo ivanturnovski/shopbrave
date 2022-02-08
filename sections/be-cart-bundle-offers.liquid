@@ -10,7 +10,7 @@
 				<li class="recent-products-list-holder" data-id="{{ bundle_product.selected_or_first_available_variant.id }}">
 					<div class="recent-products-list">
 						<div class="recent-product-image">
-							<a href="{{ bundle_product.url }}"><img src="{{ bundle_product_img | img_url: '240x' }}"></a>
+							<a href="{{ bundle_product.url }}"><img src="{{ bundle_product_img | img_url: '800x' }}"></a>
 						</div>
 						<div class="recent-heading"><a href="{{ bundle_product.url }}">{{ bundle_product.title }}</a></div>
 
@@ -23,7 +23,7 @@
 
 						<div class="recent-details">{{ bundle_product.vendor }}</div>
 						<div class="recent-price">
-							<span class="currency">&#8377</span>{{ bundle_product.price | money_without_trailing_zeros }}
+							<span class="currency">&#8377</span>{{ bundle_product.price | money_without_currency }}
 						</div>
                         {% form 'product', bundle_product, id: 'product-form-bundle', class: 'bundle-form',  novalidate: 'novalidate' %}
                         <input type="hidden" id="item_id" name="id" value="{{ bundle_product.selected_or_first_available_variant.id }}">

@@ -28,7 +28,7 @@
 						// card +=  '<div class="product-rating"><span class="number">{{ review_rating }}</span> <span class="star"><img src=""></span></div>';						
 						card += '<div class="recent-heading"><a href='+ product.url +'>' + product.title + '</a></div>';					
 						card += '<div class="recent-details">' + product.vendor + '</div>';					
-						card += '<div class="recent-price"><span class="currency">{{ shop.currency }}</span>' + product.price / 100 + '</div>';				
+						card += '<div class="recent-price"><span class="currency">{{ shop.currency | replace: "INR", "&#8377" }}</span>' + product.price / 100 + '</div>';				
 						card += '</div></li>';
 						RecomendationBody.innerHTML += card;
 					});

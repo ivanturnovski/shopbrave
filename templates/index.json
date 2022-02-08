@@ -3,43 +3,50 @@
     "164344943926daa1fd": {
       "type": "be-categories-slider",
       "blocks": {
-        "276e1a53-feb9-4ff6-bdaf-6a54d29ab5b9": {
+        "b30799a8-dc25-42d2-beeb-683217df8c9c": {
           "type": "slide_collection",
           "settings": {
-            "slide_collection": "acne-test"
+            "slide_collection": "beard-growth"
           }
         },
-        "1ef204dc-d1d6-4c00-90b7-c4eaec280cfe": {
+        "e10522c2-15e1-4014-8fab-c37faf4a56b1": {
           "type": "slide_collection",
           "settings": {
-            "slide_collection": "beard-growth-test"
+            "slide_collection": "hair-care"
           }
         },
-        "d1d3ed3e-74af-49c9-a03f-e4bb2df72f1c": {
+        "0b0ecb45-72ff-485c-893f-d53eac7d8dba": {
           "type": "slide_collection",
           "settings": {
-            "slide_collection": "pigmentation-test"
+            "slide_collection": "face-care"
           }
         },
-        "e2595b91-c770-4960-b929-21567d117bb7": {
+        "4501d2ac-a50c-4314-857a-145fad284084": {
           "type": "slide_collection",
           "settings": {
-            "slide_collection": "beard-growth-test"
+            "slide_collection": "body-care"
           }
         },
-        "8efb7df2-f891-419e-b6c3-ccc9a198b0ee": {
+        "4d5c4a45-b6d2-4417-a91c-ec084bc911fb": {
           "type": "slide_collection",
           "settings": {
-            "slide_collection": "acne-test"
+            "slide_collection": "dry-skin"
+          }
+        },
+        "422d2267-4eaa-404e-845b-12710179c0c2": {
+          "type": "slide_collection",
+          "settings": {
+            "slide_collection": "oily-skin"
           }
         }
       },
       "block_order": [
-        "276e1a53-feb9-4ff6-bdaf-6a54d29ab5b9",
-        "1ef204dc-d1d6-4c00-90b7-c4eaec280cfe",
-        "d1d3ed3e-74af-49c9-a03f-e4bb2df72f1c",
-        "e2595b91-c770-4960-b929-21567d117bb7",
-        "8efb7df2-f891-419e-b6c3-ccc9a198b0ee"
+        "b30799a8-dc25-42d2-beeb-683217df8c9c",
+        "e10522c2-15e1-4014-8fab-c37faf4a56b1",
+        "0b0ecb45-72ff-485c-893f-d53eac7d8dba",
+        "4501d2ac-a50c-4314-857a-145fad284084",
+        "4d5c4a45-b6d2-4417-a91c-ec084bc911fb",
+        "422d2267-4eaa-404e-845b-12710179c0c2"
       ],
       "settings": {}
     },
@@ -78,13 +85,13 @@
     "164345976677309293": {
       "type": "be-everyday",
       "settings": {
-        "heading": "EveryDay",
+        "heading": "Everyday",
         "subtitle": "Essentials",
         "link1": "https:\/\/",
         "link2": "https:\/\/",
         "desktop_banner": "shopify:\/\/shop_images\/everyday.png",
         "mobile_banner": "shopify:\/\/shop_images\/banner-mobile.png",
-        "universal_banner": "shopify:\/\/shop_images\/branding-1.jpg"
+        "universal_banner": "shopify:\/\/shop_images\/Screenshot_2022-02-07_at_3.06.32_PM_d8ffef10-740a-443f-ab0a-7bc4f55e5814.png"
       }
     },
     "164346061381d5b2a6": {
@@ -128,71 +135,50 @@
     "164347055564aa4cb2": {
       "type": "be-find-solutions",
       "blocks": {
-        "451b790a-5d4e-45e6-9e17-833b5ade2a91": {
+        "732ea5b2-e668-4600-9530-4b9db2f0ce36": {
           "type": "fs_collection",
           "settings": {
-            "fs_collection": "face-care"
+            "fs_collection": "beard-growth"
           }
         },
-        "090a6355-2e17-4f11-9b10-f42e5eb3c746": {
+        "459819c0-9857-41c1-9e05-e631297353ff": {
           "type": "fs_collection",
           "settings": {
-            "fs_collection": "hair-care"
+            "fs_collection": "body-odor"
           }
         },
-        "34cca463-726e-4a06-b7e4-0a5f2e4a08c2": {
+        "efcb4762-4264-41f2-810e-310727ac1434": {
           "type": "fs_collection",
           "settings": {
-            "fs_collection": "skin-care"
+            "fs_collection": "dry-skin"
           }
         },
-        "5b01eecd-18a8-4991-82dc-504bde41c64a": {
+        "c69c5d93-a631-4f23-8915-84f4dd9ace28": {
           "type": "fs_collection",
           "settings": {
-            "fs_collection": "face-care"
+            "fs_collection": "hair-fall"
           }
         },
-        "a748f5ed-3d96-4944-a223-6b7f30b6a120": {
+        "193552e0-2f40-4e24-a659-3fd2eed2caf0": {
           "type": "fs_collection",
           "settings": {
-            "fs_collection": "hair-care"
+            "fs_collection": "oily-skin"
           }
         },
-        "ceacc697-63a9-4a90-9a7d-5a6eae33fe50": {
+        "e806ddcd-9b85-452e-a811-be6d35dd194d": {
           "type": "fs_collection",
           "settings": {
-            "fs_collection": "skin-care"
-          }
-        },
-        "51fd43d7-fc36-4113-a996-3f07fec97b3a": {
-          "type": "fs_collection",
-          "settings": {
-            "fs_collection": "face-care"
-          }
-        },
-        "bfb34ac7-c861-4785-b09e-71565d534b7e": {
-          "type": "fs_collection",
-          "settings": {
-            "fs_collection": "hair-care"
-          }
-        },
-        "5aefd063-d39c-4f50-8851-807af5c7a201": {
-          "type": "fs_collection",
-          "settings": {
-            "fs_collection": "skin-care"
+            "fs_collection": "acne"
           }
         }
       },
       "block_order": [
-        "451b790a-5d4e-45e6-9e17-833b5ade2a91",
-        "090a6355-2e17-4f11-9b10-f42e5eb3c746",
-        "34cca463-726e-4a06-b7e4-0a5f2e4a08c2",
-        "5b01eecd-18a8-4991-82dc-504bde41c64a",
-        "a748f5ed-3d96-4944-a223-6b7f30b6a120",
-        "ceacc697-63a9-4a90-9a7d-5a6eae33fe50",
-        "51fd43d7-fc36-4113-a996-3f07fec97b3a",
-        "bfb34ac7-c861-4785-b09e-71565d534b7e",
-        "5aefd063-d39c-4f50-8851-807af5c7a201"
+        "732ea5b2-e668-4600-9530-4b9db2f0ce36",
+        "459819c0-9857-41c1-9e05-e631297353ff",
+        "efcb4762-4264-41f2-810e-310727ac1434",
+        "c69c5d93-a631-4f23-8915-84f4dd9ace28",
+        "193552e0-2f40-4e24-a659-3fd2eed2caf0",
+        "e806ddcd-9b85-452e-a811-be6d35dd194d"
       ],
       "settings": {
         "title": "Find solutions for"
@@ -238,10 +224,13 @@
     },
     "16434733525f3230e4": {
       "type": "be-brave-hearts",
-      "settings": {}
+      "settings": {
+        "title": "Brave hearts"
+      }
     },
     "16434738892326f4e8": {
       "type": "be-gifting-banner",
+      "disabled": true,
       "settings": {
         "title": "Gifting Banner",
         "link": "shopify:\/\/collections",
@@ -319,6 +308,7 @@
     },
     "16434751456519e7ba": {
       "type": "be-video",
+      "disabled": true,
       "blocks": {
         "4b04d609-abe1-439b-8917-cf283087ccf9": {
           "type": "uploaded_video",

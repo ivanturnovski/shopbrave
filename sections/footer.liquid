@@ -16,8 +16,6 @@
 <noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'disclosure.css' | asset_url | stylesheet_tag }}</noscript>
 
-
-
 <footer>
   <div class="footer-upper-section">
     <div class="company-logo">
@@ -103,7 +101,7 @@
             <button class="accordion">{{ item.title }}
             </button>
             <div class="answer">
-              <p style="font-size: 18px;line-height: 1.8rem;">
+              <p>
                 {%- for link in linklists[item.menu].links -%}
                 {% if link.levels == 0 %}
                 <a href="{{ link.url }}" {% if link.active %}aria-current="page" {% endif %}>
@@ -191,7 +189,7 @@
     <!-- payment method section ends here -->
     <div class="copyright">
       <h6 class="copyright-text">
-        <span class="text-holder terms-text"><span class="bullet"></span>{{ 'now' | date: "%Y" }}Copyright<span class="bullet"></span></span> <span class="text-holder"><a href="/pages/terms-conditions" target="_blank">Terms and Conditions</a><span class="bullet"></span></span>
+        <span class="text-holder terms-text"><span class="bullet"></span>{{ 'now' | date: "%Y" }}Copyright<span class="bullet"></span></span> <span class="text-holder"><a href="/pages/terms-conditions" target="_blank">Terms and Conditions</a><span class="bullet hide-mobile"></span></span>
       </h6>
     </div>
     <!-- minicart html -->

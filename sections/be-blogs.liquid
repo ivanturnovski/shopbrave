@@ -7,7 +7,8 @@
 		{% for block in section.blocks %}
 			{% assign item = block.settings.article %}  
 		<li class="blogs-list">
-		  <div class="blogs-list-holder">
+          <a href="{{ item.url }}">
+		  <div class="blogs-list-holder" {% if item.image.src %}style="background: url('{{ item.image.src | img_url: '1080x' }}'); background-size: cover; background-position: center; background-blend-mode: overlay; background-color: #74754e; "{% endif %}>
 			<h6 class="blogs-list-heading">
 			  {{ item.title }}
 			</h6>
@@ -15,6 +16,7 @@
 				{{ item.content | strip_html | truncatewords: 30, '...' }}
 			</div>
 		  </div>
+          </a>
 		</li>
 		{% endfor %}
 	  </ul>

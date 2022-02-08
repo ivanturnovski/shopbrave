@@ -22,7 +22,7 @@
                     <li class="categories-list-holder">
                         <div class="categories-list">
                             <a href="{{ product.url }}">
-                                <img src="{{ image | img_url: '240x'}}" alt="{{ product.title }}">
+                                <img src="{{ image | img_url: '800x'}}" alt="{{ product.title }}">
                             </a>
                             <h6 class="product-name">
                                 <a href="{{ product.url }}">{{ product.title }}</a>
@@ -31,9 +31,8 @@
                                 {{ product.vendor }}
                             </div>
                             <div class="product-price">
-                                <span class="currency">&#8377</span>
-                                {{ product.price | money_without_trailing_zeros}}
-                            </div>
+                                <span class="currency">{{ shop.currency | replace: "INR", "&#8377" }}</span>{{ product.price | money_without_currency}}
+                          	</div>
                         </div>
                     </li>
                     {% endfor %}

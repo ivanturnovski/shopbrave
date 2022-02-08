@@ -6,7 +6,7 @@
                 {% when 'slide_collection' %}
                     <li class="categories-list-holder">
                         <div class="categories-list">
-                            <img src="{{ collections[item.slide_collection] | img_url: '100x' }}">
+                            <a href="{{ collections[item.slide_collection].url }}"><img src="{{ collections[item.slide_collection] | img_url: '400x' }}"></a>
                             <a class="categories-header" href="{{ collections[item.slide_collection].url }}">{{ collections[item.slide_collection].title }}</a>
                         </div>
                     </li>
