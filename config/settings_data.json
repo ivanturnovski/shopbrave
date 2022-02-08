@@ -1,10 +1,12 @@
 {
   "current": {
+    "sale_badge_color_scheme": "accent-2",
     "social_twitter_link": "#brave-twitter",
     "social_facebook_link": "#brave-face",
     "social_pinterest_link": "#brave-pin",
     "social_instagram_link": "#brave-insta",
     "social_youtube_link": "#brave-yt",
+    "currency_code_enabled": true,
     "sections": {
       "header": {
         "type": "header",

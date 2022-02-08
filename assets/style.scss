@@ -2540,6 +2540,11 @@ img {
           color: #75754f;
           // max-width: 450px;
           margin-bottom: 15px;
+          p,
+          ul,
+          li {
+            font-family: $font1;
+          }
           ul {
             list-style-type: square;
             padding: 0.5rem 1.2rem;
@@ -3574,7 +3579,7 @@ img {
             border: 4px solid #75754f;
             @media (max-width: 767px) {
               min-height: 155px;
-              border: 5px solid #75754f;
+              border: 2px solid #75754f;
             }
             @media (max-width: 479px) {
               min-height: 130px;
@@ -4497,8 +4502,10 @@ img {
   .caption {
     font-family: $font1;
   }
-  p {
-    font-family: $font4;
+  &:not(.products-page) {
+    p {
+      font-family: $font4;
+    }
   }
   &.blog-article {
     padding-bottom: 4rem !important;
@@ -4767,4 +4774,62 @@ article.article-template {
   @media (max-width: 768px) {
     display: none !important;
   }
+}
+
+#ProductGridContainer {
+  ul.grid {
+    column-gap: 12px;
+    justify-content: space-between;
+    li.grid__item {
+      width: calc(20% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
+      .card__heading {
+        font-family: $font1;
+        color: #75754f;
+        font-weight: bold;
+        font-size: 28px;
+        margin-bottom: 0;
+      }
+      .card-information {
+        .caption-with-letter-spacing {
+          font-family: $font1;
+          font-weight: 400;
+          font-size: 12px;
+          color: #4a3a2a;
+          min-height: 28.8px;
+          padding: 0.5rem 0;
+        }
+        .price {
+          margin-top: 0;
+          font-family: $font2;
+          font-weight: 400;
+          color: #4a3a2a;
+        }
+      }
+      .badge {
+        background-color: #74754e !important;
+        border-color: #74754e !important;
+      }
+      img {
+        object-fit: cover;
+      }
+      .card__media {
+        border: 4px solid #75754f;
+        @media (max-width: 768px) {
+          border: 2px solid #75754f;
+        }
+      }
+    }
+  }
+}
+
+.template-search__header {
+  .template-search__search {
+    input {
+      background: #f7f5e7;
+    }
+  }
+}
+
+#predictive-search-results {
+  background: #f9f8ed;
 }
