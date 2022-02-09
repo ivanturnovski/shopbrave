@@ -249,7 +249,7 @@
   $(document).on("click", "#mini-cart-products-holder .delete-btn" ,function () {
 	const id = parseInt($(this).closest(".products-list").data("id"));
     const quantity = 0;
-    jQuery.post('/cart/change.js', { id: id, quantity: quantity });
+    jQuery.post('/cart/change.js', { id: id, quantity: quantity },null,"json");
     setTimeout(function() {populateMiniCart(); cart_count();}, 400);
   });
   
@@ -259,7 +259,7 @@
     const quantity = parseInt($(this).closest(".products-list").find('.quantity').text()) - 1;
     if (quantity >= 1) {
       $(this).closest(".products-list").find('.quantity').text(quantity);
-      jQuery.post('/cart/change.js', { id: id, quantity: quantity });
+      jQuery.post('/cart/change.js', { id: id, quantity: quantity },null,"json");
       setTimeout(function() {populateMiniCart()}, 400);
     }
   });
@@ -269,7 +269,7 @@
 	const id = parseInt($(this).closest(".products-list").data("id"));
     const quantity = parseInt($(this).closest(".products-list").find('.quantity').text()) + 1;
     $(this).closest(".products-list").find('.quantity').text(quantity);
-    jQuery.post('/cart/change.js', { id: id, quantity: quantity });
+    jQuery.post('/cart/change.js', { id: id, quantity: quantity },null,"json");
     setTimeout(function() {populateMiniCart()}, 400);
   });
 
@@ -278,7 +278,7 @@
     fetch('/cart.js')
       .then((resp) => resp.json())
       .then(function (data) {
-        console.log(data);
+        // console.log(data);
         document.getElementById('mini-cart-products-holder').innerHTML = '';
         document.getElementById('mini-cart-total').innerHTML = '';
         if (data.items.length > 0) {
