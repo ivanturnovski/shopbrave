@@ -28,7 +28,7 @@ $(window).on('load', function () {
     applyCertificatesSlider(".certificates-slider-holder");
   }
   if ($('.recent-products-slider').length) {
-    setTimeout(function () { applyRecentSlider(".recent-products-slider") }, 2000);
+    applyRecentSlider(".recent-products-slider");
   }
   if ($('.branding-slider').length && $('.branding-slider >').length > 1) {
     applyBrandingSlider(".branding-slider");
