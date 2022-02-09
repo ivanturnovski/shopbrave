@@ -2,41 +2,46 @@
     <div class="container">
         <h3 class="sub-heading">{{ section.settings.title }}</h3>
         <ul class="recent-products-slider">
-			{% for block in section.blocks %}	
-				{%- assign item = block.settings -%}
-				{%- assign bundle_product = all_products[item.product] -%}
-				{%- assign bundle_product_img = bundle_product.featured_media.preview_image -%}
-                {%- assign product_rating_value = bundle_product.metafields.reviews.rating | split: ':"' | last | split: '"}' -%}
-				<li class="recent-products-list-holder" data-id="{{ bundle_product.selected_or_first_available_variant.id }}">
-					<div class="recent-products-list">
-						<div class="recent-product-image">
-							<a href="{{ bundle_product.url }}"><img src="{{ bundle_product_img | img_url: '800x' }}"></a>
-						</div>
-						<div class="recent-heading"><a href="{{ bundle_product.url }}">{{ bundle_product.title }}</a></div>
+            {% for block in section.blocks %}
+            {%- assign item = block.settings -%}
+            {%- assign bundle_product = all_products[item.product] -%}
+            {%- assign bundle_product_img = bundle_product.featured_media.preview_image -%}
+            {%- assign product_rating_value = bundle_product.metafields.reviews.rating | split: ':"' | last | split:
+            '"}' -%}
+            <li class="recent-products-list-holder"
+                data-id="{{ bundle_product.selected_or_first_available_variant.id }}">
+                <div class="recent-products-list">
+                    <div class="recent-product-image">
+                        <a href="{{ bundle_product.url }}"><img src="{{ bundle_product_img | img_url: '800x' }}"></a>
+                    </div>
+                    <div class="recent-heading"><a href="{{ bundle_product.url }}">{{ bundle_product.title }}</a></div>
 
-                        {% if product_rating_value != blank %}
-                            <div class="product-rating">
-                                <span class="number">{{ product_rating_value }}</span>
-                                <span class="star"><img src="{{ 'star.png' | asset_url }}"></span>
-                            </div>
-                        {% endif %}
+                    {% if product_rating_value != blank %}
+                    <div class="product-rating">
+                        <span class="number">{{ product_rating_value }}</span>
+                        <span class="star"><img src="{{ 'star.png' | asset_url }}"></span>
+                    </div>
+                    {% endif %}
 
-						<div class="recent-details">{{ bundle_product.vendor }}</div>
-						<div class="recent-price">
-							<span class="currency">&#8377</span>{{ bundle_product.price | money_without_currency }}
-						</div>
-                        {% form 'product', bundle_product, id: 'product-form-bundle', class: 'bundle-form',  novalidate: 'novalidate' %}
-                        <input type="hidden" id="item_id" name="id" value="{{ bundle_product.selected_or_first_available_variant.id }}">
-                        <input style="display: none" type="number" class="form-control" value="1" min="1" name="quantity" id="Quantity">
-                            <ul class="add-to-cart-btn">
-                                <li class="cart-button">
-                                    <button id="AddToCart" type="submit" name="add">Add to Cart</button>
-                                </li>
-                            </ul>
-                        {% endform %}
-					</div>
-				</li>		
-			{% endfor %}   
+                    <div class="recent-details">{{ bundle_product.vendor }}</div>
+                    <div class="recent-price">
+                        <span class="currency">&#8377</span>{{ bundle_product.price | money_without_currency }}
+                    </div>
+                    {% form 'product', bundle_product, id: 'product-form-bundle', class: 'bundle-form', novalidate:
+                    'novalidate' %}
+                    <input type="hidden" id="item_id" name="id"
+                        value="{{ bundle_product.selected_or_first_available_variant.id }}">
+                    <input style="display: none" type="number" class="form-control" value="1" min="1" name="quantity"
+                        id="Quantity">
+                    <ul class="add-to-cart-btn">
+                        <li class="cart-button">
+                            <button id="AddToCart" type="submit" name="add">Add to Cart</button>
+                        </li>
+                    </ul>
+                    {% endform %}
+                </div>
+            </li>
+            {% endfor %}
         </ul>
     </div>
 </div>
@@ -46,13 +51,12 @@
         const id = parseInt($(this).closest(".recent-products-list-holder").data("id"));
         const quantity = 1;
         jQuery.post('/cart/add.js', {
-            items: [
-                {
-                    id: id,
-                    quantity: quantity
-                }
-            ]
-        });
+            id: id,
+            quantity: quantity
+        },
+        null,
+        "json"
+        );
         setTimeout(function () { populateMiniCart(); cart_count(); }, 400);
     });
 </script>
@@ -60,89 +64,92 @@
 
 {%- style -%}
 
-.brave-essentials .recently-viewed .recent-products-slider .recent-products-list-holder .recent-products-list .add-to-cart-btn .cart-button button {
-    display: block;
-    padding: 2.5px 0;
-    width: 100%;
+.brave-essentials .recently-viewed .recent-products-slider .recent-products-list-holder .recent-products-list
+.add-to-cart-btn .cart-button button {
+display: block;
+padding: 2.5px 0;
+width: 100%;
 }
 
 .brave-essentials .add-to-cart-btn .cart-button button {
-    font-family: "Robinson";
-    font-weight: normal;
-    font-style: normal;
-    font-size: 30px;
-    letter-spacing: 5px;
-    color: #fff;
-    text-transform: uppercase;
-    background-color: #75754f;
-    padding: 5.6px 65px;
-    border: 3px solid #75754f;
-    display: block;
-    width: 100%;
-    text-align: center;
-    box-sizing: border-box;
-    transition: 0.2s;
+font-family: "Robinson";
+font-weight: normal;
+font-style: normal;
+font-size: 30px;
+letter-spacing: 5px;
+color: #fff;
+text-transform: uppercase;
+background-color: #75754f;
+padding: 5.6px 65px;
+border: 3px solid #75754f;
+display: block;
+width: 100%;
+text-align: center;
+box-sizing: border-box;
+transition: 0.2s;
 }
 @media (max-width: 768px) {
-    .brave-essentials .recently-viewed .recent-products-slider .recent-products-list-holder .recent-products-list .add-to-cart-btn .cart-button button {
-        font-size: 24px;
-    }
+.brave-essentials .recently-viewed .recent-products-slider .recent-products-list-holder .recent-products-list
+.add-to-cart-btn .cart-button button {
+font-size: 24px;
+}
 }
 @media (max-width: 479px) {
-    .brave-essentials .recently-viewed .recent-products-slider .recent-products-list-holder .recent-products-list .add-to-cart-btn .cart-button button {
-        font-size: 19px;
-    }
+.brave-essentials .recently-viewed .recent-products-slider .recent-products-list-holder .recent-products-list
+.add-to-cart-btn .cart-button button {
+font-size: 19px;
+}
 }
 
 @media (min-width: 768px) {
-    .brave-essentials .add-to-cart-btn .cart-button button {
-    padding: 5.6px 25px;
-    display: unset; 
-    } 
+.brave-essentials .add-to-cart-btn .cart-button button {
+padding: 5.6px 25px;
+display: unset;
+}
 }
 @media (min-width: 1024px) {
-    .brave-essentials .add-to-cart-btn .cart-button button {
-    padding: 5.6px 35px; 
-    } 
+.brave-essentials .add-to-cart-btn .cart-button button {
+padding: 5.6px 35px;
+}
 }
 @media (min-width: 1200px) {
 .brave-essentials .add-to-cart-btn .cart-button button {
-padding: 5.6px 120px; 
-    } 
+padding: 5.6px 120px;
+}
 }
 .brave-essentials .add-to-cart-btn .cart-button button:hover {
-    background-color: transparent;
-    color: #75754f;
-    border-color: #75754f; 
+background-color: transparent;
+color: #75754f;
+border-color: #75754f;
 }
 {%- endstyle -%}
 
 {% schema %}
 
 {
-    "name": "Bundle Offers",
-    "class": "be-cart-bundle-offers",
-    "tag": "section",
-    "settings": [
-        {
-            "type": "text",
-            "id": "title",
-            "label": "Section Heading"
-        }
-    ],
-    "blocks": [
-        {
-            "name": "Bundle Product",
-            "type": "product",
-            "settings": [
-                {
-                    "type": "product",
-                    "id": "product",
-                    "label": "Product"
-                }
-            ]
-        }
-    ]
+"name": "Bundle Offers",
+"class": "be-cart-bundle-offers",
+"tag": "section",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Section Heading"
+}
+],
+"blocks": [
+{
+"name": "Bundle Product",
+"type": "product",
+"settings": [
+{
+"type": "product",
+"id": "product",
+"label": "Product"
+}
+]
+}
+]
 }
 
 {% endschema %}
