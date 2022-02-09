@@ -25,7 +25,7 @@ var productRecomendationBody = document.getElementById("products-holder");
 					card += '<a href="'+ product.url +'" ><div class="products-heading">' + product.title + '</div></a>';					
 					card += '<div class="products-details">' + product.vendor + '</div>';					
 					card += '<div class="products-price"><span class="currency">&#8377</span>' + product.price / 100 + '</div>';					
-					card += '<ul class="add-to-cart-btn"><li class="cart-button"><a id="AddToCart" href="#">Add to Cart</a></li></ul>';
+					card += '<ul class="add-to-cart-btn"><li class="cart-button"><button type="button" id="AddToCart">Add to Cart</button></li></ul>';
 					card += '</div></li>';
 					productRecomendationBody.innerHTML += card;
 				});
@@ -33,20 +33,82 @@ var productRecomendationBody = document.getElementById("products-holder");
 		});
 
 
-$(document).on("click", "#AddToCart", function () {
+$(document).on("click", "#AddToCart", function() {
+	$('.mini-cart-holder').fadeIn();
+    $(".mini-cart-holder").addClass('active');
+    $(".cart-overlay").addClass('open');	
 	const id = parseInt($(this).closest(".products-list").data("id"));
 	const quantity = 1;
-	jQuery.post('/cart/add.js', {
-		items: [
-			{
+	jQuery.post('/cart/add.js', {		
 				id: id,
 				quantity: quantity
-			}
-		]
-	});
-	setTimeout(function () { populateMiniCart(); cart_count(); }, 400);
+			},
+			null,
+			"json"		
+	);
+	setTimeout(function() {populateMiniCart(); cart_count();}, 400);
 });
+
 </script>
+
+{%- style -%}
+
+.brave-essentials .be-also-bought .add-to-cart-btn .cart-button button {
+    display: block;
+    padding: 2.5px 0;
+    width: 100%;
+}
+
+.brave-essentials .be-also-bought .add-to-cart-btn .cart-button button {
+    font-family: "Robinson";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 30px;
+    letter-spacing: 5px;
+    color: #75754f;
+    text-transform: uppercase;
+    background-color: #fff;
+    padding: 5.6px 65px;
+    border: 3px solid #75754f;
+    display: block;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+@media (max-width: 768px) {
+    .brave-essentials .be-also-bought .add-to-cart-btn .cart-button button {
+        font-size: 24px;
+    }
+}
+@media (max-width: 479px) {
+    .brave-essentials .be-also-bought .add-to-cart-btn .cart-button button {
+        font-size: 19px;
+    }
+}
+
+@media (min-width: 768px) {
+    .brave-essentials .add-to-cart-btn .cart-button button {
+    padding: 5.6px 25px;
+    display: unset; 
+    } 
+}
+@media (min-width: 1024px) {
+    .brave-essentials .add-to-cart-btn .cart-button button {
+    padding: 5.6px 35px; 
+    } 
+}
+@media (min-width: 1200px) {
+.brave-essentials .add-to-cart-btn .cart-button button {
+padding: 5.6px 120px; 
+    } 
+}
+.brave-essentials .add-to-cart-btn .cart-button button:hover {
+    background-color: transparent;
+    color: #fff;
+    border-color: #fff; 
+}
+{%- endstyle -%}
 
 {% schema %}
 
