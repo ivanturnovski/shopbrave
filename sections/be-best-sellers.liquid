@@ -44,14 +44,13 @@
 $(document).on("click", "#AddToCart" ,function () {
 	const id = parseInt($(this).closest(".products-list").data("id"));
     const quantity = 1;
-    jQuery.post('/cart/add.js', { 
-		items: [
-			{
+    jQuery.post('/cart/add.js', { 		
 				id: id,
 				quantity: quantity 
-			}
-		]		
-	});
+			},
+			null,
+			"json"				
+	);
     setTimeout(function() {populateMiniCart(); cart_count();}, 400);
   });
 </script>
