@@ -24,7 +24,7 @@ var productRecomendationBody = document.getElementById("products-holder");
 					card += '</div>';
 					card += '<a href="'+ product.url +'" ><div class="products-heading">' + product.title + '</div></a>';					
 					card += '<div class="products-details">' + product.vendor + '</div>';					
-					card += '<div class="products-price"><span class="currency">&#8377</span>' + product.price / 100 + '</div>';					
+					card += '<div class="products-price"><span class="currency">USD</span>' + product.price / 100 + '</div>';					
 					card += '<ul class="add-to-cart-btn"><li class="cart-button"><button type="button" id="AddToCart">Add to Cart</button></li></ul>';
 					card += '</div></li>';
 					productRecomendationBody.innerHTML += card;

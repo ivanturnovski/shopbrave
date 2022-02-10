@@ -228,40 +228,32 @@
         "title": "Brave hearts"
       }
     },
-    "16434738892326f4e8": {
-      "type": "be-gifting-banner",
-      "disabled": true,
-      "settings": {
-        "title": "Gifting Banner",
-        "link": "shopify:\/\/collections"
-      }
-    },
     "1643474259f9ff5874": {
       "type": "be-blogs",
       "blocks": {
         "f1030e64-d358-41b6-ad2a-44e3457e8d0d": {
           "type": "blog_article",
           "settings": {
-            "article": "news\/blog-post-1"
-          }
-        },
-        "3bd72cbb-cbc0-4813-9613-f7b9e5ca7281": {
-          "type": "blog_article",
-          "settings": {
-            "article": "news\/blog-post-2"
+            "article": "news\/lorem-ipsum-blog"
           }
         },
         "650f4421-022d-4b86-b097-c59afa3423a8": {
           "type": "blog_article",
           "settings": {
-            "article": "news\/blog-post-1"
+            "article": "news\/lorem-ipsum-blog-2"
+          }
+        },
+        "3bd72cbb-cbc0-4813-9613-f7b9e5ca7281": {
+          "type": "blog_article",
+          "settings": {
+            "article": "news\/lorem-ipsum-blog"
           }
         }
       },
       "block_order": [
         "f1030e64-d358-41b6-ad2a-44e3457e8d0d",
-        "3bd72cbb-cbc0-4813-9613-f7b9e5ca7281",
-        "650f4421-022d-4b86-b097-c59afa3423a8"
+        "650f4421-022d-4b86-b097-c59afa3423a8",
+        "3bd72cbb-cbc0-4813-9613-f7b9e5ca7281"
       ],
       "settings": {
         "title": "Blogs"
@@ -305,30 +297,6 @@
         "title": "Media Coverage"
       }
     },
-    "16434751456519e7ba": {
-      "type": "be-video",
-      "disabled": true,
-      "blocks": {
-        "4b04d609-abe1-439b-8917-cf283087ccf9": {
-          "type": "uploaded_video",
-          "disabled": true,
-          "settings": {
-            "u_video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0555\/2416\/3649\/files\/sample-5s.mp4?v=1644077349"
-          }
-        },
-        "acf839a2-e9b8-495b-b80c-dd2e10321c10": {
-          "type": "youtube_video",
-          "settings": {
-            "yt_video": "7X8II6J-6mU"
-          }
-        }
-      },
-      "block_order": [
-        "4b04d609-abe1-439b-8917-cf283087ccf9",
-        "acf839a2-e9b8-495b-b80c-dd2e10321c10"
-      ],
-      "settings": {}
-    },
     "1643475583ec6bfa5f": {
       "type": "be-refer",
       "settings": {
@@ -344,10 +312,8 @@
     "164347055564aa4cb2",
     "1643471664c3e9b9a6",
     "16434733525f3230e4",
-    "16434738892326f4e8",
     "1643474259f9ff5874",
     "1643474607e045ee57",
-    "16434751456519e7ba",
     "1643475583ec6bfa5f"
   ]
 }

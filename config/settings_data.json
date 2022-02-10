@@ -24,14 +24,14 @@
           "91df7ab0-8a11-4fef-906f-0f018d81d1cb": {
             "type": "accordion_menu",
             "settings": {
-              "menu": "",
+              "menu": "footer-menu-information",
               "title": "Information"
             }
           },
           "5bed5395-d36e-4a3c-9f7a-ff8af58ae4c7": {
             "type": "accordion_menu",
             "settings": {
-              "menu": "",
+              "menu": "footer-menu-support",
               "title": "Support"
             }
           }

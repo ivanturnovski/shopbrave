@@ -25,7 +25,7 @@
 
                     <div class="recent-details">{{ bundle_product.vendor }}</div>
                     <div class="recent-price">
-                        <span class="currency">&#8377</span>{{ bundle_product.price | money_without_currency }}
+                        <span class="currency">USD</span>{{ bundle_product.price | money_without_currency }}
                     </div>
                     {% form 'product', bundle_product, id: 'product-form-bundle', class: 'bundle-form', novalidate:
                     'novalidate' %}
