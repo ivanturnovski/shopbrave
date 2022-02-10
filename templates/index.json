@@ -233,8 +233,7 @@
       "disabled": true,
       "settings": {
         "title": "Gifting Banner",
-        "link": "shopify:\/\/collections",
-        "image": "shopify:\/\/shop_images\/branding-1.jpg"
+        "link": "shopify:\/\/collections"
       }
     },
     "1643474259f9ff5874": {
