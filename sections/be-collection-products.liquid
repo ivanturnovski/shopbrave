@@ -2,11 +2,12 @@
     {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
     {{ 'component-facets.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
-  
+
     <div id="main-collection-filters" data-id="{{ section.id }}">
-      {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, collapse_on_larger_devices: section.settings.collapse_on_larger_devices %}
+        {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting:
+        section.settings.enable_sorting, collapse_on_larger_devices: section.settings.collapse_on_larger_devices %}
     </div>
-  {%- endif -%}
+    {%- endif -%}
 </div>
 
 
@@ -19,7 +20,7 @@
                 <ul id="product-grid" data-id="{{ section.id }}" class="categories-products-holder ">
                     {% for product in collection.products %}
                     {%- assign image = product.featured_media.preview_image -%}
-                    <li class="categories-list-holder">
+                    <li class="categories-list-holder" data-id="{{ product.selected_or_first_available_variant.id }}">
                         <div class="categories-list">
                             <a href="{{ product.url }}">
                                 <img src="{{ image | img_url: '800x'}}" alt="{{ product.title }}">
@@ -31,8 +32,21 @@
                                 {{ product.vendor }}
                             </div>
                             <div class="product-price">
-                                <span class="currency">{{ shop.currency | replace: "INR", "&#8377" }}</span>{{ product.price | money_without_currency}}
-                          	</div>
+                                <span class="currency">{{ shop.currency | replace: "INR", "&#8377" }}</span>{{
+                                product.price | money_without_currency}}
+                            </div>
+                            {% form 'product', product, id: 'bs-product-form', class: 'bs-product-form', novalidate:
+                            'novalidate' %}
+                            <input type="hidden" id="item_id" name="id"
+                                value="{{ product.selected_or_first_available_variant.id }}">
+                            <input class="form-control" id="Quantity" min="1" name="quantity" style="display: none"
+                                type="number" value="1">
+                            <ul class="add-to-cart-btn">
+                                <li class="cart-button">
+                                    <button id="AddToCart" name="add" type="button">Add to Cart</button>
+                                </li>
+                            </ul>
+                            {% endform %}
                         </div>
                     </li>
                     {% endfor %}
@@ -71,44 +85,62 @@
     {%- endpaginate -%}
 </div>
 
+<script type="text/javascript">
+    $(document).on("click", "#AddToCart", function () {
+        const id = parseInt($(this).closest("li.categories-list-holder").data("id"));
+        const quantity = 1;
+        jQuery.post('/cart/add.js', {
+            id: id,
+            quantity: quantity
+        },
+            null,
+            "json"
+        );
+        setTimeout(function () { populateMiniCart(); cart_count(); }, 400);
+    });
+</script>
+
 <style>
-    .facets__wrapper, .facet-filters__sort.select__select {
+    .facets__wrapper,
+    .facet-filters__sort.select__select {
         font-family: 'Agency FB';
     }
-    .facets__heading, .facet-filters__label, #ProductCountDesktop {
-        font-family: 'Robinson';
-    }    
 
+    .facets__heading,
+    .facet-filters__label,
+    #ProductCountDesktop {
+        font-family: 'Robinson';
+    }
 </style>
 
 {% schema %}
 
 {
-    "name": "Collection Products",
-    "class": "be-collection-products",
-    "tag": "section",
-    "settings": [
-        {
-            "type": "header",
-            "content": "t:sections.main-collection-product-grid.settings.header__1.content"
-        }, {
-            "type": "checkbox",
-            "id": "enable_filtering",
-            "default": true,
-            "label": "t:sections.main-collection-product-grid.settings.enable_filtering.label",
-            "info": "t:sections.main-collection-product-grid.settings.enable_filtering.info"
-        }, {
-            "type": "checkbox",
-            "id": "enable_sorting",
-            "default": true,
-            "label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
-        }, {
-            "type": "checkbox",
-            "id": "collapse_on_larger_devices",
-            "default": false,
-            "label": "t:sections.main-collection-product-grid.settings.collapse_on_larger_devices.label"
-        }
-    ]
+"name": "Collection Products",
+"class": "be-collection-products",
+"tag": "section",
+"settings": [
+{
+"type": "header",
+"content": "t:sections.main-collection-product-grid.settings.header__1.content"
+}, {
+"type": "checkbox",
+"id": "enable_filtering",
+"default": true,
+"label": "t:sections.main-collection-product-grid.settings.enable_filtering.label",
+"info": "t:sections.main-collection-product-grid.settings.enable_filtering.info"
+}, {
+"type": "checkbox",
+"id": "enable_sorting",
+"default": true,
+"label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
+}, {
+"type": "checkbox",
+"id": "collapse_on_larger_devices",
+"default": false,
+"label": "t:sections.main-collection-product-grid.settings.collapse_on_larger_devices.label"
+}
+]
 }
 
 {% endschema %}

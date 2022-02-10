@@ -11,8 +11,8 @@
       "header": {
         "type": "header",
         "settings": {
-          "announcement_text": "25% off Sitewide",
-          "announcement_button_text": "Avail Now",
+          "announcement_text": "Free Shipping",
+          "announcement_button_text": "Shop Now",
           "announcement_button_url": "shopify:\/\/collections\/all",
           "logo": "shopify:\/\/shop_images\/logo.png",
           "menu": "main-menu"

@@ -132,21 +132,15 @@
           </ul>
           <div class="side-icons-holder">
             <a class="search-icon">
-              <i class="fas fa-search"></i>
+              <i class="gg-icon gg-search"></i>
             </a>
             {% if shop.customer_accounts_enabled %}
-              {% if customer %}
-              <a class="text-base text-gray-500 hover:text-gray-900" href="{{ routes.account_logout_url }}">
-                <i class="fas fa-sign-out-alt"></i>
-              </a>            
-              {% else %}
-              <a href="{{ routes.account_login_url }}" class="account-button">
-                <i class="fas fa-user"></i>
+              <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="account-button">
+                <i class="gg-icon gg-profile"></i>
               </a>
-              {% endif %}
             {% endif %}
             <a id="cart" class="cart-button">
-              <i class="fas fa-shopping-cart"></i>
+              <i class="gg-icon gg-shopping-cart"></i>
               <span id="cart-count" class="cart-count"></span>
             </a>
           </div>
@@ -157,7 +151,7 @@
             <form action="/search" method="GET" role="search">
               <input id="search" class="search-bar" type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search for your favourite products">
               <i class="fas fa-search"></i>
-              <div class="cross-icon"><i class="fas fa-times"></i></div>
+              <div class="cross-icon"><i class="gg-close"></i></div>
             </form>
             <div id="myModal" class="modal">            
               <div class="modal-content">
