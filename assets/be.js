@@ -208,6 +208,7 @@ $(document).ready(function () {
     }
   });
   // active class js
+  if ($('#sizes').length && $('.size-quantity').length) {
   var header = document.getElementById("sizes");
   var btns = header.getElementsByClassName("size-quantity");
   for (var i = 0; i < btns.length; i++) {
@@ -217,6 +218,7 @@ $(document).ready(function () {
       this.className += " active";
     });
   }
+}
 
   // increment number
   var clicks = 1; $(".plus").click(function () {
